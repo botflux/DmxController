@@ -180,14 +180,74 @@
             <!-- Fin Panneau de gauche -->
             
             <!-- Panneau milieu -->
-            <Grid Grid.Column="1">
+            <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Visible">
+            <Grid>
                 <!-- Onglet de changement de couleur -->
-                <Grid Visibility="Hidden" x:Name="grid_changeColor" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <TextBlock Text="Onglet de changement de couleur" FontSize="19" />
+                <Grid Margin="15"  Visibility="Visible" x:Name="grid_changeColor">
+                    <StackPanel>
+                        <Canvas Height="100" Background="White" Margin="0 0 0 60">
+                            <Canvas.Effect>
+                                <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225"  />
+                            </Canvas.Effect>
+                        </Canvas>
+                        <!-- Controles rouges -->
+                        <Grid Margin="0 0 0 30">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="46" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Canvas Background="Red">
+                                <Canvas.Effect>
+                                    <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225" />
+                                </Canvas.Effect>
+                            </Canvas>
+
+                            <StackPanel Grid.Column="1" Margin="16 0 0 0">
+                                <TextBlock Text="Rouge" Margin="0 0 0 16" />
+                                <Slider Minimum="0" Maximum="255" Value="255" />
+                            </StackPanel>
+                        </Grid>
+                        
+                        <!-- Controles bleus -->
+                        <Grid Margin="0 0 0 30">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="46" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Canvas Background="Green">
+                                <Canvas.Effect>
+                                    <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225" />
+                                </Canvas.Effect>
+                            </Canvas>
+
+                            <StackPanel Grid.Column="1" Margin="16 0 0 0">
+                                <TextBlock Text="Vert" Margin="0 0 0 16" />
+                                <Slider Minimum="0" Maximum="255" Value="255" />
+                            </StackPanel>
+                        </Grid>
+                        
+                        <!-- Controles verts -->
+                        <Grid Margin="0 0 0 30">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="46" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Canvas Background="Blue">
+                                <Canvas.Effect>
+                                    <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225" />
+                                </Canvas.Effect>
+                            </Canvas>
+
+                            <StackPanel Grid.Column="1" Margin="16 0 0 0">
+                                <TextBlock Text="Bleu" Margin="0 0 0 16" />
+                                <Slider Minimum="0" Maximum="255" Value="255" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
                 </Grid>
 
                 <!-- Onglet de bienvenue -->
-                <Grid Visibility="Visible" x:Name="grid_welcome" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid Visibility="Hidden" x:Name="grid_welcome" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Menu>
                         <Menu.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -219,7 +279,7 @@
                 </Grid>
             </Grid>
             <!-- Fin panneau milieu -->
-            
+            </ScrollViewer>
             <!-- Panneau de droite -->
             <Grid Grid.Column="2" Background="#303030">
                 <Grid.Effect>
