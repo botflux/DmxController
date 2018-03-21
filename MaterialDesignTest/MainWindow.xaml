@@ -20,28 +20,28 @@
             <local:GridLengthAnimation
                 Storyboard.TargetName="colDef_leftPanel"
                 Storyboard.TargetProperty="Width"
-                From="0.20*" To="0" Duration="0:0:0.2">
+                From="0.2*" To="0" Duration="0:0:0.2">
             </local:GridLengthAnimation>
         </Storyboard>
         <Storyboard x:Key="OpenLeftPanel">
             <local:GridLengthAnimation
                 Storyboard.TargetName="colDef_leftPanel"
                 Storyboard.TargetProperty="Width"
-                From="0" To="0.20*" Duration="0:0:0.2">
+                From="0" To="0.2*" Duration="0:0:0.2">
             </local:GridLengthAnimation>
         </Storyboard>
         <Storyboard x:Key="CloseRightPanel">
             <local:GridLengthAnimation
                 Storyboard.TargetName="colDef_rightPanel"
                 Storyboard.TargetProperty="Width"
-                From="0.20*" To="0" Duration="0:0:0.2">
+                From="0.2*" To="0" Duration="0:0:0.2">
             </local:GridLengthAnimation>
         </Storyboard>
         <Storyboard x:Key="OpenRightPanel">
             <local:GridLengthAnimation
                 Storyboard.TargetName="colDef_rightPanel"
                 Storyboard.TargetProperty="Width"
-                From="0" To="0.20*" Duration="0:0:0.2">
+                From="0" To="0.2*" Duration="0:0:0.2">
             </local:GridLengthAnimation>
         </Storyboard>
 
@@ -105,7 +105,9 @@
                         <materialDesign:PackIcon Kind="Send" />
                     </MenuItem.Icon>
                 </MenuItem>
+                
                 <Separator />
+                
                 <MenuItem Header="Options">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Settings" />
@@ -138,9 +140,9 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.20*" x:Name="colDef_leftPanel" />
+                <ColumnDefinition Width="0.2*" x:Name="colDef_leftPanel" />
                 <ColumnDefinition />
-                <ColumnDefinition Width="0.20*" x:Name="colDef_rightPanel" />
+                <ColumnDefinition Width="0.2*" x:Name="colDef_rightPanel" />
             </Grid.ColumnDefinitions>
 
             <!-- Panneau de gauche -->
@@ -158,6 +160,20 @@
                         <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" Command="{Binding HandleLeftPanel}" CommandParameter="{Binding}">
                             <materialDesign:PackIcon Kind="Close"/>
                         </Button>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Margin="8">
+                        <TextBlock Text="Informations" FontSize="15" Margin="0 0 0 20" />
+                        <TextBlock Text="Type" FontSize="9" Padding="0 16 0 8" Opacity=".8" />
+                        <ComboBox>
+                            <ComboBoxItem IsSelected="True">
+                                Lyre
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Projecteur
+                            </ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock Text="Adresse" FontSize="9" Padding="0 16 0 8" Opacity=".8" />
+                        <TextBox Text="21" />
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -219,6 +235,12 @@
                         <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" Command="{Binding HandleRightPanel}" CommandParameter="{Binding}">
                             <materialDesign:PackIcon Kind="Close"/>
                         </Button>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Margin="7">
+                        <TextBlock Text="Actions" FontSize="15" />
+                        <Button Content="Envoyer" Margin="0 20 0 5" />
+                        <Button Content="Supprimer" Margin="0 10 0 5" />
+                        <Button Content="Sauvegarder" Margin="0 10 0 5" />
                     </StackPanel>
                 </Grid>
             </Grid>

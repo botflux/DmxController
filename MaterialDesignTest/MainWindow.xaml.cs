@@ -21,8 +21,7 @@ namespace MaterialDesignTest
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool isLeftPanelShown = true;
-        private bool isRightPanelShown = true;
+        private UIStates uiStates = new UIStates(true, true);
 
         public MainWindow()
         {
@@ -49,9 +48,9 @@ namespace MaterialDesignTest
 
         private ICommand handleLeftPanel = new RelayCommand<MainWindow>((window) =>
         {
-            window.isLeftPanelShown = !window.isLeftPanelShown;
+            window.uiStates.IsLeftPanelShown = !window.uiStates.IsLeftPanelShown;
 
-            if (window.isLeftPanelShown)
+            if (window.uiStates.IsLeftPanelShown)
             {
                 (window.FindResource("OpenLeftPanel") as Storyboard).Begin();
             }
@@ -63,9 +62,9 @@ namespace MaterialDesignTest
 
         private ICommand handleRightPanel = new RelayCommand<MainWindow>((window) =>
         {
-            window.isRightPanelShown = !window.isRightPanelShown;
+            window.uiStates.IsRightPanelShown = !window.uiStates.IsRightPanelShown;
 
-            if (window.isRightPanelShown)
+            if (window.uiStates.IsRightPanelShown)
             {
                 (window.FindResource("OpenRightPanel") as Storyboard).Begin();
             }
@@ -112,6 +111,44 @@ namespace MaterialDesignTest
             get
             {
                 return closeApplication;
+            }
+        }
+
+        private struct UIStates
+        {
+            private bool isLeftPanelShown;
+            private bool isRightPanelShown;
+
+            public bool IsLeftPanelShown
+            {
+                get
+                {
+                    return isLeftPanelShown;
+                }
+
+                set
+                {
+                    isLeftPanelShown = value;
+                }
+            }
+
+            public bool IsRightPanelShown
+            {
+                get
+                {
+                    return isRightPanelShown;
+                }
+
+                set
+                {
+                    isRightPanelShown = value;
+                }
+            }
+
+            public UIStates (bool isRightPanelShown, bool isLeftPanelShown)
+            {
+                this.isLeftPanelShown = isLeftPanelShown;
+                this.isRightPanelShown = isRightPanelShown;
             }
         }
     }
