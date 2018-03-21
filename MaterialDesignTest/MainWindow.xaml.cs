@@ -29,6 +29,18 @@ namespace MaterialDesignTest
             InitializeComponent();
             DataContext = this;
         }
+
+        private ICommand closeMainTab = new RelayCommand<MainWindow>((window) =>
+        {
+            window.grid_changeColor.Visibility = Visibility.Hidden;
+            window.grid_welcome.Visibility = Visibility.Visible;
+        });
+
+        private ICommand closeApplication = new RelayCommand<MainWindow>((window) =>
+        {
+            Application.Current.Shutdown();
+        });
+
         private ICommand colorMenu = new RelayCommand<MainWindow>((window) =>
         {
             window.grid_welcome.Visibility = Visibility.Hidden;
@@ -41,13 +53,11 @@ namespace MaterialDesignTest
 
             if (window.isLeftPanelShown)
             {
-                Storyboard sb = window.FindResource("OpenLeftPanel") as Storyboard;
-                sb.Begin();
+                (window.FindResource("OpenLeftPanel") as Storyboard).Begin();
             }
             else
             {
-                Storyboard sb = window.FindResource("CloseLeftPanel") as Storyboard;
-                sb.Begin();
+                (window.FindResource("CloseLeftPanel") as Storyboard).Begin();
             }
         });
 
@@ -57,13 +67,11 @@ namespace MaterialDesignTest
 
             if (window.isRightPanelShown)
             {
-                Storyboard sb = window.FindResource("OpenRightPanel") as Storyboard;
-                sb.Begin();
+                (window.FindResource("OpenRightPanel") as Storyboard).Begin();
             }
             else
             {
-                Storyboard sb = window.FindResource("CloseRightPanel") as Storyboard;
-                sb.Begin();
+                (window.FindResource("CloseRightPanel") as Storyboard).Begin();
             }
         });
 
@@ -88,6 +96,22 @@ namespace MaterialDesignTest
             get
             {
                 return handleRightPanel;
+            }
+        }
+
+        public ICommand CloseMainTab
+        {
+            get
+            {
+                return closeMainTab;
+            }
+        }
+
+        public ICommand CloseApplication
+        {
+            get
+            {
+                return closeApplication;
             }
         }
     }

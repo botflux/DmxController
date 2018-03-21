@@ -46,8 +46,7 @@
         </Storyboard>
 
     </Window.Resources>
-
-
+    
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <Menu.Effect>
@@ -75,7 +74,7 @@
                         <materialDesign:PackIcon Kind="ContentSaveOutline" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Fermer">
+                <MenuItem Header="Fermer" Command="{Binding CloseMainTab}" CommandParameter="{Binding}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Close" />
                     </MenuItem.Icon>
@@ -87,7 +86,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator />
-                <MenuItem Header="Fermer l'application">
+                <MenuItem Header="Fermer l'application" Command="{Binding CloseApplication}" CommandParameter="{Binding}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Close" />
                     </MenuItem.Icon>
@@ -143,26 +142,24 @@
                 <ColumnDefinition />
                 <ColumnDefinition Width="0.20*" x:Name="colDef_rightPanel" />
             </Grid.ColumnDefinitions>
-            
+
             <!-- Panneau de gauche -->
             <Grid Grid.Column="0" Background="#303030">
                 <Grid.Effect>
                     <DropShadowEffect ShadowDepth="1" Opacity="0.5" Direction="315"  />
                 </Grid.Effect>
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" Command="{Binding HandleLeftPanel}" CommandParameter="{Binding}">
+                            <materialDesign:PackIcon Kind="Close"/>
+                        </Button>
                     </StackPanel>
-                    <StackPanel Margin="7">
-                    
-                        <StackPanel>
-                            <TextBlock Text="Informations" FontSize="14" />
-                            <Separator />
-                            <TextBlock Text="Type de cible" />
-                            <TextBlock Text="lyre" />
-                        </StackPanel>
-                    </StackPanel>
-                </StackPanel>
+                </Grid>
             </Grid>
             <!-- Fin Panneau de gauche -->
             
@@ -212,7 +209,18 @@
                 <Grid.Effect>
                     <DropShadowEffect ShadowDepth="1" Opacity="0.5" Direction="225"  />
                 </Grid.Effect>
-                <TextBlock Text="Panneau droit" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" Command="{Binding HandleRightPanel}" CommandParameter="{Binding}">
+                            <materialDesign:PackIcon Kind="Close"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
             </Grid>
             <!-- Fin panneau de droite -->
         </Grid>
