@@ -63,6 +63,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ColorViewModel.cs" />
+    <Compile Include="ByteToDoubleConverter.cs" />
     <Compile Include="GridLengthAnimation.cs" />
     <Compile Include="RelayCommand.cs" />
     <Page Include="MainWindow.xaml">

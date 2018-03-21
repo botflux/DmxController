@@ -4,12 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MaterialDesignTest"
+        xmlns:dmxController="clr-namespace:DmxController"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
-        
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
@@ -45,6 +45,7 @@
             </local:GridLengthAnimation>
         </Storyboard>
 
+        <dmxController:ByteToDoubleConverter x:Key="byteToDoubleConverter" />
     </Window.Resources>
     
     <DockPanel>
@@ -138,6 +139,7 @@
             </MenuItem>
         </Menu>
 
+        
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.2*" x:Name="colDef_leftPanel" />
@@ -175,6 +177,7 @@
                             </ComboBox>
                             <TextBlock Text="Adresse" FontSize="9" Padding="0 16 0 8" Opacity=".8" />
                             <TextBox Text="21" />
+
                         </StackPanel>
                     </Grid>
                 </Grid>
@@ -185,7 +188,7 @@
             <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Visible">
                 <Grid>
                     <!-- Onglet de changement de couleur -->
-                    <Grid Margin="15"  Visibility="Visible" x:Name="grid_changeColor">
+                    <Grid Margin="15" Visibility="Visible" x:Name="grid_changeColor">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*" />
@@ -214,7 +217,7 @@
 
                                     <StackPanel Grid.Column="1" Margin="16 0 0 0">
                                         <TextBlock Text="Rouge" Margin="0 0 0 16" />
-                                        <Slider Minimum="0" Maximum="255" Value="255" />
+                                        <Slider Minimum="0" Maximum="255" Value="{Binding MyColorViewModel.R, Converter={StaticResource byteToDoubleConverter}}" />
                                     </StackPanel>
                                 </Grid>
                             </Grid>
@@ -235,7 +238,7 @@
 
                                     <StackPanel Grid.Column="1" Margin="16 0 0 0">
                                         <TextBlock Text="Vert" Margin="0 0 0 16" />
-                                        <Slider Minimum="0" Maximum="255" Value="255" />
+                                        <Slider Minimum="0" Maximum="255" Value="{Binding MyColorViewModel.G, Converter={StaticResource byteToDoubleConverter}}" />
                                     </StackPanel>
                                 </Grid>
                             </Grid>
@@ -255,7 +258,7 @@
 
                                     <StackPanel Grid.Column="1" Margin="16 0 0 0">
                                         <TextBlock Text="Bleu" Margin="0 0 0 16" />
-                                        <Slider Minimum="0" Maximum="255" Value="255" />
+                                        <Slider Value="{Binding MyColorViewModel.B, Converter={StaticResource byteToDoubleConverter}}" Maximum="255" Minimum="0" />
                                     </StackPanel>
                                 </Grid>
                             </Grid>
@@ -317,11 +320,11 @@
                         <StackPanel Grid.Row="1" Margin="7">
                             <TextBlock Text="Balance" FontSize="15" />
                             <TextBlock Text="Rouge" FontSize="9" Padding="0 16 0 8" Opacity=".8" />
-                            <TextBox Text="255" />
+                            <TextBox Text="{Binding MyColorViewModel.R}" />
                             <TextBlock Text="Vert" FontSize="9" Padding="0 16 0 8" Opacity=".8" />
-                            <TextBox Text="255" />
+                            <TextBox Text="{Binding MyColorViewModel.G}" />
                             <TextBlock Text="Bleu" FontSize="9" Padding="0 16 0 8" Opacity=".8" />
-                            <TextBox Text="255" />
+                            <TextBox Text="{Binding MyColorViewModel.B}" />
 
 
                             <TextBlock Text="Actions" Margin="0 32 0 0" FontSize="15" />

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DmxController;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,12 +25,13 @@ namespace MaterialDesignTest
     {
         private UIStates uiStates = new UIStates(true, true);
 
+        private ColorViewModel myColorViewModel = new ColorViewModel();
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
         }
-
+        #region Commands
         private ICommand closeMainTab = new RelayCommand<MainWindow>((window) =>
         {
             window.grid_changeColor.Visibility = Visibility.Hidden;
@@ -73,7 +76,9 @@ namespace MaterialDesignTest
                 (window.FindResource("CloseRightPanel") as Storyboard).Begin();
             }
         });
+#endregion
 
+        #region Commands
         public ICommand ColorMenu
         {
             get
@@ -113,6 +118,21 @@ namespace MaterialDesignTest
                 return closeApplication;
             }
         }
+        #endregion
+
+        public ColorViewModel MyColorViewModel
+        {
+            get
+            {
+                return myColorViewModel;
+            }
+
+            set
+            {
+                myColorViewModel = value;
+            }
+        }
+        
 
         private struct UIStates
         {
