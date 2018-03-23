@@ -46,6 +46,7 @@
         </Storyboard>
 
         <dmxController:ByteToDoubleConverter x:Key="byteToDoubleConverter" />
+        <dmxController:ColorBrushToColorConverter x:Key="colorBrushToColorConverter" />
     </Window.Resources>
     
     <DockPanel>
@@ -197,7 +198,7 @@
                                 <RowDefinition Height="1*" />
                             </Grid.RowDefinitions>
 
-                            <Grid Background="White">
+                            <Grid Background="{Binding MyColorViewModel.MainColor, Converter={StaticResource colorBrushToColorConverter}, Mode=OneWay}">
                                 <Grid.Effect>
                                     <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225"  />
                                 </Grid.Effect>
@@ -209,7 +210,7 @@
                                         <ColumnDefinition Width="46" />
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-                                    <Canvas Background="Red">
+                                    <Canvas Background="{Binding MyColorViewModel.RedBalance, Converter={StaticResource colorBrushToColorConverter}, Mode=OneWay}">
                                         <Canvas.Effect>
                                             <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225" />
                                         </Canvas.Effect>
@@ -222,7 +223,7 @@
                                 </Grid>
                             </Grid>
 
-                            <!-- Controles bleus -->
+                            <!-- Controles verts -->
 
                             <Grid Grid.Row="2" Margin="0 0 0 30">
                                 <Grid VerticalAlignment="Center">
@@ -230,7 +231,7 @@
                                         <ColumnDefinition Width="46" />
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-                                    <Canvas Background="Green">
+                                    <Canvas Background="{Binding MyColorViewModel.GreenBalance, Converter={StaticResource colorBrushToColorConverter}, Mode=OneWay}">
                                         <Canvas.Effect>
                                             <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225" />
                                         </Canvas.Effect>
@@ -243,14 +244,14 @@
                                 </Grid>
                             </Grid>
 
-                            <!-- Controles verts -->
+                            <!-- Controles bleus -->
                             <Grid Grid.Row="3" Margin="0 0 0 30">
                                 <Grid VerticalAlignment="Center">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="46" />
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-                                    <Canvas Background="Blue">
+                                    <Canvas Background="{Binding MyColorViewModel.BlueBalance, Converter={StaticResource colorBrushToColorConverter}, Mode=OneWay}">
                                         <Canvas.Effect>
                                             <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225" />
                                         </Canvas.Effect>

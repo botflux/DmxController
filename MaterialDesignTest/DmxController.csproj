@@ -63,6 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ColorBrushToColorConverter.cs" />
     <Compile Include="ColorViewModel.cs" />
     <Compile Include="ByteToDoubleConverter.cs" />
     <Compile Include="GridLengthAnimation.cs" />

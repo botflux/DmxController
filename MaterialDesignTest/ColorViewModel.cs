@@ -54,6 +54,7 @@ namespace DmxController
                 return Color.FromRgb(0, 0, b);
             }
         }
+
         public byte R
         {
             get
@@ -67,6 +68,8 @@ namespace DmxController
                 {
                     r = value;
                     NotifyPropertyChanged();
+                    if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("RedBalance"));
+                    if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("MainColor"));
                 }
             }
         }
@@ -84,6 +87,8 @@ namespace DmxController
                 {
                     g = value;
                     NotifyPropertyChanged();
+                    if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("GreenBalance"));
+                    if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("MainColor"));
                 }
             }
         }
@@ -101,6 +106,8 @@ namespace DmxController
                 {
                     b = value;
                     NotifyPropertyChanged();
+                    if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("BlueBalance"));
+                    if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("MainColor"));
                 }
             }
         }
@@ -113,6 +120,13 @@ namespace DmxController
                 PropertyChanged(this, new PropertyChangedEventArgs(str));
 
             MainColor = Color.FromRgb(R, G, B);
+        }
+
+        public ColorViewModel ()
+        {
+            R = 127;
+            G = 127;
+            B = 127;
         }
     }
 }
