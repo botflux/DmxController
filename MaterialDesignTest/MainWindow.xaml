@@ -189,7 +189,7 @@
             <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Visible">
                 <Grid>
                     <!-- Onglet de changement de couleur -->
-                    <Grid Margin="15" Visibility="Visible" x:Name="grid_changeColor">
+                    <Grid Margin="15" Visibility="Hidden" x:Name="grid_changeColor">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*" />
@@ -267,7 +267,7 @@
                     </Grid>
 
                     <!-- Onglet de bienvenue -->
-                    <Grid Visibility="Hidden" x:Name="grid_welcome" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid Visibility="Visible" x:Name="grid_welcome" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Menu>
                             <Menu.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -319,19 +319,21 @@
                             </Button>
                         </StackPanel>
                         <StackPanel Grid.Row="1" Margin="7">
-                            <TextBlock Text="Balance" FontSize="15" />
-                            <TextBlock Text="Rouge" FontSize="9" Padding="0 16 0 8" Opacity=".8" />
-                            <TextBox Text="{Binding MyColorViewModel.R}" />
-                            <TextBlock Text="Vert" FontSize="9" Padding="0 16 0 8" Opacity=".8" />
-                            <TextBox Text="{Binding MyColorViewModel.G}" />
-                            <TextBlock Text="Bleu" FontSize="9" Padding="0 16 0 8" Opacity=".8" />
-                            <TextBox Text="{Binding MyColorViewModel.B}" />
-
-
-                            <TextBlock Text="Actions" Margin="0 32 0 0" FontSize="15" />
-                            <Button Content="Envoyer" Margin="0 20 0 5" />
-                            <Button Content="Supprimer" Margin="0 10 0 5" />
-                            <Button Content="Sauvegarder" Margin="0 10 0 5" />
+                            <StackPanel x:Name="mod_colorBalance" Visibility="Collapsed" Margin="0 0 0 20">
+                                <TextBlock Text="Balance" FontSize="15" />
+                                <TextBlock Text="Rouge" FontSize="9" Padding="0 16 0 8" Opacity=".8" />
+                                <TextBox Text="{Binding MyColorViewModel.R}" />
+                                <TextBlock Text="Vert" FontSize="9" Padding="0 16 0 8" Opacity=".8" />
+                                <TextBox Text="{Binding MyColorViewModel.G}" />
+                                <TextBlock Text="Bleu" FontSize="9" Padding="0 16 0 8" Opacity=".8" />
+                                <TextBox Text="{Binding MyColorViewModel.B}" />
+                            </StackPanel>
+                            <StackPanel x:Name="mod_actions" Visibility="Collapsed">
+                                <TextBlock Text="Actions" Margin="0 0 0 0" FontSize="15" />
+                                <Button Content="Envoyer" Margin="0 20 0 5" />
+                                <Button Content="Supprimer" Margin="0 10 0 5" />
+                                <Button Content="Sauvegarder" Margin="0 10 0 5" />
+                            </StackPanel>
                         </StackPanel>
                     </Grid>
                 </Grid>

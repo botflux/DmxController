@@ -34,6 +34,11 @@ namespace MaterialDesignTest
         #region Commands
         private ICommand closeMainTab = new RelayCommand<MainWindow>((window) =>
         {
+
+            // demander les controles correspondant
+            window.mod_colorBalance.Visibility = Visibility.Collapsed;
+            window.mod_actions.Visibility = Visibility.Collapsed;
+
             window.grid_changeColor.Visibility = Visibility.Hidden;
             window.grid_welcome.Visibility = Visibility.Visible;
         });
@@ -45,6 +50,10 @@ namespace MaterialDesignTest
 
         private ICommand colorMenu = new RelayCommand<MainWindow>((window) =>
         {
+            // demander les controles correspondant
+            window.mod_colorBalance.Visibility = Visibility.Visible;
+            window.mod_actions.Visibility = Visibility.Visible;
+
             window.grid_welcome.Visibility = Visibility.Hidden;
             window.grid_changeColor.Visibility = Visibility.Visible;
         });
@@ -76,9 +85,8 @@ namespace MaterialDesignTest
                 (window.FindResource("CloseRightPanel") as Storyboard).Begin();
             }
         });
-#endregion
-
-        #region Commands
+        
+        // demande le menu Color
         public ICommand ColorMenu
         {
             get
@@ -87,6 +95,7 @@ namespace MaterialDesignTest
             }
         }
 
+        // demande le panneau de gauche
         public ICommand HandleLeftPanel
         {
             get
@@ -95,6 +104,7 @@ namespace MaterialDesignTest
             }
         }
 
+        // demande le panneau de droite
         public ICommand HandleRightPanel
         {
             get
@@ -103,6 +113,7 @@ namespace MaterialDesignTest
             }
         }
 
+        // demande le panneau de bienvenue
         public ICommand CloseMainTab
         {
             get
@@ -111,6 +122,7 @@ namespace MaterialDesignTest
             }
         }
 
+        // ferme l'application
         public ICommand CloseApplication
         {
             get
