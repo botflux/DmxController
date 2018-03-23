@@ -330,7 +330,7 @@
                             </StackPanel>
                             <StackPanel x:Name="mod_actions" Visibility="Collapsed">
                                 <TextBlock Text="Actions" Margin="0 0 0 0" FontSize="15" />
-                                <Button Content="Envoyer" Margin="0 20 0 5" />
+                                <Button Content="Envoyer" Margin="0 20 0 5" Command="{Binding MyColorViewModel.SendColor}" CommandParameter="{Binding MyColorViewModel.MainColor}" />
                                 <Button Content="Supprimer" Margin="0 10 0 5" />
                                 <Button Content="Sauvegarder" Margin="0 10 0 5" />
                             </StackPanel>

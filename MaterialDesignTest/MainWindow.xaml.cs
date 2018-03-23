@@ -26,6 +26,8 @@ namespace MaterialDesignTest
         private UIStates uiStates = new UIStates(true, true);
 
         private ColorViewModel myColorViewModel = new ColorViewModel();
+        private ApplicationViewModel myApplicationViewModel = new ApplicationViewModel();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -144,7 +146,19 @@ namespace MaterialDesignTest
                 myColorViewModel = value;
             }
         }
-        
+
+        public ApplicationViewModel MyApplicationViewModel
+        {
+            get
+            {
+                return myApplicationViewModel;
+            }
+
+            set
+            {
+                myApplicationViewModel = value;
+            }
+        }
 
         private struct UIStates
         {

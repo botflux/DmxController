@@ -45,6 +45,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -53,6 +54,18 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="VPackage.Files">
+      <HintPath>..\..\DMXLibrairies\VPackage.Files\bin\Debug\VPackage.Files.dll</HintPath>
+    </Reference>
+    <Reference Include="VPackage.Json">
+      <HintPath>..\..\DMXLibrairies\VPackage.Json\bin\Debug\VPackage.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="VPackage.Network">
+      <HintPath>..\..\DMXLibrairies\VPackage.Network\bin\Debug\VPackage.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="VPackage.Parser">
+      <HintPath>..\..\DMXLibrairies\VPackage.Parser\bin\Debug\VPackage.Parser.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -63,11 +76,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ApplicationViewModel.cs" />
     <Compile Include="ColorBrushToColorConverter.cs" />
     <Compile Include="ColorViewModel.cs" />
     <Compile Include="ByteToDoubleConverter.cs" />
     <Compile Include="GridLengthAnimation.cs" />
+    <Compile Include="Packet.cs" />
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="UtilityProvider.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

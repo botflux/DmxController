@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using VPackage.Json;
 
 namespace DmxController
 {
@@ -112,6 +114,14 @@ namespace DmxController
             }
         }
 
+        public ICommand SendColor
+        {
+            get
+            {
+                return sendColor;
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged ([CallerMemberName] string str = "")
@@ -128,5 +138,20 @@ namespace DmxController
             G = 127;
             B = 127;
         }
+
+        private ICommand sendColor = new RelayCommand<Color>((color) =>
+        {
+            string json = JSONSerializer.Serialize<Packet>(new Packet()
+            {
+                Target = "PROJO",
+                TargetAdress = "1",
+                Red = color.R.ToString(),
+                Blue = color.B.ToString(),
+                Green = color.G.ToString(),
+                Intensity = "255"
+            });
+
+            UtilityProvider.Current.NetManager.Send(json);
+        });
     }
 }
