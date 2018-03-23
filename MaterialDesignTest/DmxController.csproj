@@ -76,11 +76,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ApplicationViewModel.cs" />
-    <Compile Include="ColorBrushToColorConverter.cs" />
-    <Compile Include="ColorViewModel.cs" />
-    <Compile Include="ByteToDoubleConverter.cs" />
-    <Compile Include="GridLengthAnimation.cs" />
+    <Compile Include="ViewModels\ApplicationViewModel.cs" />
+    <Compile Include="Converters\ColorBrushToColorConverter.cs" />
+    <Compile Include="ViewModels\ColorViewModel.cs" />
+    <Compile Include="Converters\ByteToDoubleConverter.cs" />
+    <Compile Include="Animations\GridLengthAnimation.cs" />
     <Compile Include="Packet.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="UtilityProvider.cs" />

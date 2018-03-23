@@ -48,7 +48,6 @@ namespace DmxController
             }
         }
 
-
         public Color BlueBalance
         {
             get
