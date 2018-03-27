@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DmxController"
         xmlns:viewModels="clr-namespace:DmxController.ViewModels"
+        xmlns:views="clr-namespace:DmxController.Views"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -15,8 +16,17 @@
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Title="MainWindow" MinHeight="432" MinWidth="768">
+    <Window.DataContext>
+        <viewModels:ApplicationViewModel />
+    </Window.DataContext>
     <Window.Resources>
-
+        <DataTemplate DataType="{x:Type viewModels:HomeViewModel}">
+            <views:HomeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:ColorViewModel}">
+            <views:ColorView />
+        </DataTemplate>
+        
         <local:ByteToDoubleConverter x:Key="byteToDoubleConverter" />
         <local:ColorBrushToColorConverter x:Key="colorBrushToColorConverter" />
     </Window.Resources>
@@ -111,5 +121,6 @@
                 </MenuItem>
             </MenuItem>
         </Menu>
+        <ContentControl Content="{Binding CurrentPageViewModel}" />
     </DockPanel>
 </Window>
