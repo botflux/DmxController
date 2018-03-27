@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Animation;
 
-namespace MaterialDesignTest
+namespace DmxController
 {
     internal class GridLengthAnimation : AnimationTimeline
     {

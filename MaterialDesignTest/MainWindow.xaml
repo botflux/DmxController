@@ -1,10 +1,10 @@
-﻿<Window x:Class="MaterialDesignTest.MainWindow"
+﻿<Window x:Class="DmxController.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MaterialDesignTest"
-        xmlns:dmxController="clr-namespace:DmxController"
+        xmlns:local="clr-namespace:DmxController"
+        xmlns:viewModels="clr-namespace:DmxController.ViewModels"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -16,37 +16,9 @@
         TextElement.FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Title="MainWindow" MinHeight="432" MinWidth="768">
     <Window.Resources>
-        <Storyboard x:Key="CloseLeftPanel">
-            <local:GridLengthAnimation
-                Storyboard.TargetName="colDef_leftPanel"
-                Storyboard.TargetProperty="Width"
-                From="0.2*" To="0" Duration="0:0:0.2">
-            </local:GridLengthAnimation>
-        </Storyboard>
-        <Storyboard x:Key="OpenLeftPanel">
-            <local:GridLengthAnimation
-                Storyboard.TargetName="colDef_leftPanel"
-                Storyboard.TargetProperty="Width"
-                From="0" To="0.2*" Duration="0:0:0.2">
-            </local:GridLengthAnimation>
-        </Storyboard>
-        <Storyboard x:Key="CloseRightPanel">
-            <local:GridLengthAnimation
-                Storyboard.TargetName="colDef_rightPanel"
-                Storyboard.TargetProperty="Width"
-                From="0.2*" To="0" Duration="0:0:0.2">
-            </local:GridLengthAnimation>
-        </Storyboard>
-        <Storyboard x:Key="OpenRightPanel">
-            <local:GridLengthAnimation
-                Storyboard.TargetName="colDef_rightPanel"
-                Storyboard.TargetProperty="Width"
-                From="0" To="0.2*" Duration="0:0:0.2">
-            </local:GridLengthAnimation>
-        </Storyboard>
 
-        <dmxController:ByteToDoubleConverter x:Key="byteToDoubleConverter" />
-        <dmxController:ColorBrushToColorConverter x:Key="colorBrushToColorConverter" />
+        <local:ByteToDoubleConverter x:Key="byteToDoubleConverter" />
+        <local:ColorBrushToColorConverter x:Key="colorBrushToColorConverter" />
     </Window.Resources>
     
     <DockPanel>
@@ -54,7 +26,7 @@
             <Menu.Effect>
                 <DropShadowEffect ShadowDepth="1" Opacity="0.5" />
             </Menu.Effect>
-            
+
             <MenuItem Header="Fichier">
                 <MenuItem Header="Nouveau">
                     <MenuItem.Icon>
@@ -76,7 +48,7 @@
                         <materialDesign:PackIcon Kind="ContentSaveOutline" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Fermer" Command="{Binding CloseMainTab}" CommandParameter="{Binding}">
+                <MenuItem Header="Fermer">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Close" />
                     </MenuItem.Icon>
@@ -88,13 +60,13 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator />
-                <MenuItem Header="Fermer l'application" Command="{Binding CloseApplication}" CommandParameter="{Binding}">
+                <MenuItem Header="Fermer l'application">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Close" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            
+
             <MenuItem Header="Trasmission">
                 <MenuItem Header="Envoyer">
                     <MenuItem.Icon>
@@ -107,30 +79,30 @@
                         <materialDesign:PackIcon Kind="Send" />
                     </MenuItem.Icon>
                 </MenuItem>
-                
+
                 <Separator />
-                
+
                 <MenuItem Header="Options">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Settings" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            
+
             <MenuItem Header="Affichage">
-                <MenuItem Header="Afficher panneau de gauche" Command="{Binding HandleLeftPanel}" CommandParameter="{Binding}">
+                <MenuItem Header="Afficher panneau de gauche">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="PageLayoutSidebarLeft" />
                     </MenuItem.Icon>
                 </MenuItem>
 
-                <MenuItem Header="Afficher panneau de droite" Command="{Binding HandleRightPanel}" CommandParameter="{Binding}">
+                <MenuItem Header="Afficher panneau de droite">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="PageLayoutSidebarRight" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            
+
             <MenuItem Header="Aide">
                 <MenuItem Header="A propos">
                     <MenuItem.Icon>
@@ -139,206 +111,5 @@
                 </MenuItem>
             </MenuItem>
         </Menu>
-
-        
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.2*" x:Name="colDef_leftPanel" />
-                <ColumnDefinition />
-                <ColumnDefinition Width="0.2*" x:Name="colDef_rightPanel" />
-            </Grid.ColumnDefinitions>
-
-            <!-- Panneau de gauche -->
-            <ScrollViewer Grid.Column="0" HorizontalScrollBarVisibility="Visible">
-                <Grid Background="#303030">
-                    <Grid.Effect>
-                        <DropShadowEffect ShadowDepth="1" Opacity="0.5" Direction="315"  />
-                    </Grid.Effect>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" Command="{Binding HandleLeftPanel}" CommandParameter="{Binding}">
-                                <materialDesign:PackIcon Kind="Close"/>
-                            </Button>
-                        </StackPanel>
-                        <StackPanel Grid.Row="1" Margin="8">
-                            <TextBlock Text="Informations" FontSize="15" Margin="0 0 0 20" />
-                            <TextBlock Text="Type" FontSize="9" Padding="0 16 0 8" Opacity=".8" />
-                            <ComboBox>
-                                <ComboBoxItem IsSelected="True">
-                                    Lyre
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Projecteur
-                                </ComboBoxItem>
-                            </ComboBox>
-                            <TextBlock Text="Adresse" FontSize="9" Padding="0 16 0 8" Opacity=".8" />
-                            <TextBox Text="21" />
-
-                        </StackPanel>
-                    </Grid>
-                </Grid>
-            </ScrollViewer>
-            <!-- Fin Panneau de gauche -->
-
-            <!-- Panneau milieu -->
-            <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Visible">
-                <Grid>
-                    <!-- Onglet de changement de couleur -->
-                    <Grid Margin="15" Visibility="Hidden" x:Name="grid_changeColor">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="1*" />
-                            </Grid.RowDefinitions>
-
-                            <Grid Background="{Binding MyColorViewModel.MainColor, Converter={StaticResource colorBrushToColorConverter}, Mode=OneWay}">
-                                <Grid.Effect>
-                                    <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225"  />
-                                </Grid.Effect>
-                            </Grid>
-                            <!-- Controles rouges -->
-                            <Grid Grid.Row="1" Margin="0 30 0 30">
-                                <Grid VerticalAlignment="Center">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="46" />
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
-                                    <Canvas Background="{Binding MyColorViewModel.RedBalance, Converter={StaticResource colorBrushToColorConverter}, Mode=OneWay}">
-                                        <Canvas.Effect>
-                                            <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225" />
-                                        </Canvas.Effect>
-                                    </Canvas>
-
-                                    <StackPanel Grid.Column="1" Margin="16 0 0 0">
-                                        <TextBlock Text="Rouge" Margin="0 0 0 16" />
-                                        <Slider Minimum="0" Maximum="255" Value="{Binding MyColorViewModel.R, Converter={StaticResource byteToDoubleConverter}}" />
-                                    </StackPanel>
-                                </Grid>
-                            </Grid>
-
-                            <!-- Controles verts -->
-
-                            <Grid Grid.Row="2" Margin="0 0 0 30">
-                                <Grid VerticalAlignment="Center">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="46" />
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
-                                    <Canvas Background="{Binding MyColorViewModel.GreenBalance, Converter={StaticResource colorBrushToColorConverter}, Mode=OneWay}">
-                                        <Canvas.Effect>
-                                            <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225" />
-                                        </Canvas.Effect>
-                                    </Canvas>
-
-                                    <StackPanel Grid.Column="1" Margin="16 0 0 0">
-                                        <TextBlock Text="Vert" Margin="0 0 0 16" />
-                                        <Slider Minimum="0" Maximum="255" Value="{Binding MyColorViewModel.G, Converter={StaticResource byteToDoubleConverter}}" />
-                                    </StackPanel>
-                                </Grid>
-                            </Grid>
-
-                            <!-- Controles bleus -->
-                            <Grid Grid.Row="3" Margin="0 0 0 30">
-                                <Grid VerticalAlignment="Center">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="46" />
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
-                                    <Canvas Background="{Binding MyColorViewModel.BlueBalance, Converter={StaticResource colorBrushToColorConverter}, Mode=OneWay}">
-                                        <Canvas.Effect>
-                                            <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225" />
-                                        </Canvas.Effect>
-                                    </Canvas>
-
-                                    <StackPanel Grid.Column="1" Margin="16 0 0 0">
-                                        <TextBlock Text="Bleu" Margin="0 0 0 16" />
-                                        <Slider Value="{Binding MyColorViewModel.B, Converter={StaticResource byteToDoubleConverter}}" Maximum="255" Minimum="0" />
-                                    </StackPanel>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-
-                    <!-- Onglet de bienvenue -->
-                    <Grid Visibility="Visible" x:Name="grid_welcome" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Menu>
-                            <Menu.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <VirtualizingStackPanel Orientation="Vertical"/>
-                                </ItemsPanelTemplate>
-                            </Menu.ItemsPanel>
-                            <MenuItem Header="Nouvelle story board">
-
-                                <MenuItem.Icon>
-                                    <materialDesign:PackIcon Kind="File" />
-                                </MenuItem.Icon>
-                            </MenuItem>
-                            <MenuItem Header="Ouvrir story board">
-                                <MenuItem.Icon>
-                                    <materialDesign:PackIcon Kind="FileFind" />
-                                </MenuItem.Icon>
-                            </MenuItem>
-                            <MenuItem Header="Gérer couleur" Command="{Binding ColorMenu}" CommandParameter="{Binding}">
-                                <MenuItem.Icon>
-                                    <materialDesign:PackIcon Kind="Pencil" />
-                                </MenuItem.Icon>
-                            </MenuItem>
-                            <MenuItem Header="Configurer">
-                                <MenuItem.Icon>
-                                    <materialDesign:PackIcon Kind="Settings" />
-                                </MenuItem.Icon>
-                            </MenuItem>
-                        </Menu>
-                    </Grid>
-                </Grid>
-            </ScrollViewer>
-            <!-- Fin panneau milieu -->
-
-            <!-- Panneau de droite -->
-            <ScrollViewer Grid.Column="2" HorizontalScrollBarVisibility="Auto">
-                <Grid Background="#303030">
-                    <Grid.Effect>
-                        <DropShadowEffect ShadowDepth="1" Opacity="0.5" Direction="225"  />
-                    </Grid.Effect>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" Command="{Binding HandleRightPanel}" CommandParameter="{Binding}">
-                                <materialDesign:PackIcon Kind="Close"/>
-                            </Button>
-                        </StackPanel>
-                        <StackPanel Grid.Row="1" Margin="7">
-                            <StackPanel x:Name="mod_colorBalance" Visibility="Collapsed" Margin="0 0 0 20">
-                                <TextBlock Text="Balance" FontSize="15" />
-                                <TextBlock Text="Rouge" FontSize="9" Padding="0 16 0 8" Opacity=".8" />
-                                <TextBox Text="{Binding MyColorViewModel.R}" />
-                                <TextBlock Text="Vert" FontSize="9" Padding="0 16 0 8" Opacity=".8" />
-                                <TextBox Text="{Binding MyColorViewModel.G}" />
-                                <TextBlock Text="Bleu" FontSize="9" Padding="0 16 0 8" Opacity=".8" />
-                                <TextBox Text="{Binding MyColorViewModel.B}" />
-                            </StackPanel>
-                            <StackPanel x:Name="mod_actions" Visibility="Collapsed">
-                                <TextBlock Text="Actions" Margin="0 0 0 0" FontSize="15" />
-                                <Button Content="Envoyer" Margin="0 20 0 5" Command="{Binding MyColorViewModel.SendColor}" CommandParameter="{Binding MyColorViewModel.MainColor}" />
-                                <Button Content="Supprimer" Margin="0 10 0 5" />
-                                <Button Content="Sauvegarder" Margin="0 10 0 5" />
-                            </StackPanel>
-                        </StackPanel>
-                    </Grid>
-                </Grid>
-            </ScrollViewer>
-            <!-- Fin panneau de droite -->
-        </Grid>
     </DockPanel>
 </Window>

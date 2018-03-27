@@ -9,9 +9,9 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using VPackage.Json;
 
-namespace DmxController
+namespace DmxController.ViewModels
 {
-    public class ColorViewModel : INotifyPropertyChanged
+    public class ColorViewModel : ViewModel, IPageViewModel
     {
         private Color mainColor;
 
@@ -68,9 +68,7 @@ namespace DmxController
                 if (r != value)
                 {
                     r = value;
-                    NotifyPropertyChanged();
-                    if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("RedBalance"));
-                    if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("MainColor"));
+                    NotifyProperty();
                 }
             }
         }
@@ -87,9 +85,7 @@ namespace DmxController
                 if (g != value)
                 {
                     g = value;
-                    NotifyPropertyChanged();
-                    if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("GreenBalance"));
-                    if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("MainColor"));
+                    NotifyProperty();
                 }
             }
         }
@@ -106,28 +102,22 @@ namespace DmxController
                 if (b != value)
                 {
                     b = value;
-                    NotifyPropertyChanged();
-                    if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("BlueBalance"));
-                    if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("MainColor"));
+                    NotifyProperty();
                 }
             }
         }
 
-        public ICommand SendColor
+        public string Name
         {
             get
             {
-                return sendColor;
+                return "Color";
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged ([CallerMemberName] string str = "")
+        protected override void NotifyProperty([CallerMemberName] string str = "")
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(str));
-
+            base.NotifyProperty(str);
             MainColor = Color.FromRgb(R, G, B);
         }
 
@@ -137,20 +127,5 @@ namespace DmxController
             G = 127;
             B = 127;
         }
-
-        private ICommand sendColor = new RelayCommand<Color>((color) =>
-        {
-            string json = JSONSerializer.Serialize<Packet>(new Packet()
-            {
-                Target = "PROJO",
-                TargetAdress = "1",
-                Red = color.R.ToString(),
-                Blue = color.B.ToString(),
-                Green = color.G.ToString(),
-                Intensity = "255"
-            });
-
-            UtilityProvider.Current.NetManager.Send(json);
-        });
     }
 }
