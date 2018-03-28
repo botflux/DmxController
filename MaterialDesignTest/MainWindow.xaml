@@ -27,8 +27,6 @@
             <views:ColorView />
         </DataTemplate>
         
-        <local:ByteToDoubleConverter x:Key="byteToDoubleConverter" />
-        <local:ColorBrushToColorConverter x:Key="colorBrushToColorConverter" />
     </Window.Resources>
     
     <DockPanel>

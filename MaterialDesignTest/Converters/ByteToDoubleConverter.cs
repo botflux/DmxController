@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace DmxController
+namespace DmxController.Converters
 {
     public class ByteToDoubleConverter : IValueConverter
     {

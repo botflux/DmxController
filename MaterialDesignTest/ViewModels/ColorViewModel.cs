@@ -28,7 +28,11 @@ namespace DmxController.ViewModels
 
             set
             {
-                mainColor = value;
+                if (mainColor != value)
+                {
+                    mainColor = value;
+                    NotifyProperty();
+                }
             }
         }
 
@@ -69,6 +73,7 @@ namespace DmxController.ViewModels
                 {
                     r = value;
                     NotifyProperty();
+                    NotifyProperty("RedBalance");
                 }
             }
         }
@@ -86,6 +91,7 @@ namespace DmxController.ViewModels
                 {
                     g = value;
                     NotifyProperty();
+                    NotifyProperty("GreenBalance");
                 }
             }
         }
@@ -103,6 +109,7 @@ namespace DmxController.ViewModels
                 {
                     b = value;
                     NotifyProperty();
+                    NotifyProperty("BlueBalance");
                 }
             }
         }

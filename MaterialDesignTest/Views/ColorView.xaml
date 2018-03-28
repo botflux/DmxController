@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DmxController.Views"
+             xmlns:converters="clr-namespace:DmxController.Converters"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextElement.FontWeight="Regular"
@@ -14,7 +15,87 @@
              TextElement.FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="{Binding Name}"/>
+    <UserControl.Resources>
+
+        <converters:ByteToDoubleConverter x:Key="byteToDoubleConverter" />
+        <converters:ColorBrushToColorConverter x:Key="colorBrushToColorConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <Grid Background="{Binding MainColor, Converter={StaticResource colorBrushToColorConverter}, Mode=OneWay}">
+                <Grid.Effect>
+                    <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225" />
+                </Grid.Effect>
+
+                
+            </Grid>
+
+            <!-- Contrôles rouges -->
+            <Grid Grid.Row="1" Margin="0">
+                <Grid VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="46" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Canvas Background="{Binding RedBalance, Converter={StaticResource colorBrushToColorConverter}, Mode=OneWay}">
+                        <Canvas.Effect>
+                            <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225" />
+                        </Canvas.Effect>
+                    </Canvas>
+
+                    <StackPanel Grid.Column="1" Margin="16 0 0 0">
+                        <TextBlock Text="Rouge" Margin="0 0 0 16" />
+                        <Slider Minimum="0" Maximum="255" Value="{Binding R, Converter={StaticResource byteToDoubleConverter}}" />
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <!-- Contrôles verts -->
+            <Grid Grid.Row="2" Margin="0">
+                <Grid VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="46" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Canvas Background="{Binding GreenBalance, Converter={StaticResource colorBrushToColorConverter}, Mode=OneWay}">
+                        <Canvas.Effect>
+                            <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225" />
+                        </Canvas.Effect>
+                    </Canvas>
+
+                    <StackPanel Grid.Column="1" Margin="16 0 0 0">
+                        <TextBlock Text="Vert" Margin="0 0 0 16" />
+                        <Slider Minimum="0" Maximum="255" Value="{Binding G, Converter={StaticResource byteToDoubleConverter}}" />
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <!-- Contrôles bleus -->
+            <Grid Grid.Row="3" Margin="0">
+                <Grid VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="46" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Canvas Background="{Binding BlueBalance, Converter={StaticResource colorBrushToColorConverter}, Mode=OneWay}">
+                        <Canvas.Effect>
+                            <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225" />
+                        </Canvas.Effect>
+                    </Canvas>
+
+                    <StackPanel Grid.Column="1" Margin="16 0 0 0">
+                        <TextBlock Text="Bleu" Margin="0 0 0 16" />
+                        <Slider Minimum="0" Maximum="255" Value="{Binding B, Converter={StaticResource byteToDoubleConverter}}" />
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>
