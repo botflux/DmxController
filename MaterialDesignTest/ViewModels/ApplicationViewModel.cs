@@ -72,7 +72,6 @@ namespace DmxController.ViewModels
 
         private void ChangePageViewModel(IPageViewModel viewModel)
         {
-            MessageBox.Show("Ok: " + viewModel.Name);
 
             if (!PageViewModels.Contains(viewModel))
                 PageViewModels.Add(viewModel);
