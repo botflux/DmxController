@@ -22,6 +22,7 @@ namespace DmxController.ViewModels
         private ICommand handleLeftPanel;
         private ICommand handleRightPanel;
 
+        private ICommand showSettings;
 
         private ICommand changePageCommand;
         private IPageViewModel currentPageViewModel;
@@ -156,6 +157,21 @@ namespace DmxController.ViewModels
             set
             {
                 applicationViewState = value;
+            }
+        }
+
+        public ICommand ShowSettings
+        {
+            get
+            {
+                if (showSettings == null) showSettings = new RelayCommand<ApplicationViewModel>((appViewModel) =>
+                {
+                    SettingsView settings = new SettingsView();
+
+                    settings.ShowDialog();
+                });
+
+                return showSettings;
             }
         }
 
