@@ -125,12 +125,20 @@ namespace DmxController.ViewModels
             }
         }
 
-        public List<IModuleViewModel> SidePanel
+        public List<IModuleViewModel> RightModules
         {
             get
             {
                 if (modules == null) modules = new List<IModuleViewModel>();
                 return modules;
+            }
+        }
+
+        public List<IModuleViewModel> LeftModules
+        {
+            get
+            {
+                return new List<IModuleViewModel>();
             }
         }
 
@@ -142,8 +150,8 @@ namespace DmxController.ViewModels
 
         public ColorViewModel ()
         {
-            SidePanel.Add(new ColorBalanceModuleViewModel() { Parent = this });
-            SidePanel.Add(new ActionColorModuleViewModel() { Parent = this });
+            RightModules.Add(new ColorBalanceModuleViewModel() { Parent = this });
+            RightModules.Add(new ActionColorModuleViewModel() { Parent = this });
 
             R = 127;
             G = 127;

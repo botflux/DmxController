@@ -9,6 +9,14 @@ namespace DmxController.ViewModels
 {
     public class HomeViewModel : ViewModel, IPageViewModel
     {
+        public List<IModuleViewModel> LeftModules
+        {
+            get
+            {
+                return new List<IModuleViewModel>();
+            }
+        }
+
         public string Name
         {
             get
@@ -17,7 +25,7 @@ namespace DmxController.ViewModels
             }
         }
 
-        public List<IModuleViewModel> SidePanel
+        public List<IModuleViewModel> RightModules
         {
             get
             {

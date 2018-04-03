@@ -133,13 +133,18 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.2*" />
                 <ColumnDefinition />
+                <ColumnDefinition Width="0.2*" />
             </Grid.ColumnDefinitions>
-            <ItemsControl ItemsSource="{Binding CurrentPageViewModel.SidePanel}">
+            <ItemsControl ItemsSource="{Binding CurrentPageViewModel.LeftModules}">
                 
             </ItemsControl>
             
             <!--<ContentControl Grid.Column="0" Content="{Binding CurrentPageViewModel.SidePanel}" />-->
             <ContentControl Grid.Column="1" Content="{Binding CurrentPageViewModel}" />
+
+            <ItemsControl Grid.Column="2" ItemsSource="{Binding CurrentPageViewModel.RightModules}">
+                
+            </ItemsControl>
         </Grid>
         
         

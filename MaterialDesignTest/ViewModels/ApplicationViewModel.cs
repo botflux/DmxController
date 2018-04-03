@@ -67,7 +67,15 @@ namespace DmxController.ViewModels
         }
 
 
-        public List<IModuleViewModel> SidePanel
+        public List<IModuleViewModel> RightModules
+        {
+            get
+            {
+                return new List<IModuleViewModel>();
+            }
+        }
+
+        public List<IModuleViewModel> LeftModules
         {
             get
             {
