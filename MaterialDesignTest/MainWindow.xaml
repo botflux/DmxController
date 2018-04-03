@@ -130,7 +130,16 @@
                 <ColumnDefinition Width="0.2*" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <ContentControl Grid.Column="0" Content="{Binding CurrentPageViewModel.SidePanel}" />
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Background="{x:Null}" BorderBrush="{x:Null}">
+                        <materialDesign:PackIcon Kind="Close" />
+                    </Button>
+                </StackPanel>
+                <ContentControl Content="{Binding CurrentPageViewModel.SidePanel}" />
+            </StackPanel>
+            
+            
             <ContentControl Grid.Column="1" Content="{Binding CurrentPageViewModel}" />
         </Grid>
         
