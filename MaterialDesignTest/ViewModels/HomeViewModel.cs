@@ -17,17 +17,13 @@ namespace DmxController.ViewModels
             }
         }
 
-        public IModuleViewModel SidePanel
+        public List<IModuleViewModel> SidePanel
         {
             get
             {
-                return null;
+                return new List<IModuleViewModel>();
             }
-
-            set
-            {
-
-            }
+           
         }
     }
 }

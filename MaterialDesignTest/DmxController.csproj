@@ -101,6 +101,7 @@
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\IModuleViewModel.cs" />
     <Compile Include="ViewModels\IPageViewModel.cs" />
+    <Compile Include="ViewModels\Modules\ActionColorModuleViewModel.cs" />
     <Compile Include="ViewModels\Modules\ColorBalanceModuleViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="ViewModels\ColorViewModel.cs" />
@@ -114,6 +115,9 @@
     </Compile>
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modules\ActionColorModuleView.xaml.cs">
+      <DependentUpon>ActionColorModuleView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Modules\ColorBalanceModuleView.xaml.cs">
       <DependentUpon>ColorBalanceModuleView.xaml</DependentUpon>
@@ -135,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Modules\ActionColorModuleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

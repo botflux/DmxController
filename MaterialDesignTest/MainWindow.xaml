@@ -32,6 +32,10 @@
         <DataTemplate DataType="{x:Type moduleViewModels:ColorBalanceModuleViewModel}">
             <moduleViews:ColorBalanceModuleView />
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type moduleViewModels:ActionColorModuleViewModel}">
+            <moduleViews:ActionColorModuleView />
+        </DataTemplate>
         
     </Window.Resources>
     
@@ -130,7 +134,11 @@
                 <ColumnDefinition Width="0.2*" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <ContentControl Grid.Column="0" Content="{Binding CurrentPageViewModel.SidePanel}" />
+            <ItemsControl ItemsSource="{Binding CurrentPageViewModel.SidePanel}">
+                
+            </ItemsControl>
+            
+            <!--<ContentControl Grid.Column="0" Content="{Binding CurrentPageViewModel.SidePanel}" />-->
             <ContentControl Grid.Column="1" Content="{Binding CurrentPageViewModel}" />
         </Grid>
         

@@ -20,7 +20,7 @@ namespace DmxController.ViewModels
         private byte g;
         private byte b;
 
-        private IModuleViewModel module;
+        private List<IModuleViewModel> modules;
 
         public Color MainColor
         {
@@ -125,17 +125,12 @@ namespace DmxController.ViewModels
             }
         }
 
-        public IModuleViewModel SidePanel
+        public List<IModuleViewModel> SidePanel
         {
             get
             {
-                if (module == null) module = new ColorBalanceModuleViewModel() { Parent = this };
-                return module;
-            }
-
-            set
-            {
-                module = value;
+                if (modules == null) modules = new List<IModuleViewModel>();
+                return modules;
             }
         }
 
@@ -147,6 +142,9 @@ namespace DmxController.ViewModels
 
         public ColorViewModel ()
         {
+            SidePanel.Add(new ColorBalanceModuleViewModel() { Parent = this });
+            SidePanel.Add(new ActionColorModuleViewModel() { Parent = this });
+
             R = 127;
             G = 127;
             B = 127;
