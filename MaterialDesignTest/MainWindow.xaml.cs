@@ -23,9 +23,50 @@ namespace DmxController
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static Storyboard showLeftPanel;
+        private static Storyboard hideLeftPanel;
+        private static Storyboard showRightPanel;
+        private static Storyboard hideRightPanel;
+
+        public static Storyboard ShowLeftPanel
+        {
+            get
+            {
+                return showLeftPanel;
+            }
+        }
+
+        public static Storyboard HideLeftPanel
+        {
+            get
+            {
+                return hideLeftPanel;
+            }
+        }
+
+        public static Storyboard ShowRightPanel
+        {
+            get
+            {
+                return showRightPanel;
+            }
+        }
+
+        public static Storyboard HideRightPanel
+        {
+            get
+            {
+                return hideRightPanel;
+            }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
+            showLeftPanel = this.FindResource("ShowLeftPanel") as Storyboard;
+            hideLeftPanel = this.FindResource("HideLeftPanel") as Storyboard;
+            showRightPanel = this.FindResource("ShowRightPanel") as Storyboard;
+            hideRightPanel = this.FindResource("HideRightPanel") as Storyboard;
         }
     }
 }

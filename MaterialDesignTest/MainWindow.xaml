@@ -36,7 +36,36 @@
         <DataTemplate DataType="{x:Type moduleViewModels:ActionColorModuleViewModel}">
             <moduleViews:ActionColorModuleView />
         </DataTemplate>
-        
+
+        <Storyboard x:Key="ShowLeftPanel">
+            <local:GridLengthAnimation Storyboard.TargetName="col_left"
+                                       Storyboard.TargetProperty="Width"
+                                       From="0"
+                                       To="0.2*"
+                                       Duration="0:0:0.2" />
+        </Storyboard>
+
+        <Storyboard x:Key="HideLeftPanel">
+            <local:GridLengthAnimation Storyboard.TargetName="col_left"
+                                       Storyboard.TargetProperty="Width"
+                                       From="0.2*"
+                                       To="0"
+                                       Duration="0:0:0.2" />
+        </Storyboard>
+        <Storyboard x:Key="ShowRightPanel">
+            <local:GridLengthAnimation Storyboard.TargetName="col_right"
+                                       Storyboard.TargetProperty="Width"
+                                       From="0"
+                                       To="0.2*"
+                                       Duration="0:0:0.2" />
+        </Storyboard>
+        <Storyboard x:Key="HideRightPanel">
+            <local:GridLengthAnimation Storyboard.TargetName="col_right"
+                                       Storyboard.TargetProperty="Width"
+                                       From="0.2*"
+                                       To="0"
+                                       Duration="0:0:0.2" />
+        </Storyboard>
     </Window.Resources>
     
     <DockPanel>
@@ -78,7 +107,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator />
-                <MenuItem Header="Fermer l'application">
+                <MenuItem Header="Fermer l'application" Command="{Binding DataContext.CloseApplication, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{x:Null}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Close" />
                     </MenuItem.Icon>
@@ -108,13 +137,13 @@
             </MenuItem>
 
             <MenuItem Header="Affichage">
-                <MenuItem Header="Afficher panneau de gauche">
+                <MenuItem Header="Afficher panneau de gauche" Command="{Binding DataContext.HandleLeftPanel, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding DataContext.ApplicationViewState, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="PageLayoutSidebarLeft" />
                     </MenuItem.Icon>
                 </MenuItem>
 
-                <MenuItem Header="Afficher panneau de droite">
+                <MenuItem Header="Afficher panneau de droite" Command="{Binding DataContext.HandleRightPanel, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding DataContext.ApplicationViewState, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="PageLayoutSidebarRight" />
                     </MenuItem.Icon>
@@ -131,22 +160,30 @@
         </Menu>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition Width="0.2*" x:Name="col_left" />
                 <ColumnDefinition />
-                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition Width="0.2*" x:Name="col_right" />
             </Grid.ColumnDefinitions>
-            <ItemsControl ItemsSource="{Binding CurrentPageViewModel.LeftModules}">
-                
-            </ItemsControl>
-            
-            <!--<ContentControl Grid.Column="0" Content="{Binding CurrentPageViewModel.SidePanel}" />-->
+
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding DataContext.HandleLeftPanel, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding DataContext.ApplicationViewState, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                        <materialDesign:PackIcon Kind="Close" />
+                    </Button>
+                </StackPanel>
+                <ItemsControl ItemsSource="{Binding CurrentPageViewModel.LeftModules}" />
+            </StackPanel>
+
             <ContentControl Grid.Column="1" Content="{Binding CurrentPageViewModel}" />
 
-            <ItemsControl Grid.Column="2" ItemsSource="{Binding CurrentPageViewModel.RightModules}">
-                
-            </ItemsControl>
+            <StackPanel Grid.Column="2">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding DataContext.HandleRightPanel, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding DataContext.ApplicationViewState, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                        <materialDesign:PackIcon Kind="Close" />
+                    </Button>
+                </StackPanel>
+                <ItemsControl Grid.Column="2" ItemsSource="{Binding CurrentPageViewModel.RightModules}" />
+            </StackPanel>
         </Grid>
-        
-        
     </DockPanel>
 </Window>
