@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DmxController.ViewModels.Modules;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,19 @@ namespace DmxController.ViewModels
             get
             {
                 return "Home";
+            }
+        }
+
+        public IModuleViewModel SidePanel
+        {
+            get
+            {
+                return null;
+            }
+
+            set
+            {
+
             }
         }
     }

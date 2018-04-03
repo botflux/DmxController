@@ -66,6 +66,20 @@ namespace DmxController.ViewModels
 
         }
 
+
+        public IModuleViewModel SidePanel
+        {
+            get
+            {
+                return null;
+            }
+
+            set
+            {
+
+            }
+        }
+
         #endregion
 
         #region Methods

@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using VPackage.Json;
+using DmxController.ViewModels.Modules;
 
 namespace DmxController.ViewModels
 {
@@ -18,6 +19,8 @@ namespace DmxController.ViewModels
         private byte r;
         private byte g;
         private byte b;
+
+        private IModuleViewModel module;
 
         public Color MainColor
         {
@@ -119,6 +122,20 @@ namespace DmxController.ViewModels
             get
             {
                 return "Color";
+            }
+        }
+
+        public IModuleViewModel SidePanel
+        {
+            get
+            {
+                if (module == null) module = new ColorBalanceModuleViewModel() { Parent = this };
+                return module;
+            }
+
+            set
+            {
+                module = value;
             }
         }
 

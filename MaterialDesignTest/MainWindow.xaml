@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:DmxController"
         xmlns:viewModels="clr-namespace:DmxController.ViewModels"
         xmlns:views="clr-namespace:DmxController.Views"
+        xmlns:moduleViewModels="clr-namespace:DmxController.ViewModels.Modules"
+        xmlns:moduleViews="clr-namespace:DmxController.Views.Modules"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -25,6 +27,10 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewModels:ColorViewModel}">
             <views:ColorView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type moduleViewModels:ColorBalanceModuleViewModel}">
+            <moduleViews:ColorBalanceModuleView />
         </DataTemplate>
         
     </Window.Resources>
@@ -119,6 +125,15 @@
                 </MenuItem>
             </MenuItem>
         </Menu>
-        <ContentControl Content="{Binding CurrentPageViewModel}" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <ContentControl Grid.Column="0" Content="{Binding CurrentPageViewModel.SidePanel}" />
+            <ContentControl Grid.Column="1" Content="{Binding CurrentPageViewModel}" />
+        </Grid>
+        
+        
     </DockPanel>
 </Window>

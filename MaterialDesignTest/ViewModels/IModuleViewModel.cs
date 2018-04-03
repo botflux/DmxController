@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DmxController.ViewModels
 {
-    public interface IPageViewModel
+    public interface IModuleViewModel
     {
-        IModuleViewModel SidePanel { get; set; }
+        string ModuleName { get; }
 
-        string Name { get; }
+        IPageViewModel Parent { get; set; }
     }
 }
