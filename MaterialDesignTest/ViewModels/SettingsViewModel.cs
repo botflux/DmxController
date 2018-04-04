@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace DmxController.ViewModels
@@ -23,6 +24,7 @@ namespace DmxController.ViewModels
                 return new List<IModuleViewModel>();
             }
         }
+
         public List<IModuleViewModel> RightModules
         {
             get
@@ -54,6 +56,7 @@ namespace DmxController.ViewModels
                 return changePageCommand;
             }
         }
+
         public IPageViewModel CurrentPageViewModel
         {
             get
@@ -64,6 +67,7 @@ namespace DmxController.ViewModels
             set
             {
                 currentPageViewModel = value;
+                NotifyProperty();
             }
         }
         #endregion

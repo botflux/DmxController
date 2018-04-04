@@ -8,6 +8,26 @@ namespace DmxController.ViewModels
 {
     class TargetFormViewModel : ViewModel, IPageViewModel
     {
+        private TargetType currentTargetType;
+        private int targetAddress;
+
+        public TargetType CurrentTargetType
+        {
+            get
+            {
+                return currentTargetType;
+            }
+
+            set
+            {
+                if (currentTargetType != value)
+                {
+                    currentTargetType = value;
+                    NotifyProperty();
+                }
+            }
+        }
+
         public List<IModuleViewModel> LeftModules
         {
             get
@@ -29,6 +49,23 @@ namespace DmxController.ViewModels
             get
             {
                 return new List<IModuleViewModel>();
+            }
+        }
+
+        public int TargetAddress
+        {
+            get
+            {
+                return targetAddress;
+            }
+
+            set
+            {
+                if (targetAddress != value)
+                {
+                    targetAddress = value;
+                    NotifyProperty();
+                }
             }
         }
     }

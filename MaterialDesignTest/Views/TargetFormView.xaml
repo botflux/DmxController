@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DmxController.Views"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:viewModels="clr-namespace:DmxController.ViewModels"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -14,13 +16,21 @@
             Background="{DynamicResource MaterialDesignPaper}"
             TextElement.FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="targetTypeEnum" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="viewModels:TargetType" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
     <StackPanel Margin="16">
         <Label Content="Cible"/>
 
         <Label Content="Adresse cible" FontSize="10" Margin="0 16 0 0" />
-        <TextBox Margin="0 8 0 0" />
+        <TextBox Text="{Binding TargetAddress}" Margin="0 8 0 0" />
 
         <Label Content="Type de cible" FontSize="10" Margin="0 16 0 0" />
-        <TextBox Margin="0 8 0 0" />
+        <ComboBox Margin="0 8 0 0"  ItemsSource="{Binding Source={StaticResource targetTypeEnum}}"
+                                    SelectedItem="{Binding Path=CurrentTargetType}"/>
     </StackPanel>
 </UserControl>

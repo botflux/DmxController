@@ -163,7 +163,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition Width="0.2*" x:Name="col_right" />
             </Grid.ColumnDefinitions>
-<<<<<<< HEAD
+
             <StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button Background="{x:Null}" BorderBrush="{x:Null}">
@@ -172,9 +172,6 @@
                 </StackPanel>
                 <ContentControl Content="{Binding CurrentPageViewModel.SidePanel}" />
             </StackPanel>
-            
-            
-=======
 
             <StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -185,7 +182,6 @@
                 <ItemsControl ItemsSource="{Binding CurrentPageViewModel.LeftModules}" />
             </StackPanel>
 
->>>>>>> 3c978c3bef621e20fca6e6cbc9bc0cf0ea3a66aa
             <ContentControl Grid.Column="1" Content="{Binding CurrentPageViewModel}" />
 
             <StackPanel Grid.Column="2">

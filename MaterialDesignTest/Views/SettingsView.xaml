@@ -41,7 +41,8 @@
                     <VirtualizingStackPanel Orientation="Vertical" />
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
-            <MenuItem Header="Réseaux" Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+            <MenuItem Header="Réseaux" 
+                      Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                       CommandParameter="{Binding DataContext.PageViewModels[0], RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
                 <MenuItem.Icon>
                     <materialDesign:PackIcon Kind="Network" />
