@@ -1,4 +1,4 @@
-﻿using DmxController.Common.Configuration;
+﻿
 using DmxController.Views;
 using System;
 using System.Collections.Generic;
@@ -171,8 +171,7 @@ namespace DmxController.ViewModels
                     SettingsView settings = new SettingsView();
 
                     settings.ShowDialog();
-
-                    MessageBox.Show(JSONSerializer.Serialize<Configuration>(((SettingsViewModel)settings.DataContext).GetConfiguration()));
+                    
                 });
 
                 return showSettings;

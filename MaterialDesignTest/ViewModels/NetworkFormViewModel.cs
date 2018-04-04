@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DmxController.ViewModels
 {
-    class NetworkFormViewModel : ViewModel, IPageViewModel
+    class NetworkFormViewModel : ViewModel, IPageViewModel 
     {
         private string hostname;
         private int sendPort;
@@ -92,5 +93,6 @@ namespace DmxController.ViewModels
         {
             base.NotifyProperty(str);
         }
+        
     }
 }

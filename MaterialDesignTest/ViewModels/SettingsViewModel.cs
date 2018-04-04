@@ -1,4 +1,4 @@
-﻿using DmxController.Common.Configuration;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -115,18 +115,7 @@ namespace DmxController.ViewModels
 
             CurrentPageViewModel = PageViewModels.FirstOrDefault(vm => vm == viewModel);
         }
-
-        public Configuration GetConfiguration ()
-        {
-            return new Configuration()
-            {
-                Hostname = IPAddress.Parse(((NetworkFormViewModel)PageViewModels[0]).Hostname),
-                ReceivePort = ((NetworkFormViewModel)PageViewModels[0]).ReceivePort,
-                SendPort = ((NetworkFormViewModel)PageViewModels[0]).SendPort,
-                TargetAddress = ((TargetFormViewModel)PageViewModels[1]).TargetAddress,
-                TargetType = ((TargetFormViewModel)PageViewModels[1]).TargetType
-            };
-        }
+        
 
         #endregion
 
