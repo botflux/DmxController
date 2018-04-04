@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DmxController.Common.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DmxController.ViewModels
 {
-    class TargetFormViewModel : ViewModel, IPageViewModel
+    class TargetFormViewModel : ViewModel, IPageViewModel, IConfigurable<TargetConfiguration>
     {
         private TargetTypeEnum currentTargetType;
         private int targetAddress;
@@ -66,6 +67,24 @@ namespace DmxController.ViewModels
                     targetAddress = value;
                     NotifyProperty();
                 }
+            }
+        }
+
+        public TargetConfiguration Configuration
+        {
+            get
+            {
+                return new TargetConfiguration()
+                {
+                    TargetAddress = this.TargetAddress,
+                    TargetType = this.TargetType
+                };
+            }
+
+            set
+            {
+                TargetAddress = value.TargetAddress;
+                TargetType = value.TargetType;
             }
         }
     }

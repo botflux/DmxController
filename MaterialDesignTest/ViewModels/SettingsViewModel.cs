@@ -1,4 +1,5 @@
 ﻿
+using DmxController.Common.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,10 @@ using System.Windows.Input;
 
 namespace DmxController.ViewModels
 {
-    public class SettingsViewModel : ViewModel, IPageViewModel
+    public class SettingsViewModel : ViewModel, IPageViewModel, IConfigurable<Configuration>
     {
+        private Configuration configuration;
+
         private ICommand changePageCommand;
         private IPageViewModel currentPageViewModel;
         private List<IPageViewModel> pageViewModels;
@@ -98,6 +101,19 @@ namespace DmxController.ViewModels
                 });
 
                 return cancelDialog;
+            }
+        }
+
+        public Configuration Configuration
+        {
+            get
+            {
+                return configuration;
+            }
+
+            set
+            {
+                configuration = value;
             }
         }
         #endregion

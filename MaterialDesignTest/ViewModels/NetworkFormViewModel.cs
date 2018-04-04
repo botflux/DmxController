@@ -1,4 +1,5 @@
 ﻿
+using DmxController.Common.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DmxController.ViewModels
 {
-    class NetworkFormViewModel : ViewModel, IPageViewModel 
+    class NetworkFormViewModel : ViewModel, IPageViewModel, IConfigurable<NetworkConfiguration> 
     {
         private string hostname;
         private int sendPort;
@@ -86,6 +87,26 @@ namespace DmxController.ViewModels
                     receivePort = value;
                     NotifyProperty();
                 }
+            }
+        }
+
+        public NetworkConfiguration Configuration
+        {
+            get
+            {
+                return new NetworkConfiguration()
+                {
+                    Hostname = this.Hostname,
+                    ReceivePort = this.ReceivePort,
+                    SendPort = this.SendPort
+                };
+            }
+
+            set
+            {
+                this.Hostname = value.Hostname;
+                this.ReceivePort = value.ReceivePort;
+                this.SendPort = value.SendPort;
             }
         }
 

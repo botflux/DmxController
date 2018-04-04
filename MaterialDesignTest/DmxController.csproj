@@ -96,6 +96,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\Configuration\Configuration.cs" />
+    <Compile Include="Common\Configuration\IConfigurable.cs" />
+    <Compile Include="Common\Configuration\NetworkConfiguration.cs" />
+    <Compile Include="Common\Configuration\TargetConfiguration.cs" />
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
     <Compile Include="Converters\ColorBrushToColorConverter.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
@@ -220,9 +224,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
