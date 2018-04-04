@@ -1,6 +1,8 @@
-﻿using System;
+﻿using DmxController.Common.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,8 @@ namespace DmxController.ViewModels
         private IPageViewModel currentPageViewModel;
         private List<IPageViewModel> pageViewModels;
 
+        private ICommand cancelDialog;
+        private ICommand confirmDialog;
 
         #region Command / Properties
         public List<IModuleViewModel> LeftModules
@@ -70,6 +74,32 @@ namespace DmxController.ViewModels
                 NotifyProperty();
             }
         }
+
+        public ICommand ConfirmDialog
+        {
+            get
+            {
+                if (confirmDialog == null) confirmDialog = new RelayCommand<Window>((window) =>
+                {
+                    window.DialogResult = true;
+                });
+
+                return confirmDialog;
+            }
+        }
+
+        public ICommand CancelDialog
+        {
+            get
+            {
+                if (cancelDialog == null) cancelDialog = new RelayCommand<Window>((window) =>
+                {
+                    window.DialogResult = false;
+                });
+
+                return cancelDialog;
+            }
+        }
         #endregion
 
         #region Methods
@@ -85,6 +115,19 @@ namespace DmxController.ViewModels
 
             CurrentPageViewModel = PageViewModels.FirstOrDefault(vm => vm == viewModel);
         }
+
+        public Configuration GetConfiguration ()
+        {
+            return new Configuration()
+            {
+                Hostname = IPAddress.Parse(((NetworkFormViewModel)PageViewModels[0]).Hostname),
+                ReceivePort = ((NetworkFormViewModel)PageViewModels[0]).ReceivePort,
+                SendPort = ((NetworkFormViewModel)PageViewModels[0]).SendPort,
+                TargetAddress = ((TargetFormViewModel)PageViewModels[1]).TargetAddress,
+                TargetType = ((TargetFormViewModel)PageViewModels[1]).TargetType
+            };
+        }
+
         #endregion
 
         public SettingsViewModel()

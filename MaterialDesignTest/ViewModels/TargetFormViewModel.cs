@@ -8,10 +8,10 @@ namespace DmxController.ViewModels
 {
     class TargetFormViewModel : ViewModel, IPageViewModel
     {
-        private TargetType currentTargetType;
+        private TargetTypeEnum currentTargetType;
         private int targetAddress;
 
-        public TargetType CurrentTargetType
+        public TargetTypeEnum TargetType
         {
             get
             {

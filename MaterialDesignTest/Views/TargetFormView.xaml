@@ -19,7 +19,7 @@
     <UserControl.Resources>
         <ObjectDataProvider x:Key="targetTypeEnum" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="viewModels:TargetType" />
+                <x:Type TypeName="viewModels:TargetTypeEnum" />
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </UserControl.Resources>

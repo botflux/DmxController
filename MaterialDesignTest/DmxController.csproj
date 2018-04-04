@@ -96,6 +96,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\Configuration\Configuration.cs" />
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
     <Compile Include="Converters\ColorBrushToColorConverter.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
@@ -106,7 +107,7 @@
     <Compile Include="ViewModels\NetworkFormViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\TargetFormViewModel.cs" />
-    <Compile Include="ViewModels\TargetType.cs" />
+    <Compile Include="ViewModels\TargetTypeEnum.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="ViewModels\ColorViewModel.cs" />
     <Compile Include="Converters\ByteToDoubleConverter.cs" />

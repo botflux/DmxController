@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DmxController.ViewModels
 {
-    public enum TargetType
+    public enum TargetTypeEnum
     {
         Lyre,
         Projecteur

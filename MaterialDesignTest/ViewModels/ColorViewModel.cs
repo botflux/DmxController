@@ -149,15 +149,15 @@ namespace DmxController.ViewModels
         {
             get
             {
-                if (sendColor == null) sendColor = new RelayCommand<Color>((color) =>
+                if (sendColor == null) sendColor = new RelayCommand<Color>((currentColor) =>
                 {
                     string json = JSONSerializer.Serialize<Packet>(new Packet()
                     {
                         Color = new Packet.Couleur()
                         {
-                            Blue = "100",
-                            Red = "120",
-                            Green = "100",
+                            Blue = currentColor.B.ToString(),
+                            Red = currentColor.R.ToString(),
+                            Green = currentColor.G.ToString(),
                             Target = "PROJO",
                             TargetAdress = "1",
                             Intensity = "255"
