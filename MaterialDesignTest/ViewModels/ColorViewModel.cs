@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using VPackage.Json;
 using DmxController.ViewModels.Modules;
+using System.Windows;
 
 namespace DmxController.ViewModels
 {
@@ -21,6 +22,8 @@ namespace DmxController.ViewModels
         private byte b;
 
         private List<IModuleViewModel> modules;
+
+        private ICommand sendColor;
 
         public Color MainColor
         {
@@ -139,6 +142,32 @@ namespace DmxController.ViewModels
             get
             {
                 return new List<IModuleViewModel>();
+            }
+        }
+
+        public ICommand SendColor
+        {
+            get
+            {
+                if (sendColor == null) sendColor = new RelayCommand<Color>((color) =>
+                {
+                    string json = JSONSerializer.Serialize<Packet>(new Packet()
+                    {
+                        Color = new Packet.Couleur()
+                        {
+                            Blue = "100",
+                            Red = "120",
+                            Green = "100",
+                            Target = "PROJO",
+                            TargetAdress = "1",
+                            Intensity = "255"
+                        }
+                    });
+                    MessageBox.Show(json);
+                    UtilityProvider.Current.NetManager.Send(json);
+                });
+
+                return sendColor;
             }
         }
 

@@ -9,6 +9,10 @@ namespace DmxController.ViewModels
 {
     class NetworkFormViewModel : ViewModel, IPageViewModel
     {
+        private string hostname;
+        private int sendPort;
+        private int receivePort;
+
         public List<IModuleViewModel> LeftModules
         {
             get
@@ -30,6 +34,57 @@ namespace DmxController.ViewModels
             get
             {
                 return new List<IModuleViewModel>();
+            }
+        }
+
+        public string Hostname
+        {
+            get
+            {
+                return hostname;
+            }
+
+            set
+            {
+                if (hostname != value)
+                {
+                    hostname = value;
+                    NotifyProperty();
+                }
+            }
+        }
+
+        public int SendPort
+        {
+            get
+            {
+                return sendPort;
+            }
+
+            set
+            {
+                if (sendPort != value)
+                {
+                    sendPort = value;
+                    NotifyProperty();
+                }
+            }
+        }
+
+        public int ReceivePort
+        {
+            get
+            {
+                return receivePort;
+            }
+
+            set
+            {
+                if (receivePort != value)
+                {
+                    receivePort = value;
+                    NotifyProperty();
+                }
             }
         }
 

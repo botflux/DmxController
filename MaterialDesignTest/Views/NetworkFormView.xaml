@@ -19,12 +19,12 @@
         <Label Content="Réseaux"/>
 
         <Label Content="Nom d'hôte" FontSize="10" Margin="0 16 0 0" />
-        <TextBox Margin="0 8 0 0" />
+        <TextBox Margin="0 8 0 0" Text="{Binding Hostname}" />
 
         <Label Content="Port d'envoie" FontSize="10" Margin="0 16 0 0" />
-        <TextBox Margin="0 8 0 0" />
+        <TextBox Margin="0 8 0 0" Text="{Binding SendPort}" />
 
         <Label Content="Port de reception" FontSize="10" Margin="0 16 0 0" />
-        <TextBox Margin="0 8 0 0" />
+        <TextBox Margin="0 8 0 0" Text="{Binding ReceivePort}" />
     </StackPanel>
 </UserControl>

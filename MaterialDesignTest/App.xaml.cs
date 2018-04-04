@@ -13,5 +13,22 @@ namespace DmxController
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            UtilityProvider.Current.ProvideNetworkManager(new VPackage.Network.NetworkManager("10.129.22.26", 5000, 15000, 15000));
+            UtilityProvider.Current.NetManager.OnMessageReceived += (message) =>
+            {
+                MessageBox.Show("Message recu: " + message);
+            };
+            UtilityProvider.Current.NetManager.StartListening();
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+            UtilityProvider.Current.NetManager.StopListening();
+        }
     }
 }

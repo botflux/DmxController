@@ -10,95 +10,117 @@ namespace DmxController
     [DataContract]
     public class Packet
     {
-        [DataMember(Name = "CIBLE")]
-        private string target;
-        [DataMember(Name = "ADDRCIBLE")]
-        private string targetAdress;
-        [DataMember(Name = "RED")]
-        private string red;
-        [DataMember(Name = "BLUE")]
-        private string blue;
-        [DataMember(Name = "GREEN")]
-        private string green;
-        [DataMember(Name = "INTENSITY")]
-        private string intensity;
+        [DataMember(Name = "couleur")]
+        private Couleur color;
 
-        public string Target
+        public Couleur Color
         {
             get
             {
-                return target;
+                return color;
             }
 
             set
             {
-                target = value;
+                color = value;
             }
         }
 
-        public string TargetAdress
+        [DataContract]
+        public class Couleur
         {
-            get
+
+            [DataMember(Name = "CIBLE")]
+            private string target;
+            [DataMember(Name = "ADDRCIBLE")]
+            private string targetAdress;
+            [DataMember(Name = "RED")]
+            private string red;
+            [DataMember(Name = "BLUE")]
+            private string blue;
+            [DataMember(Name = "GREEN")]
+            private string green;
+            [DataMember(Name = "INTENSITY")]
+            private string intensity;
+
+            public string Target
             {
-                return targetAdress;
+                get
+                {
+                    return target;
+                }
+
+                set
+                {
+                    target = value;
+                }
             }
 
-            set
+            public string TargetAdress
             {
-                targetAdress = value;
+                get
+                {
+                    return targetAdress;
+                }
+
+                set
+                {
+                    targetAdress = value;
+                }
+            }
+
+            public string Red
+            {
+                get
+                {
+                    return red;
+                }
+
+                set
+                {
+                    red = value;
+                }
+            }
+
+            public string Blue
+            {
+                get
+                {
+                    return blue;
+                }
+
+                set
+                {
+                    blue = value;
+                }
+            }
+
+            public string Green
+            {
+                get
+                {
+                    return green;
+                }
+
+                set
+                {
+                    green = value;
+                }
+            }
+
+            public string Intensity
+            {
+                get
+                {
+                    return intensity;
+                }
+
+                set
+                {
+                    intensity = value;
+                }
             }
         }
 
-        public string Red
-        {
-            get
-            {
-                return red;
-            }
-
-            set
-            {
-                red = value;
-            }
-        }
-
-        public string Blue
-        {
-            get
-            {
-                return blue;
-            }
-
-            set
-            {
-                blue = value;
-            }
-        }
-
-        public string Green
-        {
-            get
-            {
-                return green;
-            }
-
-            set
-            {
-                green = value;
-            }
-        }
-
-        public string Intensity
-        {
-            get
-            {
-                return intensity;
-            }
-
-            set
-            {
-                intensity = value;
-            }
-        }
     }
 }
