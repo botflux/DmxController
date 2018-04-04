@@ -101,7 +101,11 @@
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\IModuleViewModel.cs" />
     <Compile Include="ViewModels\IPageViewModel.cs" />
+    <Compile Include="ViewModels\Modules\ActionColorModuleViewModel.cs" />
     <Compile Include="ViewModels\Modules\ColorBalanceModuleViewModel.cs" />
+    <Compile Include="ViewModels\NetworkFormViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\TargetFormViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="ViewModels\ColorViewModel.cs" />
     <Compile Include="Converters\ByteToDoubleConverter.cs" />
@@ -115,9 +119,22 @@
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Modules\ActionColorModuleView.xaml.cs">
+      <DependentUpon>ActionColorModuleView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Modules\ColorBalanceModuleView.xaml.cs">
       <DependentUpon>ColorBalanceModuleView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NetworkFormView.xaml.cs">
+      <DependentUpon>NetworkFormView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TargetFormView.xaml.cs">
+      <DependentUpon>TargetFormView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewState.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -138,7 +155,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Modules\ActionColorModuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Modules\ColorBalanceModuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NetworkFormView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TargetFormView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

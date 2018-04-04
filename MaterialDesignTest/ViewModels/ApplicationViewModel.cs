@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DmxController.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -15,6 +16,14 @@ namespace DmxController.ViewModels
 
         #region Fields
 
+        private ViewState applicationViewState;
+
+        private ICommand closeApplication;
+        private ICommand handleLeftPanel;
+        private ICommand handleRightPanel;
+
+        private ICommand showSettings;
+
         private ICommand changePageCommand;
         private IPageViewModel currentPageViewModel;
         private List<IPageViewModel> pageViewModels;
@@ -22,6 +31,26 @@ namespace DmxController.ViewModels
         #endregion
 
         #region Propreties / Commands
+        public string Name
+        {
+            get
+            {
+                return "Application";
+            }
+        }
+
+        public ICommand CloseApplication
+        {
+            get
+            {
+                if (closeApplication == null) closeApplication = new RelayCommand<ApplicationViewModel>((applicationViewModel) =>
+                {
+                    Application.Current.Shutdown();
+                });
+
+                return closeApplication;
+            }
+        }
 
         public ICommand ChangePageCommand
         {
@@ -30,12 +59,48 @@ namespace DmxController.ViewModels
                 return changePageCommand;
             }
         }
-
-        public string Name
+        
+        public ICommand HandleLeftPanel
         {
             get
             {
-                return "Application";
+                if (handleLeftPanel == null) handleLeftPanel = new RelayCommand<ViewState>((state) =>
+                {
+                    state.LeftPanelState = !state.LeftPanelState;
+
+                    if (state.LeftPanelState)
+                    {
+                        MainWindow.ShowLeftPanel.Begin();
+                    }
+                    else
+                    {
+                        MainWindow.HideLeftPanel.Begin();
+                    }
+                });
+
+                return handleLeftPanel;
+            }
+        }
+
+        public ICommand HandleRightPanel
+        {
+            get
+            {
+                if (handleRightPanel == null) handleRightPanel = new RelayCommand<ViewState>((state) => 
+                {
+                    state.RightPanelState = !state.RightPanelState;
+
+                    if (state.RightPanelState)
+                    {
+                        MainWindow.ShowRightPanel.Begin();
+                    }
+                    else
+                    {
+                        MainWindow.HideRightPanel.Begin();
+                    }
+                });
+
+                return handleRightPanel;
             }
         }
 
@@ -66,24 +131,53 @@ namespace DmxController.ViewModels
 
         }
 
-
-        public IModuleViewModel SidePanel
+        public List<IModuleViewModel> RightModules
         {
             get
             {
-                return null;
+                return new List<IModuleViewModel>();
+            }
+        }
+
+        public List<IModuleViewModel> LeftModules
+        {
+            get
+            {
+                return new List<IModuleViewModel>();
+            }
+        }
+
+        public ViewState ApplicationViewState
+        {
+            get
+            {
+                return applicationViewState;
             }
 
             set
             {
+                applicationViewState = value;
+            }
+        }
 
+        public ICommand ShowSettings
+        {
+            get
+            {
+                if (showSettings == null) showSettings = new RelayCommand<ApplicationViewModel>((appViewModel) =>
+                {
+                    SettingsView settings = new SettingsView();
+
+                    settings.ShowDialog();
+                });
+
+                return showSettings;
             }
         }
 
         #endregion
 
         #region Methods
-
         private void ChangePageViewModel(IPageViewModel viewModel)
         {
 
@@ -97,7 +191,6 @@ namespace DmxController.ViewModels
         {
             base.NotifyProperty(str);
         }
-
         #endregion
 
         public ApplicationViewModel()
@@ -106,6 +199,7 @@ namespace DmxController.ViewModels
             PageViewModels.Add(new ColorViewModel());
 
             CurrentPageViewModel = PageViewModels[0];
+            ApplicationViewState = new ViewState();
 
             changePageCommand = new RelayCommand<IPageViewModel>(
                     p => ChangePageViewModel((IPageViewModel)p),

@@ -8,7 +8,8 @@ namespace DmxController.ViewModels
 {
     public interface IPageViewModel
     {
-        IModuleViewModel SidePanel { get; set; }
+        List<IModuleViewModel> LeftModules { get; }
+        List<IModuleViewModel> RightModules { get; }
 
         string Name { get; }
     }

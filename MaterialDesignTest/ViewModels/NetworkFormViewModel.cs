@@ -1,13 +1,13 @@
-﻿using DmxController.ViewModels.Modules;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DmxController.ViewModels
 {
-    public class HomeViewModel : ViewModel, IPageViewModel
+    class NetworkFormViewModel : ViewModel, IPageViewModel
     {
         public List<IModuleViewModel> LeftModules
         {
@@ -21,7 +21,7 @@ namespace DmxController.ViewModels
         {
             get
             {
-                return "Home";
+                return "Network";
             }
         }
 
@@ -31,7 +31,11 @@ namespace DmxController.ViewModels
             {
                 return new List<IModuleViewModel>();
             }
-           
+        }
+
+        protected override void NotifyProperty([CallerMemberName] string str = "")
+        {
+            base.NotifyProperty(str);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using DmxController.ViewModels.Modules;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DmxController.ViewModels
 {
-    public class HomeViewModel : ViewModel, IPageViewModel
+    class TargetFormViewModel : ViewModel, IPageViewModel
     {
         public List<IModuleViewModel> LeftModules
         {
@@ -21,7 +20,7 @@ namespace DmxController.ViewModels
         {
             get
             {
-                return "Home";
+                return "Target";
             }
         }
 
@@ -31,7 +30,6 @@ namespace DmxController.ViewModels
             {
                 return new List<IModuleViewModel>();
             }
-           
         }
     }
 }
