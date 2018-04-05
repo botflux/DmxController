@@ -63,5 +63,30 @@ namespace DmxController.Common.Configuration
             SendPort = networkConfiguration.SendPort;
             ReceivePort = networkConfiguration.ReceivePort;
         }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this == (obj as NetworkConfiguration);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public static bool operator == (NetworkConfiguration n1, NetworkConfiguration n2)
+        {
+            return (n1.hostname == n2.hostname) && (n1.receivePort == n2.receivePort) && (n1.receivePort == n2.receivePort);
+        }
+
+        public static bool operator != (NetworkConfiguration n1, NetworkConfiguration n2)
+        {
+            return !(n1 == n2);
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,6 +14,7 @@ namespace DmxController.Common.Configuration
     {
         private string configurationPath;
         private Configuration currentConfiguration;
+        
 
         public ConfigurationHandler (string configurationPath)
         {
@@ -41,8 +43,19 @@ namespace DmxController.Common.Configuration
 
             set
             {
+                
                 currentConfiguration = value;
+                if (currentConfiguration == null)
+                {
+                    DispatchConfiguration();
+                }
             }
+        }
+
+        private void DispatchConfiguration()
+        {
+            UtilityProvider.Current.NetManager.SendEndPoint.Port = CurrentConfiguration.CurrentNetworkConfiguration.SendPort;
+            UtilityProvider.Current.NetManager.SendEndPoint.Address = IPAddress.Parse(CurrentConfiguration.CurrentNetworkConfiguration.Hostname);
         }
 
         public void WriteConfiguration ()

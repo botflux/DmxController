@@ -84,6 +84,11 @@ namespace DmxController.ViewModels
             {
                 if (confirmDialog == null) confirmDialog = new RelayCommand<Window>((window) =>
                 {
+                    UtilityProvider.Current.ConfHandler.CurrentConfiguration = new Configuration()
+                    {
+                        CurrentNetworkConfiguration = (this.PageViewModels[0] as NetworkFormViewModel).Configuration,
+                        CurrentTargetConfiguration = (this.PageViewModels[1] as TargetFormViewModel).Configuration
+                    };
                     window.DialogResult = true;
                 });
 
@@ -137,8 +142,14 @@ namespace DmxController.ViewModels
 
         public SettingsViewModel()
         {
-            PageViewModels.Add(new NetworkFormViewModel());
-            PageViewModels.Add(new TargetFormViewModel());
+            PageViewModels.Add(new NetworkFormViewModel()
+            {
+                Configuration = UtilityProvider.Current.ConfHandler.CurrentConfiguration.CurrentNetworkConfiguration
+            });
+            PageViewModels.Add(new TargetFormViewModel()
+            {
+                Configuration = UtilityProvider.Current.ConfHandler.CurrentConfiguration.CurrentTargetConfiguration
+            });
 
             CurrentPageViewModel = PageViewModels[0];
 
@@ -146,6 +157,8 @@ namespace DmxController.ViewModels
                     p => ChangePageViewModel((IPageViewModel)p),
                     p => p is IPageViewModel
             );
+
+
         }
     }
 }
