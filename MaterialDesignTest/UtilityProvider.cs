@@ -31,18 +31,31 @@ namespace DmxController
 
                 return netManager;
             }
+        }
 
-            set
+        public ConfigurationHandler ConfHandler
+        {
+            get
             {
-                netManager = value;
+                if (confHandler == null)
+                {
+                    throw new Exception("Configuration handler is null");
+                }
+
+                return confHandler;
             }
         }
 
         private NetworkManager netManager;
+        private ConfigurationHandler confHandler;
         
         public void ProvideNetworkManager (NetworkManager netManager)
         {
-            this.NetManager = netManager;
+            this.netManager = netManager;
+        }
+        public void ProvideConfigrationHandler (ConfigurationHandler configurationHandler)
+        {
+            this.confHandler = configurationHandler;
         }
     }
 }

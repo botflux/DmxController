@@ -97,6 +97,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\Configuration\Configuration.cs" />
+    <Compile Include="Common\Configuration\ConfigurationHandler.cs" />
     <Compile Include="Common\Configuration\IConfigurable.cs" />
     <Compile Include="Common\Configuration\NetworkConfiguration.cs" />
     <Compile Include="Common\Configuration\TargetConfiguration.cs" />

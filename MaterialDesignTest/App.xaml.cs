@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DmxController.Common.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -16,6 +17,9 @@ namespace DmxController
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            UtilityProvider.Current.ProvideConfigrationHandler(new ConfigurationHandler(AppDomain.CurrentDomain.BaseDirectory + "\\settings\\settings.json"));
+
+            UtilityProvider.Current.ConfHandler.SearchConfiguration();
 
             UtilityProvider.Current.ProvideNetworkManager(new VPackage.Network.NetworkManager("10.129.22.26", 5000, 15000, 15000));
             UtilityProvider.Current.NetManager.OnMessageReceived += (message) =>
@@ -29,6 +33,7 @@ namespace DmxController
         {
             base.OnExit(e);
             UtilityProvider.Current.NetManager.StopListening();
+            UtilityProvider.Current.ConfHandler.WriteConfiguration();
         }
     }
 }
