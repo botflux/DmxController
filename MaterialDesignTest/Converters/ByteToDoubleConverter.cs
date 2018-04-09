@@ -8,6 +8,9 @@ using System.Windows.Data;
 
 namespace DmxController.Converters
 {
+    /// <summary>
+    /// Sert à faire la convertion du type Byte vers Double
+    /// </summary>
     public class ByteToDoubleConverter : IValueConverter
     {
         // byte vers double

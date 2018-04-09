@@ -9,6 +9,9 @@ using System.Windows.Media;
 
 namespace DmxController.Converters
 {
+    /// <summary>
+    /// Sert à faire la conversion de ColorBrush vers Color
+    /// </summary>
     public class ColorBrushToColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

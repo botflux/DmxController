@@ -13,18 +13,42 @@ using System.Windows;
 
 namespace DmxController.ViewModels
 {
+    /// <summary>
+    /// Représente le ViewModel utilisé pour l'interface de gestion des couleurs
+    /// </summary>
     public class ColorViewModel : ViewModel, IPageViewModel
     {
+        /// <summary>
+        /// La couleur renseigné par l'utilisateur.
+        /// </summary>
         private Color mainColor;
 
+        /// <summary>
+        /// Le niveau de rouge renseigné par l'utilisateur.
+        /// </summary>
         private byte r;
+        /// <summary>
+        /// Le niveau de vert renseigné par l'utilisateur.
+        /// </summary>
         private byte g;
+        /// <summary>
+        /// Le niveau de bleu renseigné par l'utilisateur.
+        /// </summary>
         private byte b;
 
-        private List<IModuleViewModel> modules;
+        /// <summary>
+        /// Les modules de droites nécessaire au fonctionnement de ColorViewModel.
+        /// </summary>
+        private List<IModuleViewModel> rightModules;
 
+        /// <summary>
+        /// La commande qui sert à envoyer la couleur au serveur.
+        /// </summary>
         private ICommand sendColor;
 
+        /// <summary>
+        /// Renvoie ou renseigne la valeur de la couleur.
+        /// </summary>
         public Color MainColor
         {
             get
@@ -42,6 +66,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie la composante rouge renseignée par l'utilisateur sous forme de Color.
+        /// </summary>
         public Color RedBalance
         {
             get
@@ -50,6 +77,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie la composante verte renseignée par l'utilisateur sous forme de Color.
+        /// </summary>
         public Color GreenBalance
         {
             get
@@ -58,6 +88,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie la composante bleu renseignée par l'utilisateur sous forme de Color.
+        /// </summary>
         public Color BlueBalance
         {
             get
@@ -66,6 +99,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie ou renseigne la composante rouge de la couleur.
+        /// </summary>
         public byte R
         {
             get
@@ -84,6 +120,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie ou renseigne la composante verte de la couleur.
+        /// </summary>
         public byte G
         {
             get
@@ -102,6 +141,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie ou renseigne la composante bleu de la couleur.
+        /// </summary>
         public byte B
         {
             get
@@ -120,6 +162,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie le nom de ce ViewModel
+        /// </summary>
         public string Name
         {
             get
@@ -128,15 +173,21 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie les modules de droites utilisés par ce ViewModel.
+        /// </summary>
         public List<IModuleViewModel> RightModules
         {
             get
             {
-                if (modules == null) modules = new List<IModuleViewModel>();
-                return modules;
+                if (rightModules == null) rightModules = new List<IModuleViewModel>();
+                return rightModules;
             }
         }
 
+        /// <summary>
+        /// Renvoie les modules de gauches utilisés par ce ViewModel.
+        /// </summary>
         public List<IModuleViewModel> LeftModules
         {
             get
@@ -145,6 +196,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie la commande utilisé pour envoyer la couleur au serveur.
+        /// </summary>
         public ICommand SendColor
         {
             get
@@ -171,6 +225,10 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renseigne la vue d'un changement dans le modèle
+        /// </summary>
+        /// <param name="str"></param>
         protected override void NotifyProperty([CallerMemberName] string str = "")
         {
             base.NotifyProperty(str);

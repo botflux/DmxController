@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace DmxController.ViewModels
 {
+    /// <summary>
+    /// Représente le ViewModel utilisé pour la page d'acceuil de l'application
+    /// </summary>
     public class HomeViewModel : ViewModel, IPageViewModel
     {
+        /// <summary>
+        /// Renvoie les modules nécessaire à HomeViewModel pour fonctionner.
+        /// </summary>
         public List<IModuleViewModel> LeftModules
         {
             get
@@ -17,6 +23,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie le nom de ViewModel.
+        /// </summary>
         public string Name
         {
             get
@@ -25,6 +34,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie les modules nécessaire à HomeViewModel pour fonctionner.
+        /// </summary>
         public List<IModuleViewModel> RightModules
         {
             get

@@ -8,6 +8,9 @@ using System.Windows.Media.Animation;
 
 namespace DmxController
 {
+    /// <summary>
+    /// Animation des dimensions des Grid.Row
+    /// </summary>
     internal class GridLengthAnimation : AnimationTimeline
     {
         public override Type TargetPropertyType
