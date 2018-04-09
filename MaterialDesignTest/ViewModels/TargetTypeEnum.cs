@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DmxController.ViewModels
 {
+    /// <summary>
+    /// Représente les differents types de sources lumineuses.
+    /// </summary>
     [DataContract]
     public enum TargetTypeEnum
     {

@@ -9,12 +9,27 @@ using System.Threading.Tasks;
 
 namespace DmxController.ViewModels
 {
+    /// <summary>
+    /// Renseigne le ViewModel utilisé pour la partie configuration du réseau
+    /// </summary>
     class NetworkFormViewModel : ViewModel, IPageViewModel, IConfigurable<NetworkConfiguration> 
     {
+        /// <summary>
+        /// Renseigne le nom d'hôte
+        /// </summary>
         private string hostname;
+        /// <summary>
+        /// Renseigne le port d'envoie
+        /// </summary>
         private int sendPort;
+        /// <summary>
+        /// Renseigne le port de reception
+        /// </summary>
         private int receivePort;
 
+        /// <summary>
+        /// Renvoie les modules utilisés pour ce ViewModel
+        /// </summary>
         public List<IModuleViewModel> LeftModules
         {
             get
@@ -23,6 +38,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie le nom de ce ViewModel
+        /// </summary>
         public string Name
         {
             get
@@ -31,6 +49,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie les modules utilisés dans ce ViewModel
+        /// </summary>
         public List<IModuleViewModel> RightModules
         {
             get
@@ -39,6 +60,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie ou renseigne le nom d'hôte
+        /// </summary>
         public string Hostname
         {
             get
@@ -56,6 +80,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie ou renseigne le port d'envoie
+        /// </summary>
         public int SendPort
         {
             get
@@ -73,6 +100,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie ou renseigne le port de reception
+        /// </summary>
         public int ReceivePort
         {
             get
@@ -90,6 +120,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie ou renseigne la configuration actuelle
+        /// </summary>
         public NetworkConfiguration Configuration
         {
             get

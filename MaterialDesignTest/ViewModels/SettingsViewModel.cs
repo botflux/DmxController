@@ -12,18 +12,42 @@ using System.Windows.Input;
 
 namespace DmxController.ViewModels
 {
+    /// <summary>
+    /// Représente le ViewModel de l'interface de paramatrage de l'application.
+    /// </summary>
     public class SettingsViewModel : ViewModel, IPageViewModel, IConfigurable<Configuration>
     {
+        /// <summary>
+        /// La configuration utilisé dans l'application.
+        /// </summary>
         private Configuration configuration;
 
+        /// <summary>
+        /// Commande servant à changer de ViewModel.
+        /// </summary>
         private ICommand changePageCommand;
+        /// <summary>
+        /// Représente le ViewModel actuellement utilisé.
+        /// </summary>
         private IPageViewModel currentPageViewModel;
+        /// <summary>
+        /// Représente l'ensemble des ViewModels utilisé dans ce ViewModel
+        /// </summary>
         private List<IPageViewModel> pageViewModels;
 
+        /// <summary>
+        /// Commande servant à annuler cette fenêtre de dialogue.
+        /// </summary>
         private ICommand cancelDialog;
+        /// <summary>
+        /// Commande servant à comfirmer cette fenêtre de dialogue.
+        /// </summary>
         private ICommand confirmDialog;
 
         #region Command / Properties
+        /// <summary>
+        /// Représente les modules utilisés pour ce ViewModel.
+        /// </summary>
         public List<IModuleViewModel> LeftModules
         {
             get
@@ -32,6 +56,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Représente les modules utilisés pour ce ViewModel.
+        /// </summary>
         public List<IModuleViewModel> RightModules
         {
             get
@@ -40,6 +67,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Représente les ViewModels contenu dans ce ViewModel.
+        /// </summary>
         public List<IPageViewModel> PageViewModels
         {
             get
@@ -48,6 +78,10 @@ namespace DmxController.ViewModels
                 return pageViewModels;
             }
         }
+
+        /// <summary>
+        /// Renvoie le nom de ce ViewModel.
+        /// </summary>
         public string Name
         {
             get
@@ -56,6 +90,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Sert à changer de ViewModel.
+        /// </summary>
         public ICommand ChangePageCommand
         {
             get
@@ -64,6 +101,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie ou renseigne le ViewModel actuellement utilisé.
+        /// </summary>
         public IPageViewModel CurrentPageViewModel
         {
             get
@@ -78,6 +118,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie la commande servant à confirmer le dialogue.
+        /// </summary>
         public ICommand ConfirmDialog
         {
             get
@@ -96,6 +139,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie la commande servant à annuler le dialogue.
+        /// </summary>
         public ICommand CancelDialog
         {
             get
@@ -109,6 +155,9 @@ namespace DmxController.ViewModels
             }
         }
 
+        /// <summary>
+        /// Renvoie la configuration actuelle.
+        /// </summary>
         public Configuration Configuration
         {
             get
@@ -128,6 +177,10 @@ namespace DmxController.ViewModels
         {
             base.NotifyProperty(str);
         }
+        /// <summary>
+        /// Change de ViewModel.
+        /// </summary>
+        /// <param name="viewModel">Nouveau ViewModel</param>
         private void ChangePageViewModel(IPageViewModel viewModel)
         {
 
@@ -139,7 +192,6 @@ namespace DmxController.ViewModels
         
 
         #endregion
-
         public SettingsViewModel()
         {
             PageViewModels.Add(new NetworkFormViewModel()
@@ -157,8 +209,6 @@ namespace DmxController.ViewModels
                     p => ChangePageViewModel((IPageViewModel)p),
                     p => p is IPageViewModel
             );
-
-
         }
     }
 }
