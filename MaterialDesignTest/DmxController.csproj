@@ -101,6 +101,7 @@
     <Compile Include="Common\Configuration\IConfigurable.cs" />
     <Compile Include="Common\Configuration\NetworkConfiguration.cs" />
     <Compile Include="Common\Configuration\TargetConfiguration.cs" />
+    <Compile Include="StoryBoards\StoryBoardElement.cs" />
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
     <Compile Include="Converters\ColorBrushToColorConverter.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="ViewModels\Modules\ColorBalanceModuleViewModel.cs" />
     <Compile Include="ViewModels\NetworkFormViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\StoryBoardViewModel.cs" />
     <Compile Include="ViewModels\TargetFormViewModel.cs" />
     <Compile Include="ViewModels\TargetTypeEnum.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
@@ -136,6 +138,9 @@
     </Compile>
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StoryBoardView.xaml.cs">
+      <DependentUpon>StoryBoardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TargetFormView.xaml.cs">
       <DependentUpon>TargetFormView.xaml</DependentUpon>
@@ -177,6 +182,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\StoryBoardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TargetFormView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -200,6 +209,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

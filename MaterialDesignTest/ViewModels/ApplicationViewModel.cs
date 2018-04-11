@@ -45,7 +45,8 @@ namespace DmxController.ViewModels
         {
             get
             {
-                if (closeApplication == null) closeApplication = new RelayCommand<ApplicationViewModel>((applicationViewModel) =>
+                if (closeApplication == null) closeApplication = 
+                        new RelayCommand<ApplicationViewModel>((applicationViewModel) =>
                 {
                     Application.Current.Shutdown();
                 });
@@ -201,6 +202,7 @@ namespace DmxController.ViewModels
         {
             PageViewModels.Add(new HomeViewModel());
             PageViewModels.Add(new ColorViewModel());
+            PageViewModels.Add(new StoryBoardViewModel());
 
             CurrentPageViewModel = PageViewModels[0];
             ApplicationViewState = new ViewState();
