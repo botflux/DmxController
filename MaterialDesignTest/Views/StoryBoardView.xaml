@@ -21,19 +21,18 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height=".5*" />
+            <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-
-        <ListBox Margin="8" ItemsSource="{Binding Story}" VerticalAlignment="Center">
+        <ListBox Margin="8" ItemsSource="{Binding Story}" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <VirtualizingStackPanel Orientation="Horizontal" />
+                    <VirtualizingStackPanel Orientation="Horizontal"/>
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Margin="8" HorizontalAlignment="Center">
+                    <StackPanel Margin="8" HorizontalAlignment="Center" Width="80" Height="80">
                         <Grid Height="50" Width="50" Background="{Binding ElementColor, Converter={StaticResource colorBrushToColorConverter}, Mode=OneWay}" />
                         <Label Content="{Binding Time}" HorizontalAlignment="Center" />
                     </StackPanel>

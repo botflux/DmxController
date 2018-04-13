@@ -66,8 +66,16 @@ namespace DmxController.Common.Configuration
 
         public void SearchConfiguration ()
         {
-            string file = FileManager.Read(ConfigurationPath);
-            CurrentConfiguration = JSONSerializer.Deserialize<Configuration>(file);
+            try
+            {
+                string file = FileManager.Read(ConfigurationPath);
+                CurrentConfiguration = JSONSerializer.Deserialize<Configuration>(file);
+            }
+            catch (Exception)
+            {
+                FileManager.Write(ConfigurationPath, JSONSerializer.Serialize<Configuration>(Configuration.Default));
+                SearchConfiguration();
+            }
         }
     }
 }

@@ -39,7 +39,6 @@ namespace DmxController.ViewModels
 
         private ObservableCollection<StoryBoardElement> story;
 
-
         public ObservableCollection<StoryBoardElement> Story
         {
             get
@@ -63,7 +62,24 @@ namespace DmxController.ViewModels
             {
                 new StoryBoardElement() {ElementColor = Color.FromRgb(255,0,0), Time = 1.0 },
                 new StoryBoardElement() {ElementColor = Color.FromRgb(127,0,127), Time = 2.25 },
-                new StoryBoardElement() {ElementColor = Color.FromRgb(0,120,0), Time = .75 }
+                new StoryBoardElement() {ElementColor = Color.FromRgb(0,120,0), Time = .75 },
+                new StoryBoardElement() {ElementColor = Color.FromRgb(0,0,241), Time = .25 },
+                new StoryBoardElement() {ElementColor = Color.FromRgb(100,0,20), Time = .1 },
+                new StoryBoardElement() {ElementColor = Color.FromRgb(255,0,0), Time = 1.0 },
+                new StoryBoardElement() {ElementColor = Color.FromRgb(127,0,127), Time = 2.25 },
+                new StoryBoardElement() {ElementColor = Color.FromRgb(0,120,0), Time = .75 },
+                new StoryBoardElement() {ElementColor = Color.FromRgb(0,0,241), Time = .25 },
+                new StoryBoardElement() {ElementColor = Color.FromRgb(100,0,20), Time = .1 },
+                new StoryBoardElement() {ElementColor = Color.FromRgb(255,0,0), Time = 1.0 },
+                new StoryBoardElement() {ElementColor = Color.FromRgb(127,0,127), Time = 2.25 },
+                new StoryBoardElement() {ElementColor = Color.FromRgb(0,120,0), Time = .75 },
+                new StoryBoardElement() {ElementColor = Color.FromRgb(0,0,241), Time = .25 },
+                new StoryBoardElement() {ElementColor = Color.FromRgb(100,0,20), Time = .1 },
+                new StoryBoardElement() {ElementColor = Color.FromRgb(255,0,0), Time = 1.0 },
+                new StoryBoardElement() {ElementColor = Color.FromRgb(127,0,127), Time = 2.25 },
+                new StoryBoardElement() {ElementColor = Color.FromRgb(0,120,0), Time = .75 },
+                new StoryBoardElement() {ElementColor = Color.FromRgb(0,0,241), Time = .25 },
+                new StoryBoardElement() {ElementColor = Color.FromRgb(100,0,20), Time = .1 }
             };
         }
     }

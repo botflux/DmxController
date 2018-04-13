@@ -10,6 +10,27 @@ namespace DmxController.Common.Configuration
     [DataContract]
     public class Configuration
     {
+        public static Configuration Default
+        {
+            get
+            {
+                return new Configuration()
+                {
+                    CurrentNetworkConfiguration = new NetworkConfiguration()
+                    {
+                        Hostname = "192.168.0.1",
+                        ReceivePort = 15000,
+                        SendPort = 5000
+                    },
+                    CurrentTargetConfiguration = new TargetConfiguration()
+                    {
+                        TargetAddress = 1,
+                        TargetType = ViewModels.TargetTypeEnum.Projecteur
+                    }
+                };
+            }
+        }
+
         [DataMember]
         private NetworkConfiguration currentNetworkConfiguration;
         [DataMember]
