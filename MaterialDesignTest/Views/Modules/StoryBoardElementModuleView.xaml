@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="DmxController.Views.Modules.StoryBoardElementModuleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DmxController.Views.Modules"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.FontWeight="Regular"
+    TextElement.FontSize="13"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+    Background="{DynamicResource MaterialDesignCardBackground}"
+    TextElement.FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="300">
+
+    <StackPanel Margin="16">
+        <Label Content="Color balance" />
+        <Label FontSize="9" Content="Rouge" Margin="0 16 0 8" />
+        <TextBox Text="{Binding Parent.CurrentElement.R}" />
+
+        <Label FontSize="9" Content="Vert" Margin="0 16 0 8" />
+        <TextBox Text="{Binding Parent.CurrentElement.G}" />
+
+        <Label FontSize="9" Content="Bleu" Margin="0 16 0 8" />
+        <TextBox Text="{Binding Parent.CurrentElement.B}" />
+
+        <Label FontSize="9" Content="Time" Margin="0 16 0 8" />
+        <TextBox Text="{Binding Parent.CurrentElement.Time}" />
+    </StackPanel>
+</UserControl>

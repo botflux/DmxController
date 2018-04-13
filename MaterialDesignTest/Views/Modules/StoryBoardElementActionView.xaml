@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="DmxController.Views.Modules.StoryBoardElementActionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DmxController.Views.Modules"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.FontWeight="Regular"
+    TextElement.FontSize="13"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+    Background="{DynamicResource MaterialDesignCardBackground}"
+    TextElement.FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel Margin="16">
+        <Label Content="Actions" />
+        <Button Content="Ajouter élément" Command="{Binding Parent.AddStoryBoardElementCommand}" CommandParameter="{x:Null}" Margin="0 8 0 8" />
+        <Button Content="Supprimer élément" Command="{Binding Parent.DeleteStoryBoardElementCommand}" CommandParameter="{x:Null}" Margin="0 8 0 8" />
+    </StackPanel>
+</UserControl>

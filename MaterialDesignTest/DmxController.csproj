@@ -61,11 +61,19 @@
       <HintPath>..\packages\MaterialDesignThemes.2.4.0.1044\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -109,6 +117,8 @@
     <Compile Include="ViewModels\IPageViewModel.cs" />
     <Compile Include="ViewModels\Modules\ActionColorModuleViewModel.cs" />
     <Compile Include="ViewModels\Modules\ColorBalanceModuleViewModel.cs" />
+    <Compile Include="ViewModels\Modules\StoryBoardElementActionModuleViewModel.cs" />
+    <Compile Include="ViewModels\Modules\StoryBoardElementModuleViewModel.cs" />
     <Compile Include="ViewModels\NetworkFormViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\StoryBoardViewModel.cs" />
@@ -132,6 +142,12 @@
     </Compile>
     <Compile Include="Views\Modules\ColorBalanceModuleView.xaml.cs">
       <DependentUpon>ColorBalanceModuleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modules\StoryBoardElementActionView.xaml.cs">
+      <DependentUpon>StoryBoardElementActionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modules\StoryBoardElementModuleView.xaml.cs">
+      <DependentUpon>StoryBoardElementModuleView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NetworkFormView.xaml.cs">
       <DependentUpon>NetworkFormView.xaml</DependentUpon>
@@ -171,6 +187,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Modules\ColorBalanceModuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Modules\StoryBoardElementActionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Modules\StoryBoardElementModuleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

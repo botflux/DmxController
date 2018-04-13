@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DmxController.Views"
              xmlns:converters="clr-namespace:DmxController.Converters"
+             xmlns:ie="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextElement.FontWeight="Regular"
@@ -24,7 +25,13 @@
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <ListBox Margin="8" ItemsSource="{Binding Story}" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+        <!-- Timeline -->
+        <ListBox Margin="8" x:Name="timeline" ItemsSource="{Binding Story}" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            <ie:Interaction.Triggers>
+                <ie:EventTrigger EventName="SelectionChanged">
+                    <ie:InvokeCommandAction Command="{Binding ChangeStoryBoardElementCommand}" CommandParameter="{Binding ElementName=timeline, Path=SelectedIndex}" />
+                </ie:EventTrigger>
+            </ie:Interaction.Triggers>
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel Orientation="Horizontal"/>
@@ -39,5 +46,78 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <!-- Changement couleurs -->
+        <Grid Grid.Row="1" Margin="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <Grid Background="{Binding CurrentElement.ElementColor, Mode=OneWay, Converter={StaticResource colorBrushToColorConverter}}">
+                <Grid.Effect>
+                    <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225" />
+                </Grid.Effect>
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="0">
+                <Grid VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="46" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Canvas Background="{Binding CurrentElement.RedBalance, Mode=OneWay, Converter={StaticResource colorBrushToColorConverter}}">
+                        <Canvas.Effect>
+                            <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225" />
+                        </Canvas.Effect>
+                    </Canvas>
+
+                    <StackPanel Grid.Column="1" Margin="16 0 0 0">
+                        <TextBlock Text="Rouge" Margin="0 0 0 16" />
+                        <Slider Minimum="0" Maximum="255" Value="{Binding CurrentElement.R}" />
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="2" Margin="0">
+                <Grid VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="46" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Canvas Background="{Binding CurrentElement.GreenBalance, Mode=OneWay, Converter={StaticResource colorBrushToColorConverter}}">
+                        <Canvas.Effect>
+                            <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225" />
+                        </Canvas.Effect>
+                    </Canvas>
+
+                    <StackPanel Grid.Column="1" Margin="16 0 0 0">
+                        <TextBlock Text="Vert" Margin="0 0 0 16" />
+                        <Slider Minimum="0" Maximum="255" Value="{Binding CurrentElement.G}" />
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="3" Margin="0">
+                <Grid VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="46" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Canvas Background="{Binding CurrentElement.BlueBalance, Mode=OneWay, Converter={StaticResource colorBrushToColorConverter}}">
+                        <Canvas.Effect>
+                            <DropShadowEffect ShadowDepth="1" Opacity="0.2" Direction="225" />
+                        </Canvas.Effect>
+                    </Canvas>
+
+                    <StackPanel Grid.Column="1" Margin="16 0 0 0">
+                        <TextBlock Text="Bleu" Margin="0 0 0 16" />
+                        <Slider Minimum="0" Maximum="255" Value="{Binding CurrentElement.B}" />
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+        </Grid>
     </Grid>
 </UserControl>
