@@ -29,7 +29,7 @@
         <ListBox Margin="8" x:Name="timeline" ItemsSource="{Binding Story}" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto">
             <ie:Interaction.Triggers>
                 <ie:EventTrigger EventName="SelectionChanged">
-                    <ie:InvokeCommandAction Command="{Binding ChangeStoryBoardElementCommand}" CommandParameter="{Binding ElementName=timeline, Path=SelectedIndex}" />
+                    <ie:InvokeCommandAction Command="{Binding ChangeStoryBoardElementCommand}" CommandParameter="{Binding ElementName=timeline, Path=SelectedItem}" />
                 </ie:EventTrigger>
             </ie:Interaction.Triggers>
             <ListBox.ItemsPanel>

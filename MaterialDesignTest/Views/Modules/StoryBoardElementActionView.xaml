@@ -17,6 +17,6 @@
     <StackPanel Margin="16">
         <Label Content="Actions" />
         <Button Content="Ajouter élément" Command="{Binding Parent.AddStoryBoardElementCommand}" CommandParameter="{x:Null}" Margin="0 8 0 8" />
-        <Button Content="Supprimer élément" Command="{Binding Parent.DeleteStoryBoardElementCommand}" CommandParameter="{x:Null}" Margin="0 8 0 8" />
+        <Button Content="Supprimer élément" Command="{Binding Parent.DeleteStoryBoardElementCommand}" CommandParameter="{Binding Parent.CurrentElement}" Margin="0 8 0 8" />
     </StackPanel>
 </UserControl>

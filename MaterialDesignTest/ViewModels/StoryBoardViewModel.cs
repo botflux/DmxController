@@ -122,7 +122,7 @@ namespace DmxController.ViewModels
                 new StoryBoardElement() {R = 200, G = 23, B = 32, Time = 0.25 },
             };
 
-            changeStoryBoardElementCommand = new RelayCommand<int>(
+            changeStoryBoardElementCommand = new RelayCommand<StoryBoardElement>(
                 p => ChangeStoryBoardElementIndex(p));
             addStoryBoardElementCommand = new RelayCommand<object>(o => Story.Add(new StoryBoardElement()
             {
@@ -131,24 +131,20 @@ namespace DmxController.ViewModels
                 B = 127,
                 Time = 1
             }));
-            deleteStoryBoardElementCommand = new RelayCommand<object>(o => DeleteCurrentElement());
+            deleteStoryBoardElementCommand = new RelayCommand<StoryBoardElement>(o => Story.Remove(o));
         }
 
-        private void DeleteCurrentElement ()
+        private void ChangeStoryBoardElementIndex (StoryBoardElement element)
         {
-            MessageBox.Show("Ok");
-            StoryBoardElement last = CurrentElement;
-            ChangeStoryBoardElementIndex(0);
-            Story.Remove(last);
 
-        }
-
-        private void ChangeStoryBoardElementIndex (int element)
-        {
-            if (element < 0 || element >= Story.Count)
-                CurrentElement = Story[0];
-
-            CurrentElement = Story[element];
+            CurrentElement = element;
+            if (CurrentElement == null)
+            {
+                if (Story.Count > 0)
+                    CurrentElement = Story[0];
+                else
+                    CurrentElement = new StoryBoardElement() { R = 100, B = 100, G = 100, Time = 1 };
+            }
         }
 
         protected override void NotifyProperty([CallerMemberName] string str = "")
