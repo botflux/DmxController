@@ -123,7 +123,7 @@ namespace DmxController.ViewModels
             };
 
             changeStoryBoardElementCommand = new RelayCommand<StoryBoardElement>(
-                p => ChangeStoryBoardElementIndex(p));
+                p => ChangeStoryBoardElement(p));
             addStoryBoardElementCommand = new RelayCommand<object>(o => Story.Add(new StoryBoardElement()
             {
                 R = 127,
@@ -131,12 +131,16 @@ namespace DmxController.ViewModels
                 B = 127,
                 Time = 1
             }));
-            deleteStoryBoardElementCommand = new RelayCommand<StoryBoardElement>(o => Story.Remove(o));
+            deleteStoryBoardElementCommand = new RelayCommand<StoryBoardElement>(o => DeleteStoryBoardElement(o));
         }
 
-        private void ChangeStoryBoardElementIndex (StoryBoardElement element)
+        private void DeleteStoryBoardElement (StoryBoardElement element)
         {
+            Story.Remove(element);
+        }
 
+        private void ChangeStoryBoardElement (StoryBoardElement element)
+        {
             CurrentElement = element;
             if (CurrentElement == null)
             {
