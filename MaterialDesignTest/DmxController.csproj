@@ -104,11 +104,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Common\Configuration\Configuration.cs" />
-    <Compile Include="Common\Configuration\ConfigurationHandler.cs" />
-    <Compile Include="Common\Configuration\IConfigurable.cs" />
-    <Compile Include="Common\Configuration\NetworkConfiguration.cs" />
-    <Compile Include="Common\Configuration\TargetConfiguration.cs" />
     <Compile Include="Common\Files\FilesHandler.cs" />
     <Compile Include="Common\Network\NetworkHandler.cs" />
     <Compile Include="Common\Packet\PacketHandler.cs" />
@@ -122,17 +117,13 @@
     <Compile Include="ViewModels\Modules\ColorBalanceModuleViewModel.cs" />
     <Compile Include="ViewModels\Modules\StoryBoardElementActionModuleViewModel.cs" />
     <Compile Include="ViewModels\Modules\StoryBoardElementModuleViewModel.cs" />
-    <Compile Include="ViewModels\NetworkFormViewModel.cs" />
-    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\StoryBoardViewModel.cs" />
-    <Compile Include="ViewModels\TargetFormViewModel.cs" />
     <Compile Include="ViewModels\TargetTypeEnum.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="ViewModels\ColorViewModel.cs" />
     <Compile Include="Converters\ByteToDoubleConverter.cs" />
     <Compile Include="Animations\GridLengthAnimation.cs" />
     <Compile Include="RelayCommand.cs" />
-    <Compile Include="UtilityProvider.cs" />
     <Compile Include="Views\ColorView.xaml.cs">
       <DependentUpon>ColorView.xaml</DependentUpon>
     </Compile>
@@ -151,17 +142,8 @@
     <Compile Include="Views\Modules\StoryBoardElementModuleView.xaml.cs">
       <DependentUpon>StoryBoardElementModuleView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NetworkFormView.xaml.cs">
-      <DependentUpon>NetworkFormView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SettingsView.xaml.cs">
-      <DependentUpon>SettingsView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\StoryBoardView.xaml.cs">
       <DependentUpon>StoryBoardView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TargetFormView.xaml.cs">
-      <DependentUpon>TargetFormView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewState.cs" />
     <Page Include="MainWindow.xaml">
@@ -200,19 +182,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\NetworkFormView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SettingsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\StoryBoardView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TargetFormView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

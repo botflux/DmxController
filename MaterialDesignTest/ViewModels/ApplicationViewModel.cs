@@ -169,9 +169,6 @@ namespace DmxController.ViewModels
             {
                 if (showSettings == null) showSettings = new RelayCommand<ApplicationViewModel>((appViewModel) =>
                 {
-                    SettingsView settings = new SettingsView();
-
-                    settings.ShowDialog();
                     
                 });
 

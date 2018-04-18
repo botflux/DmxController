@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using VPackage.Files;
-using DmxController.Common.Configuration;
 using VPackage.Json;
 using System.Windows;
 
@@ -44,8 +43,6 @@ namespace DmxController.Common.Files
             MessageBox.Show(storyBoardPath);
             Directory.CreateDirectory(storyBoardPath);
             Directory.CreateDirectory(Path.GetDirectoryName(settingsPath));
-            if (!File.Exists(settingsPath))
-                FileManager.Write(settingsPath, JSONSerializer.Serialize<Configuration.Configuration>(Configuration.Configuration.Default));
         }
     }
 }
