@@ -205,25 +205,12 @@ namespace DmxController.ViewModels
             get
             {
                 if (sendColor == null) sendColor = new RelayCommand<Color>((currentColor) =>
-                {/*
-                    string json = JSONSerializer.Serialize<Packet>(new Packet()
-                    {
-                        Color = new Packet.Couleur()
-                        {
-                            Blue = currentColor.B.ToString(),
-                            Red = currentColor.R.ToString(),
-                            Green = currentColor.G.ToString(),
-                            Target = "PROJO",
-                            TargetAdress = "1",
-                            Intensity = "255"
-                        }
-                    });*/
-                    /*
-                    MessageBox.Show(json);
-                    UtilityProvider.Current.NetManager.Send(json);*/
+                {
+                    string frame = PacketHandler.ConstructColorPacket(currentColor.R, currentColor.G, currentColor.B, 255, "PROJO", 1);
 
-                    UtilityProvider.Current.NetManager.Send(PacketHandler.ConstructColorPacket(currentColor.R, currentColor.G, currentColor.B, 255, "PROJO", 1));
-                    MessageBox.Show("Ok");
+                    MessageBox.Show(string.Format("{0}: {1}", frame.Length, frame));
+
+                    UtilityProvider.Current.NetManager.Send(frame);
                 });
 
                 return sendColor;

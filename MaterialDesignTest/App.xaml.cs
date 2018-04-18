@@ -1,4 +1,5 @@
 ﻿using DmxController.Common.Configuration;
+using DmxController.Common.Files;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -17,6 +18,7 @@ namespace DmxController
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            FilesHandler.Current.Initialize(AppDomain.CurrentDomain.BaseDirectory + @"storyboards", AppDomain.CurrentDomain.BaseDirectory + @"settings\settings.json");
             UtilityProvider.Current.ProvideConfigrationHandler(new ConfigurationHandler(AppDomain.CurrentDomain.BaseDirectory + "\\settings\\settings.json"));
 
             UtilityProvider.Current.ConfHandler.SearchConfiguration();

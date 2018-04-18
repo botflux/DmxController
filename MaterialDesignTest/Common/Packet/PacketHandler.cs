@@ -15,12 +15,15 @@ namespace DmxController.Common.Packet
         {
             return JSONSerializer.Serialize<ColorPacket>(new ColorPacket()
             {
-                R = r,
-                G = g,
-                B = b,
-                Intensity = intensity,
-                Target = target,
-                TargetAddress = targetAddress
+                Holder = new ColorPacket.ColorHolder()
+                {
+                    R = r,
+                    G = g,
+                    B = b,
+                    Intensity = intensity,
+                    Target = target,
+                    TargetAddress = targetAddress
+                }
             });
         }
 
@@ -114,19 +117,20 @@ namespace DmxController.Common.Packet
                 [DataContract]
                 public class StoryBoardElementPacket
                 {
-                    [DataMember(Name = "red")]
-                    private byte r;
-                    [DataMember(Name = "green")]
-                    private byte g;
-                    [DataMember(Name = "blue")]
-                    private byte b;
-                    [DataMember(Name = "intensity")]
-                    private byte intensity;
-                    [DataMember(Name = "target")]
+
+                    [DataMember(Name = "target", Order = 1)]
                     private string target;
-                    [DataMember(Name = "targetaddress")]
+                    [DataMember(Name = "targetAddress", Order = 2)]
                     private int targetAddress;
-                    [DataMember(Name = "time")]
+                    [DataMember(Name = "red", Order = 3)]
+                    private byte r;
+                    [DataMember(Name = "green", Order = 4)]
+                    private byte g;
+                    [DataMember(Name = "blue", Order = 5)]
+                    private byte b;
+                    [DataMember(Name = "intensity", Order = 6)]
+                    private byte intensity;
+                    [DataMember(Name = "time", Order = 7)]
                     private int time;
 
                     public int TargetAddress
@@ -227,94 +231,115 @@ namespace DmxController.Common.Packet
         [DataContract]
         private class ColorPacket
         {
-            [DataMember (Name = "red")]
-            private byte r;
-            [DataMember (Name = "green")]
-            private byte g;
-            [DataMember (Name = "blue")]
-            private byte b;
-            [DataMember (Name = "intensity")]
-            private byte intensity;
-            [DataMember (Name = "target")]
-            private string target;
-            [DataMember (Name = "targetAddress")]
-            private int targetAddress;
+            [DataMember (Name = "couleur")]
+            private ColorHolder holder;
 
-            public int TargetAddress
+            public ColorHolder Holder
             {
                 get
                 {
-                    return targetAddress;
+                    return holder;
                 }
 
                 set
                 {
-                    targetAddress = value;
+                    holder = value;
                 }
             }
 
-            public string Target
+            [DataContract]
+            public class ColorHolder
             {
-                get
+
+                [DataMember(Name = "target", Order = 1)]
+                private string target;
+                [DataMember(Name = "targetAddress", Order = 2)]
+                private int targetAddress;
+                [DataMember(Name = "red", Order = 3)]
+                private byte r;
+                [DataMember(Name = "green", Order = 4)]
+                private byte g;
+                [DataMember(Name = "blue", Order = 5)]
+                private byte b;
+                [DataMember(Name = "intensity", Order = 6)]
+                private byte intensity;
+
+                public int TargetAddress
                 {
-                    return target;
+                    get
+                    {
+                        return targetAddress;
+                    }
+
+                    set
+                    {
+                        targetAddress = value;
+                    }
                 }
 
-                set
+                public string Target
                 {
-                    target = value;
-                }
-            }
+                    get
+                    {
+                        return target;
+                    }
 
-            public byte Intensity
-            {
-                get
-                {
-                    return intensity;
-                }
-
-                set
-                {
-                    intensity = value;
-                }
-            }
-
-            public byte B
-            {
-                get
-                {
-                    return b;
+                    set
+                    {
+                        target = value;
+                    }
                 }
 
-                set
+                public byte Intensity
                 {
-                    b = value;
-                }
-            }
+                    get
+                    {
+                        return intensity;
+                    }
 
-            public byte G
-            {
-                get
-                {
-                    return g;
-                }
-
-                set
-                {
-                    g = value;
-                }
-            }
-
-            public byte R
-            {
-                get
-                {
-                    return r;
+                    set
+                    {
+                        intensity = value;
+                    }
                 }
 
-                set
+                public byte B
                 {
-                    r = value;
+                    get
+                    {
+                        return b;
+                    }
+
+                    set
+                    {
+                        b = value;
+                    }
+                }
+
+                public byte G
+                {
+                    get
+                    {
+                        return g;
+                    }
+
+                    set
+                    {
+                        g = value;
+                    }
+                }
+
+                public byte R
+                {
+                    get
+                    {
+                        return r;
+                    }
+
+                    set
+                    {
+                        r = value;
+                    }
                 }
             }
         }
