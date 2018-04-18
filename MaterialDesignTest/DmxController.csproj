@@ -110,6 +110,7 @@
     <Compile Include="Common\Configuration\NetworkConfiguration.cs" />
     <Compile Include="Common\Configuration\TargetConfiguration.cs" />
     <Compile Include="Common\Files\FilesHandler.cs" />
+    <Compile Include="Common\Network\NetworkHandler.cs" />
     <Compile Include="Common\Packet\PacketHandler.cs" />
     <Compile Include="StoryBoards\StoryBoardElement.cs" />
     <Compile Include="ViewModels\ApplicationViewModel.cs" />

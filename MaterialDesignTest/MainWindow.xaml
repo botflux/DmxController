@@ -112,7 +112,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator />
-                <MenuItem Header="Options" Command="{Binding DataContext.ShowSettings, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{x:Null}">
+                <MenuItem Header="Options">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Settings" />
                     </MenuItem.Icon>

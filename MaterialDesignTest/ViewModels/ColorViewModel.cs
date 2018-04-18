@@ -11,6 +11,7 @@ using VPackage.Json;
 using DmxController.ViewModels.Modules;
 using System.Windows;
 using DmxController.Common.Packet;
+using DmxController.Common.Network;
 
 namespace DmxController.ViewModels
 {
@@ -210,7 +211,8 @@ namespace DmxController.ViewModels
 
                     MessageBox.Show(string.Format("{0}: {1}", frame.Length, frame));
 
-                    UtilityProvider.Current.NetManager.Send(frame);
+                    //UtilityProvider.Current.NetManager.Send(frame);
+                    NetworkHandler.Current.Manager.Send(frame);
                 });
 
                 return sendColor;
