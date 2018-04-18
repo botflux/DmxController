@@ -23,6 +23,8 @@ namespace DmxController.Common.Files
         #region Fields
         private string storyBoardPath;
         private string settingsPath;
+
+        private JsonHandler.ConfigurationPacket currentConfiguration;
         #endregion
 
         private FilesHandler ()
@@ -46,6 +48,17 @@ namespace DmxController.Common.Files
             {
                 FileManager.Write(settingsPath, JsonHandler.ConstructConfigurationPacket(new JsonHandler.ConfigurationPacket()));
             }
+        }
+
+        public JsonHandler.ConfigurationPacket GetConfiguration ()
+        {
+            if (currentConfiguration == null)
+            {
+                string s = FileManager.Read(settingsPath);
+                currentConfiguration = JSONSerializer.Deserialize<JsonHandler.ConfigurationPacket>(s);
+            }
+
+            return currentConfiguration;
         }
     }
 }

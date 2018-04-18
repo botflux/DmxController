@@ -1,4 +1,5 @@
 ﻿using DmxController.Common.Files;
+using DmxController.Common.Json;
 using DmxController.Common.Network;
 using System;
 using System.Collections.Generic;
@@ -15,13 +16,19 @@ namespace DmxController
     /// </summary>
     public partial class App : Application
     {
+        private string storyBoardPath;
+        private string settingsPath;
+
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            FilesHandler.Current.Initialize(AppDomain.CurrentDomain.BaseDirectory + @"storyboards", AppDomain.CurrentDomain.BaseDirectory + @"settings\settings.json");
+            storyBoardPath = AppDomain.CurrentDomain.BaseDirectory + @"storyboards";
+            settingsPath = AppDomain.CurrentDomain.BaseDirectory + @"settings\settings.json";
 
-
-            NetworkHandler.Current.Initialize("10.129.22.26", 5000, 15000);
+            FilesHandler.Current.Initialize(storyBoardPath, settingsPath);
+            JsonHandler.ConfigurationPacket configuration = FilesHandler.Current.GetConfiguration();
+            
+            NetworkHandler.Current.Initialize(configuration.Hostname, configuration.SendPort, configuration.ReceivePort);
             NetworkHandler.Current.Manager.OnMessageReceived += (message) =>
             {
                 MessageBox.Show(string.Format("Message reçu: {0}", message));
