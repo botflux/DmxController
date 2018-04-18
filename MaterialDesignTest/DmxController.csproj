@@ -106,7 +106,7 @@
     </ApplicationDefinition>
     <Compile Include="Common\Files\FilesHandler.cs" />
     <Compile Include="Common\Network\NetworkHandler.cs" />
-    <Compile Include="Common\Json\PacketHandler.cs" />
+    <Compile Include="Common\Json\JsonHandler.cs" />
     <Compile Include="StoryBoards\StoryBoardElement.cs" />
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
     <Compile Include="Converters\ColorBrushToColorConverter.cs" />

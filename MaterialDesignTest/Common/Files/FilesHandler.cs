@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using VPackage.Files;
 using VPackage.Json;
 using System.Windows;
+using DmxController.Common.Json;
 
 namespace DmxController.Common.Files
 {
@@ -36,13 +37,15 @@ namespace DmxController.Common.Files
             CheckFilesIntegrity();
         }
 
-
         private void CheckFilesIntegrity()
         {
-            MessageBox.Show("Ok");
-            MessageBox.Show(storyBoardPath);
             Directory.CreateDirectory(storyBoardPath);
             Directory.CreateDirectory(Path.GetDirectoryName(settingsPath));
+
+            if (!File.Exists(settingsPath))
+            {
+                FileManager.Write(settingsPath, JsonHandler.ConstructConfigurationPacket(new JsonHandler.ConfigurationPacket()));
+            }
         }
     }
 }
