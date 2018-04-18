@@ -10,6 +10,7 @@ using System.Windows.Input;
 using VPackage.Json;
 using DmxController.ViewModels.Modules;
 using System.Windows;
+using DmxController.Common.Packet;
 
 namespace DmxController.ViewModels
 {
@@ -204,7 +205,7 @@ namespace DmxController.ViewModels
             get
             {
                 if (sendColor == null) sendColor = new RelayCommand<Color>((currentColor) =>
-                {
+                {/*
                     string json = JSONSerializer.Serialize<Packet>(new Packet()
                     {
                         Color = new Packet.Couleur()
@@ -216,9 +217,13 @@ namespace DmxController.ViewModels
                             TargetAdress = "1",
                             Intensity = "255"
                         }
-                    });
+                    });*/
+                    /*
                     MessageBox.Show(json);
-                    UtilityProvider.Current.NetManager.Send(json);
+                    UtilityProvider.Current.NetManager.Send(json);*/
+
+                    UtilityProvider.Current.NetManager.Send(PacketHandler.ConstructColorPacket(currentColor.R, currentColor.G, currentColor.B, 255, "PROJO", 1));
+                    MessageBox.Show("Ok");
                 });
 
                 return sendColor;
