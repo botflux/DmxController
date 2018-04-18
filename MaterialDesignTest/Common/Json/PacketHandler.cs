@@ -7,10 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using VPackage.Json;
 
-namespace DmxController.Common.Packet
+namespace DmxController.Common.Json
 {
-    public static class PacketHandler
+    public static class JsonHandler
     {
+        
+
         public static string ConstructColorPacket (byte r, byte g, byte b, byte intensity,string target, int targetAddress)
         {
             return JSONSerializer.Serialize<ColorPacket>(new ColorPacket()

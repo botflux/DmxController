@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Runtime.CompilerServices;
 using DmxController.ViewModels.Modules;
 using VPackage.Json;
-using DmxController.Common.Packet;
+using DmxController.Common.Json;
 using VPackage.Network;
 using DmxController.Common.Network;
 
@@ -190,7 +190,7 @@ namespace DmxController.ViewModels
             sendStoryBoardCommand = new RelayCommand<object>((o) => 
             {
                 //UtilityProvider.Current.NetManager.Send(PacketHandler.ConstructStoryBoardPacket(story.ToArray(), "PROJO", 1, "Story board 1"));
-                NetworkHandler.Current.Manager.Send(PacketHandler.ConstructStoryBoardPacket(story.ToArray(), "PROJO", 1, "Story board 1"));
+                NetworkHandler.Current.Manager.Send(JsonHandler.ConstructStoryBoardPacket(story.ToArray(), "PROJO", 1, "Story board 1"));
             });
         }
 
