@@ -25,10 +25,16 @@ namespace DmxController.Common.Files
         private string settingsPath;
 
         private JsonHandler.ConfigurationPacket currentConfiguration;
+        private event Action ConfigurationChanged;
         #endregion
 
         private FilesHandler ()
         {
+        }
+
+        private void OnConfigurationChanged ()
+        {
+            if (ConfigurationChanged != null) ConfigurationChanged();
         }
 
         public void Initialize (string storyBoardPath, string settingsPath)
@@ -59,6 +65,12 @@ namespace DmxController.Common.Files
             }
 
             return currentConfiguration;
+        }
+
+        public void ChangeConfiguration (JsonHandler.ConfigurationPacket conf)
+        {
+            FileManager.Write(settingsPath, JSONSerializer.Serialize<JsonHandler.ConfigurationPacket>(conf), FileManager.WriteOptions.CreateDirectory);
+            OnConfigurationChanged();
         }
     }
 }

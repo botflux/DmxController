@@ -52,6 +52,10 @@ namespace DmxController.ViewModels
         /// Représente la story board
         /// </summary>
         private ObservableCollection<StoryBoardElement> story;
+        /// <summary>
+        /// Le nom de la story board
+        /// </summary>
+        private string storyBoardName;
         #endregion
 
         #region Properties
@@ -147,6 +151,19 @@ namespace DmxController.ViewModels
                 return rightModules;
             }
         }
+
+        public string StoryBoardName
+        {
+            get
+            {
+                return storyBoardName;
+            }
+
+            set
+            {
+                storyBoardName = value;
+            }
+        }
         #endregion
 
         #region Constructors
@@ -155,11 +172,7 @@ namespace DmxController.ViewModels
             RightModules.Add(new StoryBoardElementModuleViewModel() { Parent = this });
             RightModules.Add(new StoryBoardElementActionModuleViewModel() { Parent = this });
 
-            Story = new ObservableCollection<StoryBoardElement>()
-            {
-                new StoryBoardElement() {R = 100, G = 211, B = 25, Time = 1.0 },
-                new StoryBoardElement() {R = 200, G = 23, B = 32, Time = 0.25 },
-            };
+            Story = new ObservableCollection<StoryBoardElement>();
 
             changeStoryBoardElementCommand = new RelayCommand<StoryBoardElement>((e) =>
             {
@@ -176,6 +189,7 @@ namespace DmxController.ViewModels
                     }
                 }
             });
+
             addStoryBoardElementCommand = new RelayCommand<object>(o => Story.Add(new StoryBoardElement()
             {
                 R = 127,
@@ -183,10 +197,12 @@ namespace DmxController.ViewModels
                 B = 127,
                 Time = 1
             }));
+
             deleteStoryBoardElementCommand = new RelayCommand<StoryBoardElement>((o) => 
             {
                 Story.Remove(o);
             });
+
             sendStoryBoardCommand = new RelayCommand<object>((o) => 
             {
                 //UtilityProvider.Current.NetManager.Send(PacketHandler.ConstructStoryBoardPacket(story.ToArray(), "PROJO", 1, "Story board 1"));

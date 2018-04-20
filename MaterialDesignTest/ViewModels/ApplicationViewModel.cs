@@ -24,7 +24,9 @@ namespace DmxController.ViewModels
         private ICommand handleLeftPanel;
         private ICommand handleRightPanel;
 
-        private ICommand showSettings;
+        private ICommand newStoryBoardCommand;
+
+
 
         private ICommand changePageCommand;
         private IPageViewModel currentPageViewModel;
@@ -163,16 +165,11 @@ namespace DmxController.ViewModels
             }
         }
 
-        public ICommand ShowSettings
+        public ICommand NewStoryBoardCommand
         {
             get
             {
-                if (showSettings == null) showSettings = new RelayCommand<ApplicationViewModel>((appViewModel) =>
-                {
-                    
-                });
-
-                return showSettings;
+                return newStoryBoardCommand;
             }
         }
 
@@ -208,6 +205,18 @@ namespace DmxController.ViewModels
                     p => ChangePageViewModel((IPageViewModel)p),
                     p => p is IPageViewModel
             );
+
+            newStoryBoardCommand = new RelayCommand<object>((o) =>
+            {
+                NewStoryBoardView v = new NewStoryBoardView();
+                if (v.ShowDialog() == true)
+                {
+                    ChangePageViewModel(PageViewModels[2]);
+                    StoryBoardViewModel vm = (PageViewModels[2] as StoryBoardViewModel);
+                    vm.StoryBoardName = (v.DataContext as NewStoryBoardViewModel).StoryBoardName;
+                    MessageBox.Show("Nouvelle story board");
+                }
+            });
         }
     }
 }

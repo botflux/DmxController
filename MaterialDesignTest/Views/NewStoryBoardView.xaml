@@ -1,0 +1,32 @@
+﻿<Window x:Class="DmxController.Views.NewStoryBoardView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DmxController.Views"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        xmlns:viewmodels="clr-namespace:DmxController.ViewModels"
+        viewmodels:DialogCloser.DialogResult="{Binding DialogResult}"
+        ResizeMode="NoResize"
+        Title="Nouvelle story board" SizeToContent="WidthAndHeight">
+    <Window.DataContext>
+        <viewmodels:NewStoryBoardViewModel />
+    </Window.DataContext>
+    <StackPanel>
+        <Label Content="Nouvelle story board" HorizontalAlignment="Center" Margin="20" />
+        <Label Content="Nom" Margin="8 0 8 0" />
+        <TextBox Margin="8 0 8 0" />
+
+        <Button Margin="16" Content="Créer"
+                Command="{Binding ValidDialogCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"  />
+    </StackPanel>
+</Window>
