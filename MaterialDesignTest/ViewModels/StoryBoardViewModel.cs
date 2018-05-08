@@ -62,6 +62,8 @@ namespace DmxController.ViewModels
         /// Le nom de la story board
         /// </summary>
         private string storyBoardName;
+
+        private bool currentElementState;
         #endregion
 
         #region Properties
@@ -96,7 +98,25 @@ namespace DmxController.ViewModels
                     currentElement = value;
                     NotifyProperty();
                     NotifyProperty("Story");
+                    NotifyProperty("CurrentElementIsNull");
+                    NotifyProperty("CurrentElementIsNotNull");
                 }
+            }
+        }
+
+        public Visibility CurrentElementIsNull
+        {
+            get
+            {
+                return (currentElement == null)? Visibility.Visible : Visibility.Hidden;
+            }
+        }
+
+        public Visibility CurrentElementIsNotNull
+        {
+            get
+            {
+                return (currentElement != null) ? Visibility.Visible : Visibility.Hidden;
             }
         }
 
@@ -233,7 +253,8 @@ namespace DmxController.ViewModels
                     }
                     else
                     {
-                        CurrentElement = new StoryBoardElement() { R = 100, G = 100, B = 100, Time = 1 };
+                        //CurrentElement = new StoryBoardElement() { R = 100, G = 100, B = 100, Time = 1 };
+                        CurrentElement = null;
                     }
                 }
             });

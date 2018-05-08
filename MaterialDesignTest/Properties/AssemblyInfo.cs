@@ -8,7 +8,7 @@ using System.Windows;
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
 [assembly: AssemblyTitle("DmxController")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Une application de gestion d'éléments lumineux")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("DmxController")]

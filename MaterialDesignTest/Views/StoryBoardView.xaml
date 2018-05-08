@@ -47,8 +47,15 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <!-- Changement couleurs -->
-        
-        <Grid Grid.Row="1" Margin="16">
+
+        <Grid Grid.Row="1" Margin="16" 
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              Visibility="{Binding CurrentElementIsNull}">
+            <TextBlock Text="Choisissez un élément"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="16" Visibility="{Binding CurrentElementIsNotNull}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
