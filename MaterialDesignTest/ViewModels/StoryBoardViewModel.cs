@@ -14,6 +14,8 @@ using VPackage.Json;
 using DmxController.Common.Json;
 using VPackage.Network;
 using DmxController.Common.Network;
+using VPackage.Files;
+using DmxController.Common.Files;
 
 namespace DmxController.ViewModels
 {
@@ -48,6 +50,10 @@ namespace DmxController.ViewModels
         /// Représente la commande servant à envoyer la story board au serveur
         /// </summary>
         private ICommand sendStoryBoardCommand;
+        /// <summary>
+        /// Réprésente la commande servant à sauvegarder la story board en cours
+        /// </summary>
+        private ICommand saveStoryBoardCommand;
         /// <summary>
         /// Représente la story board
         /// </summary>
@@ -126,6 +132,14 @@ namespace DmxController.ViewModels
             }
         }
 
+        public ICommand SaveStoryBoardCommand
+        {
+            get
+            {
+                return saveStoryBoardCommand;
+            }
+        }
+
         public List<IModuleViewModel> LeftModules
         {
             get
@@ -164,6 +178,8 @@ namespace DmxController.ViewModels
                 storyBoardName = value;
             }
         }
+
+
         #endregion
 
         #region Constructors
@@ -207,6 +223,11 @@ namespace DmxController.ViewModels
             {
                 //UtilityProvider.Current.NetManager.Send(PacketHandler.ConstructStoryBoardPacket(story.ToArray(), "PROJO", 1, "Story board 1"));
                 NetworkHandler.Current.Manager.Send(JsonHandler.ConstructStoryBoardPacket(story.ToArray(), "PROJO", 1, "Story board 1"));
+            });
+
+            saveStoryBoardCommand = new RelayCommand<object>((o) => 
+            {
+                FilesHandler.Current.SaveStoryBoard(storyBoardName, story.ToArray());
             });
         }
 

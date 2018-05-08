@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using VPackage.Json;
 
 namespace DmxController.Common.Json
@@ -75,6 +76,28 @@ namespace DmxController.Common.Json
             }
 
             return list.ToArray();
+        }
+
+        public static string ConstructStoryBoardSave(string storyBoardName, StoryBoardElement[] storyBoardElements)
+        {
+
+            return JSONSerializer.Serialize<StoryBaordSave>(new StoryBaordSave()
+            {
+                Elements = storyBoardElements,
+                Name = storyBoardName
+            });
+        }
+
+        [DataContract]
+        public class StoryBaordSave
+        {
+            [DataMember]
+            private string name;
+            [DataMember]
+            private StoryBoardElement[] elements;
+
+            public StoryBoardElement[] Elements { get => elements; set => elements = value; }
+            public string Name { get => name; set => name = value; }
         }
 
         [DataContract]

@@ -92,9 +92,6 @@
     <Reference Include="VPackage.Network">
       <HintPath>..\..\DMXLibrairies\VPackage.Network\bin\Debug\VPackage.Network.dll</HintPath>
     </Reference>
-    <Reference Include="VPackage.Parser">
-      <HintPath>..\..\DMXLibrairies\VPackage.Parser\bin\Debug\VPackage.Parser.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />

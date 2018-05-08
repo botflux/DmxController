@@ -9,6 +9,7 @@ using VPackage.Files;
 using VPackage.Json;
 using System.Windows;
 using DmxController.Common.Json;
+using DmxController.StoryBoards;
 
 namespace DmxController.Common.Files
 {
@@ -71,6 +72,13 @@ namespace DmxController.Common.Files
         {
             FileManager.Write(settingsPath, JSONSerializer.Serialize<JsonHandler.ConfigurationPacket>(conf), FileManager.WriteOptions.CreateDirectory);
             OnConfigurationChanged();
+        }
+
+        public void SaveStoryBoard(string storyBoardName, StoryBoardElement[] storyBoardElements)
+        {
+            MessageBox.Show(storyBoardPath + storyBoardName);
+            string json = JsonHandler.ConstructStoryBoardSave(storyBoardName, storyBoardElements);
+            FileManager.Write(storyBoardPath + storyBoardName, json, FileManager.WriteOptions.CreateDirectory);
         }
     }
 }

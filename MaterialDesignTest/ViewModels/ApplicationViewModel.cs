@@ -214,7 +214,6 @@ namespace DmxController.ViewModels
                     ChangePageViewModel(PageViewModels[2]);
                     StoryBoardViewModel vm = (PageViewModels[2] as StoryBoardViewModel);
                     vm.StoryBoardName = (v.DataContext as NewStoryBoardViewModel).StoryBoardName;
-                    MessageBox.Show("Nouvelle story board");
                 }
             });
         }
