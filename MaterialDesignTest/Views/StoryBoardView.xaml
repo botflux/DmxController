@@ -47,6 +47,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <!-- Changement couleurs -->
+        
         <Grid Grid.Row="1" Margin="16">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />

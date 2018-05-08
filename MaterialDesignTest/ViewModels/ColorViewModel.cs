@@ -200,9 +200,9 @@ namespace DmxController.ViewModels
         {
             get
             {
-                if (sendColor == null) sendColor = new RelayCommand<Color>((currentColor) =>
+                if (sendColor == null) sendColor = new RelayCommand<object>((o) =>
                 {
-                    string frame = JsonHandler.ConstructColorPacket(currentColor.R, currentColor.G, currentColor.B, 255, "PROJO", 1);
+                    string frame = JsonHandler.ConstructColorPacket(R, G, B, 255, "PROJO", 1);
 
                     MessageBox.Show(string.Format("{0}: {1}", frame.Length, frame));
 

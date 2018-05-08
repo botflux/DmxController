@@ -199,7 +199,7 @@ namespace DmxController.ViewModels
         {
             get
             {
-                return new RelayCommand<object>((o) => { MessageBox.Show("Rien à sauvagarder"); });
+                return sendStoryBoardCommand;
             }
         }
 
@@ -207,7 +207,7 @@ namespace DmxController.ViewModels
         {
             get
             {
-                return new RelayCommand<object>((o) => { MessageBox.Show("Rien à sauvagarder"); });
+                return sendStoryBoardCommand;
             }
         }
 
