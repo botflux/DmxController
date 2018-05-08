@@ -98,12 +98,16 @@
                         <materialDesign:PackIcon Kind="FileFind" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Sauvegarder">
+                <MenuItem Header="Sauvegarder"
+                          Command="{Binding CurrentPageViewModel.SaveCommand}"
+                          CommandParameter="{x:Null}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="ContentSave" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Sauvegarder sous...">
+                <MenuItem Header="Sauvegarder sous..."
+                          Command="{Binding CurrentPageViewModel.SaveUnderCommand}"
+                          CommandParameter="{x:Null}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="ContentSaveOutline" />
                     </MenuItem.Icon>
@@ -130,13 +134,17 @@
             </MenuItem>
 
             <MenuItem Header="Trasmission">
-                <MenuItem Header="Envoyer">
+                <MenuItem Header="Envoyer"
+                          Command="{Binding CurrentPageViewModel.Send}"
+                          CommandParameter="{x:Null}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Send" />
                     </MenuItem.Icon>
                 </MenuItem>
 
-                <MenuItem Header="Envoyer vers...">
+                <MenuItem Header="Envoyer vers..."
+                          Command="{Binding CurrentPageViewModel.SendTo}"
+                          CommandParameter="{x:Null}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Send" />
                     </MenuItem.Icon>

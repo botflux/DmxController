@@ -26,14 +26,6 @@ namespace DmxController.ViewModels
             }
         }
 
-        public string Name
-        {
-            get
-            {
-                return "NewStoryBoard";
-            }
-        }
-
         public List<IModuleViewModel> RightModules
         {
             get
@@ -66,6 +58,14 @@ namespace DmxController.ViewModels
                 return validDialogCommand;
             }
         }
+
+        public ICommand SaveCommand => throw new NotImplementedException();
+
+        public ICommand SaveUnderCommand => throw new NotImplementedException();
+
+        public ICommand Send => throw new NotImplementedException();
+
+        public ICommand SendTo => throw new NotImplementedException();
         #endregion
 
         public NewStoryBoardViewModel ()

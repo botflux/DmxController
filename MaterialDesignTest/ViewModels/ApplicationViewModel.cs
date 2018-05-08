@@ -35,14 +35,6 @@ namespace DmxController.ViewModels
         #endregion
 
         #region Propreties / Commands
-        public string Name
-        {
-            get
-            {
-                return "Application";
-            }
-        }
-
         public ICommand CloseApplication
         {
             get
@@ -172,6 +164,14 @@ namespace DmxController.ViewModels
                 return newStoryBoardCommand;
             }
         }
+
+        public ICommand SaveCommand => throw new NotImplementedException();
+
+        public ICommand SaveUnderCommand => throw new NotImplementedException();
+
+        public ICommand Send => throw new NotImplementedException();
+
+        public ICommand SendTo => throw new NotImplementedException();
 
         #endregion
 

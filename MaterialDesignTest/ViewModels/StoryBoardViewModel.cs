@@ -179,6 +179,38 @@ namespace DmxController.ViewModels
             }
         }
 
+        public ICommand SaveCommand
+        {
+            get
+            {
+                return new RelayCommand<object>((o) => { MessageBox.Show("Rien à sauvagarder"); });
+            }
+        }
+
+        public ICommand SaveUnderCommand
+        {
+            get
+            {
+                return new RelayCommand<object>((o) => { MessageBox.Show("Rien à sauvagarder"); });
+            }
+        }
+
+        public ICommand Send
+        {
+            get
+            {
+                return new RelayCommand<object>((o) => { MessageBox.Show("Rien à sauvagarder"); });
+            }
+        }
+
+        public ICommand SendTo
+        {
+            get
+            {
+                return new RelayCommand<object>((o) => { MessageBox.Show("Rien à sauvagarder"); });
+            }
+        }
+
 
         #endregion
 

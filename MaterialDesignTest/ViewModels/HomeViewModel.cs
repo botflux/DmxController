@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace DmxController.ViewModels
 {
@@ -12,6 +14,8 @@ namespace DmxController.ViewModels
     /// </summary>
     public class HomeViewModel : ViewModel, IPageViewModel
     {
+
+        #region Properties / Commands
         /// <summary>
         /// Renvoie les modules nécessaire à HomeViewModel pour fonctionner.
         /// </summary>
@@ -20,17 +24,6 @@ namespace DmxController.ViewModels
             get
             {
                 return new List<IModuleViewModel>();
-            }
-        }
-
-        /// <summary>
-        /// Renvoie le nom de ViewModel.
-        /// </summary>
-        public string Name
-        {
-            get
-            {
-                return "Home";
             }
         }
 
@@ -45,5 +38,38 @@ namespace DmxController.ViewModels
             }
            
         }
+
+        public ICommand SaveCommand
+        {
+            get
+            {
+                return new RelayCommand<object>((o) => { MessageBox.Show("Rien à sauvagarder"); });
+            }
+        }
+
+        public ICommand SaveUnderCommand
+        {
+            get
+            {
+                return new RelayCommand<object>((o) => { MessageBox.Show("Rien à sauvagarder"); });
+            }
+        }
+
+        public ICommand Send
+        {
+            get
+            {
+                return new RelayCommand<object>((o) => { MessageBox.Show("Rien à envoyer"); });
+            }
+        }
+
+        public ICommand SendTo
+        {
+            get
+            {
+                return new RelayCommand<object>((o) => { MessageBox.Show("Rien à envoyer"); });
+            }
+        }
+        #endregion
     }
 }

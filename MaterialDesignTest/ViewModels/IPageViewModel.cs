@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace DmxController.ViewModels
 {
@@ -20,9 +21,9 @@ namespace DmxController.ViewModels
         /// </summary>
         List<IModuleViewModel> RightModules { get; }
 
-        /// <summary>
-        /// Renvoie le nom du ViewModel.
-        /// </summary>
-        string Name { get; }
+        ICommand SaveCommand { get; }
+        ICommand SaveUnderCommand { get; }
+        ICommand Send { get; }
+        ICommand SendTo { get; }
     }
 }

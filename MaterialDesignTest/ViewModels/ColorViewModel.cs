@@ -20,6 +20,7 @@ namespace DmxController.ViewModels
     /// </summary>
     public class ColorViewModel : ViewModel, IPageViewModel
     {
+        #region Fields
         /// <summary>
         /// La couleur renseigné par l'utilisateur.
         /// </summary>
@@ -47,6 +48,10 @@ namespace DmxController.ViewModels
         /// La commande qui sert à envoyer la couleur au serveur.
         /// </summary>
         private ICommand sendColor;
+
+        #endregion
+
+        #region Properties / Commands
 
         /// <summary>
         /// Renvoie ou renseigne la valeur de la couleur.
@@ -163,17 +168,7 @@ namespace DmxController.ViewModels
                 }
             }
         }
-
-        /// <summary>
-        /// Renvoie le nom de ce ViewModel
-        /// </summary>
-        public string Name
-        {
-            get
-            {
-                return "Color";
-            }
-        }
+        
 
         /// <summary>
         /// Renvoie les modules de droites utilisés par ce ViewModel.
@@ -201,7 +196,7 @@ namespace DmxController.ViewModels
         /// <summary>
         /// Renvoie la commande utilisé pour envoyer la couleur au serveur.
         /// </summary>
-        public ICommand SendColor
+        public ICommand Send
         {
             get
             {
@@ -218,6 +213,32 @@ namespace DmxController.ViewModels
                 return sendColor;
             }
         }
+
+        public ICommand SaveCommand
+        {
+            get
+            {
+                return new RelayCommand<object>((o) => { MessageBox.Show("Rien à sauvegarder"); });
+            }
+        }
+
+        public ICommand SaveUnderCommand
+        {
+            get
+            {
+                return new RelayCommand<object>((o) => { MessageBox.Show("Rien à sauvegarder"); });
+            }
+        }
+
+        public ICommand SendTo
+        {
+            get
+            {
+                return Send;
+            }
+        }
+
+        #endregion
 
         /// <summary>
         /// Renseigne la vue d'un changement dans le modèle
