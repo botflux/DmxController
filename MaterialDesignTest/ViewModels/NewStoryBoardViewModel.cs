@@ -111,5 +111,10 @@ namespace DmxController.ViewModels
                 DialogCloser.SetDialogResult(v, true);
             });
         }
+
+        public void Clear()
+        {
+            StoryBoardName = string.Empty;
+        }
     }
 }

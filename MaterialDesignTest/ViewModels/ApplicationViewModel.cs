@@ -220,11 +220,17 @@ namespace DmxController.ViewModels
 
 
             CurrentPageViewModel = PageViewModels.FirstOrDefault(vm => vm == viewModel);
+            CurrentPageViewModel.Clear();
         }
 
         protected override void NotifyProperty([CallerMemberName] string str = "")
         {
             base.NotifyProperty(str);
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
         }
         #endregion
 

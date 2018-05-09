@@ -76,7 +76,6 @@ namespace DmxController.Common.Files
 
         public void SaveStoryBoard(string storyBoardName, StoryBoardElement[] storyBoardElements)
         {
-            MessageBox.Show(storyBoardPath + storyBoardName);
             string json = JsonHandler.ConstructStoryBoardSave(storyBoardName, storyBoardElements);
             FileManager.Write(storyBoardPath + "\\" + storyBoardName + ".sb", json, FileManager.WriteOptions.CreateDirectory);
         }

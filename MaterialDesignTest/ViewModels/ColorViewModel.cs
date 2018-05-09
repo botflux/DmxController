@@ -250,6 +250,13 @@ namespace DmxController.ViewModels
             MainColor = Color.FromRgb(R, G, B);
         }
 
+        public void Clear()
+        {
+            R = 127;
+            G = 127;
+            B = 127;
+        }
+
         public ColorViewModel ()
         {
             RightModules.Add(new ColorBalanceModuleViewModel() { Parent = this });

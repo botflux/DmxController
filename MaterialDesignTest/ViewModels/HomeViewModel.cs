@@ -70,6 +70,11 @@ namespace DmxController.ViewModels
                 return new RelayCommand<object>((o) => { MessageBox.Show("Rien à envoyer"); });
             }
         }
+
+        public void Clear()
+        {
+
+        }
         #endregion
     }
 }

@@ -292,6 +292,13 @@ namespace DmxController.ViewModels
         {
             base.NotifyProperty(str);
         }
+
+        public void Clear()
+        {
+            Story.Clear();
+            StoryBoardName = string.Empty;
+            CurrentElement = null;
+        }
         #endregion
     }
 }
