@@ -39,7 +39,7 @@ namespace DmxController.ViewModels
         {
             get
             {
-                if (closeApplication == null) closeApplication = 
+                if (closeApplication == null) closeApplication =
                         new RelayCommand<ApplicationViewModel>((applicationViewModel) =>
                 {
                     Application.Current.Shutdown();
@@ -56,7 +56,7 @@ namespace DmxController.ViewModels
                 return changePageCommand;
             }
         }
-        
+
         public ICommand HandleLeftPanel
         {
             get
@@ -83,7 +83,7 @@ namespace DmxController.ViewModels
         {
             get
             {
-                if (handleRightPanel == null) handleRightPanel = new RelayCommand<ViewState>((state) => 
+                if (handleRightPanel == null) handleRightPanel = new RelayCommand<ViewState>((state) =>
                 {
                     state.RightPanelState = !state.RightPanelState;
 
@@ -165,13 +165,49 @@ namespace DmxController.ViewModels
             }
         }
 
-        public ICommand SaveCommand => throw new NotImplementedException();
+        public ICommand SaveCommand
+        {
+            get
+            {
+                return new RelayCommand<object>((o) => 
+                {
+                    throw new NotImplementedException();
+                });
+            }
+        }
 
-        public ICommand SaveUnderCommand => throw new NotImplementedException();
+        public ICommand SaveUnderCommand
+        {
+            get
+            {
+                return new RelayCommand<object>((o) =>
+                {
+                    throw new NotImplementedException();
+                });
+            }
+        }
 
-        public ICommand Send => throw new NotImplementedException();
+        public ICommand Send
+        {
+            get
+            {
+                return new RelayCommand<object>((o) =>
+                {
+                    throw new NotImplementedException();
+                });
+            }
+        }
 
-        public ICommand SendTo => throw new NotImplementedException();
+        public ICommand SendTo
+        {
+            get
+            {
+                return new RelayCommand<object>((o) =>
+                {
+                    throw new NotImplementedException();
+                });
+            }
+        }
 
         #endregion
 

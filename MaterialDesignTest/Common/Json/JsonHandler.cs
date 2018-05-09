@@ -12,13 +12,13 @@ namespace DmxController.Common.Json
 {
     public static class JsonHandler
     {
-        public static ConfigurationPacket ParseConfigurationPacket (string s)
+        public static ConfigurationPacket ParseConfigurationPacket(string s)
         {
             ConfigurationPacket c = JSONSerializer.Deserialize<ConfigurationPacket>(s);
             return c;
         }
 
-        public static string ConstructConfigurationPacket (ConfigurationPacket c)
+        public static string ConstructConfigurationPacket(ConfigurationPacket c)
         {
             return JSONSerializer.Serialize<ConfigurationPacket>(new ConfigurationPacket()
             {
@@ -30,7 +30,7 @@ namespace DmxController.Common.Json
             });
         }
 
-        public static string ConstructColorPacket (byte r, byte g, byte b, byte intensity,string target, int targetAddress)
+        public static string ConstructColorPacket(byte r, byte g, byte b, byte intensity, string target, int targetAddress)
         {
             return JSONSerializer.Serialize<ColorPacket>(new ColorPacket()
             {
@@ -58,7 +58,7 @@ namespace DmxController.Common.Json
             });
         }
 
-        private static StoryBoardPacket.StoryBoardHolder.StoryBoardElementPacket[] StoryBoardElementToStoryBoardElementPacket (StoryBoardElement[] elements, string target, int targetAddress)
+        private static StoryBoardPacket.StoryBoardHolder.StoryBoardElementPacket[] StoryBoardElementToStoryBoardElementPacket(StoryBoardElement[] elements, string target, int targetAddress)
         {
             List<StoryBoardPacket.StoryBoardHolder.StoryBoardElementPacket> list = new List<StoryBoardPacket.StoryBoardHolder.StoryBoardElementPacket>();
             foreach (StoryBoardElement e in elements)
@@ -96,14 +96,22 @@ namespace DmxController.Common.Json
             [DataMember]
             private StoryBoardElement[] elements;
 
-            public StoryBoardElement[] Elements { get => elements; set => elements = value; }
-            public string Name { get => name; set => name = value; }
+            public StoryBoardElement[] Elements
+            {
+                get { return elements; }
+                set { elements = value; }
+            }
+            public string Name
+            {
+                get { return name; }
+                set { name = value; }
+            }
         }
 
         [DataContract]
         public class ConfigurationPacket
         {
-            [DataMember (Name = "hostname", EmitDefaultValue = true)]
+            [DataMember(Name = "hostname", EmitDefaultValue = true)]
             private string hostname = "192.168.0.1";
             [DataMember(Name = "sendPort", EmitDefaultValue = true)]
             private int sendPort = 5000;
@@ -183,7 +191,7 @@ namespace DmxController.Common.Json
         [DataContract]
         private class StoryBoardPacket
         {
-            [DataMember (Name = "storyboard")]
+            [DataMember(Name = "storyboard")]
             private StoryBoardHolder holder;
 
             public StoryBoardHolder Holder
@@ -352,7 +360,7 @@ namespace DmxController.Common.Json
         [DataContract]
         private class ColorPacket
         {
-            [DataMember (Name = "couleur")]
+            [DataMember(Name = "couleur")]
             private ColorHolder holder;
 
             public ColorHolder Holder

@@ -59,13 +59,49 @@ namespace DmxController.ViewModels
             }
         }
 
-        public ICommand SaveCommand => throw new NotImplementedException();
+        public ICommand SaveCommand
+        {
+            get
+            {
+                return new RelayCommand<object>((o) =>
+                {
+                    throw new NotImplementedException();
+                });
+            }
+        }
 
-        public ICommand SaveUnderCommand => throw new NotImplementedException();
+        public ICommand SaveUnderCommand
+        {
+            get
+            {
+                return new RelayCommand<object>((o) =>
+                {
+                    throw new NotImplementedException();
+                });
+            }
+        }
 
-        public ICommand Send => throw new NotImplementedException();
+        public ICommand Send
+        {
+            get
+            {
+                return new RelayCommand<object>((o) =>
+                {
+                    throw new NotImplementedException();
+                });
+            }
+        }
 
-        public ICommand SendTo => throw new NotImplementedException();
+        public ICommand SendTo
+        {
+            get
+            {
+                return new RelayCommand<object>((o) =>
+                {
+                    throw new NotImplementedException();
+                });
+            }
+        }
         #endregion
 
         public NewStoryBoardViewModel ()

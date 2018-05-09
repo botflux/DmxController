@@ -27,8 +27,9 @@ namespace DmxController
 
             FilesHandler.Current.Initialize(storyBoardPath, settingsPath);
             JsonHandler.ConfigurationPacket configuration = FilesHandler.Current.GetConfiguration();
-            
-            NetworkHandler.Current.Initialize(configuration.Hostname, configuration.SendPort, configuration.ReceivePort);
+
+            //NetworkHandler.Current.Initialize(configuration.Hostname, configuration.SendPort, configuration.ReceivePort);
+            NetworkHandler.Current.Initialize("192.168.0.1", 5000, 15000);
             NetworkHandler.Current.Manager.OnMessageReceived += (message) =>
             {
                 MessageBox.Show(string.Format("Message reçu: {0}", message));

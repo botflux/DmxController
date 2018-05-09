@@ -23,7 +23,7 @@
     <StackPanel>
         <Label Content="Nouvelle story board" HorizontalAlignment="Center" Margin="20" />
         <Label Content="Nom" Margin="8 0 8 0" />
-        <TextBox Margin="8 0 8 0" />
+        <TextBox Margin="8 0 8 0" Text="{Binding StoryBoardName}" />
 
         <Button Margin="16" Content="Créer"
                 Command="{Binding ValidDialogCommand}"

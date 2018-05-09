@@ -196,6 +196,7 @@ namespace DmxController.ViewModels
             set
             {
                 storyBoardName = value;
+                MessageBox.Show(value);
             }
         }
 
@@ -280,7 +281,7 @@ namespace DmxController.ViewModels
 
             saveStoryBoardCommand = new RelayCommand<object>((o) => 
             {
-                FilesHandler.Current.SaveStoryBoard(storyBoardName, story.ToArray());
+                FilesHandler.Current.SaveStoryBoard(StoryBoardName, story.ToArray());
             });
         }
 
