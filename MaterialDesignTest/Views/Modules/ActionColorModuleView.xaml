@@ -16,6 +16,6 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel Margin="16">
         <Label Content="Actions" />
-        <Button Content="Envoyer" Command="{Binding Parent.SendColor}" CommandParameter="{Binding Parent.MainColor}" Margin="0 8 0 8" />
+        <Button Content="Envoyer" Command="{Binding Parent.Send}" CommandParameter="{Binding Parent.MainColor}" Margin="0 8 0 8" />
     </StackPanel>
 </UserControl>

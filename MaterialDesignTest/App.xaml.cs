@@ -29,7 +29,7 @@ namespace DmxController
             JsonHandler.ConfigurationPacket configuration = FilesHandler.Current.GetConfiguration();
 
             //NetworkHandler.Current.Initialize(configuration.Hostname, configuration.SendPort, configuration.ReceivePort);
-            NetworkHandler.Current.Initialize("192.168.0.1", 5000, 15000);
+            NetworkHandler.Current.Initialize("10.129.22.26", 5000, 15000);
             NetworkHandler.Current.Manager.OnMessageReceived += (message) =>
             {
                 MessageBox.Show(string.Format("Message reçu: {0}", message));
