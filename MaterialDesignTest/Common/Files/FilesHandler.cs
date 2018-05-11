@@ -74,10 +74,16 @@ namespace DmxController.Common.Files
             OnConfigurationChanged();
         }
 
-        public void SaveStoryBoard(string storyBoardName, StoryBoardElement[] storyBoardElements)
+        public void SaveStoryBoard(string storyBoardPath, StoryBoardElement[] storyBoardElements)
         {
-            string json = JsonHandler.ConstructStoryBoardSave(storyBoardName, storyBoardElements);
-            FileManager.Write(storyBoardPath + "\\" + storyBoardName + ".sb", json, FileManager.WriteOptions.CreateDirectory);
+            string json = JsonHandler.ConstructStoryBoardSave(storyBoardPath, storyBoardElements);
+            FileManager.Write(storyBoardPath, json, FileManager.WriteOptions.CreateDirectory);
+        }
+
+        public JsonHandler.StoryBaordSave OpenStoryBoard(string fileName)
+        {
+            string json = FileManager.Read(fileName);
+            return JsonHandler.ParseStoryBoard(json);
         }
     }
 }

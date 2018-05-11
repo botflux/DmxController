@@ -27,6 +27,14 @@ namespace DmxController.ViewModels
             }
         }
 
+        public ICommand OpenCommand
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         /// <summary>
         /// Renvoie les modules nécessaire à HomeViewModel pour fonctionner.
         /// </summary>

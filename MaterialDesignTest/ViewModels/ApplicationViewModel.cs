@@ -1,7 +1,11 @@
 ﻿
+using DmxController.Common.Files;
+using DmxController.Common.Json;
 using DmxController.Views;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -25,13 +29,12 @@ namespace DmxController.ViewModels
         private ICommand handleRightPanel;
 
         private ICommand newStoryBoardCommand;
-
+        private ICommand openCommand;
 
 
         private ICommand changePageCommand;
         private IPageViewModel currentPageViewModel;
         private List<IPageViewModel> pageViewModels;
-
         #endregion
 
         #region Propreties / Commands
@@ -206,6 +209,33 @@ namespace DmxController.ViewModels
                 {
                     throw new NotImplementedException();
                 });
+            }
+        }
+
+        public ICommand OpenCommand
+        {
+            get
+            {
+                if (openCommand == null)
+                {
+                    openCommand = new RelayCommand<object>((o) => 
+                    {
+                        OpenFileDialog dialog = new OpenFileDialog();
+                        dialog.FileName = "";
+                        dialog.DefaultExt = ".sb";
+                        dialog.Filter = "Story board file (.sb)|*.sb";
+                        if(dialog.ShowDialog() == true)
+                        {
+                            JsonHandler.StoryBaordSave save = FilesHandler.Current.OpenStoryBoard(dialog.FileName);
+                            ChangePageViewModel(PageViewModels[2]);
+                            (PageViewModels[2] as StoryBoardViewModel).Story = new System.Collections.ObjectModel.ObservableCollection<StoryBoards.StoryBoardElement>(save.Elements);
+                            (PageViewModels[2] as StoryBoardViewModel).StoryBoardName = Path.GetFileName(dialog.FileName);
+                            (PageViewModels[2] as StoryBoardViewModel).StoryBoardPath = dialog.FileName;
+                        }
+                    });
+                }
+
+                return openCommand;
             }
         }
 

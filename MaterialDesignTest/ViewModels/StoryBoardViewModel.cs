@@ -16,6 +16,8 @@ using VPackage.Network;
 using DmxController.Common.Network;
 using VPackage.Files;
 using DmxController.Common.Files;
+using Microsoft.Win32;
+using System.IO;
 
 namespace DmxController.ViewModels
 {
@@ -62,8 +64,10 @@ namespace DmxController.ViewModels
         /// Le nom de la story board
         /// </summary>
         private string storyBoardName;
-
-        private bool currentElementState;
+        /// <summary>
+        /// Le chemin sous lequel la story board est sauvegarder
+        /// </summary>
+        private string storyBoardPath;
         #endregion
 
         #region Properties
@@ -196,7 +200,6 @@ namespace DmxController.ViewModels
             set
             {
                 storyBoardName = value;
-                MessageBox.Show(value);
             }
         }
 
@@ -229,6 +232,27 @@ namespace DmxController.ViewModels
             get
             {
                 return sendStoryBoardCommand;
+            }
+        }
+
+        public ICommand OpenCommand
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public string StoryBoardPath
+        {
+            get
+            {
+                return storyBoardPath;
+            }
+
+            set
+            {
+                storyBoardPath = value;
             }
         }
 
@@ -281,7 +305,25 @@ namespace DmxController.ViewModels
 
             saveStoryBoardCommand = new RelayCommand<object>((o) => 
             {
-                FilesHandler.Current.SaveStoryBoard(StoryBoardName, story.ToArray());
+                if (string.IsNullOrEmpty(storyBoardPath))
+                {
+                    SaveFileDialog dialog = new SaveFileDialog();
+                    dialog.FileName = storyBoardName;
+                    dialog.DefaultExt = ".sb";
+                    dialog.Filter = "Story board file (.sb)|*.sb";
+
+                    if (dialog.ShowDialog() == true)
+                    {
+                        StoryBoardPath = dialog.FileName;
+                        StoryBoardName = Path.GetFileName(StoryBoardPath);
+                        FilesHandler.Current.SaveStoryBoard(dialog.FileName, story.ToArray());
+                    }
+                    
+                }
+                else
+                {
+                    FilesHandler.Current.SaveStoryBoard(StoryBoardPath, story.ToArray());
+                }
             });
         }
 

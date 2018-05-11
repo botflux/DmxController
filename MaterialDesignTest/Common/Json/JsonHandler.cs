@@ -78,6 +78,11 @@ namespace DmxController.Common.Json
             return list.ToArray();
         }
 
+        public static StoryBaordSave ParseStoryBoard(string json)
+        {
+            return JSONSerializer.Deserialize<StoryBaordSave>(json);
+        }
+
         public static string ConstructStoryBoardSave(string storyBoardName, StoryBoardElement[] storyBoardElements)
         {
 

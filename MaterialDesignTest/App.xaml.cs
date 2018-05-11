@@ -32,7 +32,14 @@ namespace DmxController
             NetworkHandler.Current.Initialize("10.129.22.26", 5000, 15000);
             NetworkHandler.Current.Manager.OnMessageReceived += (message) =>
             {
-                MessageBox.Show(string.Format("Message reçu: {0}", message));
+                try
+                {
+                    MessageBox.Show(string.Format("Message reçu: {0}", message));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             };
             NetworkHandler.Current.Manager.StartListening();
         }

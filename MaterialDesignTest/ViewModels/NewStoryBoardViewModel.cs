@@ -102,6 +102,14 @@ namespace DmxController.ViewModels
                 });
             }
         }
+
+        public ICommand OpenCommand
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
         #endregion
 
         public NewStoryBoardViewModel ()
