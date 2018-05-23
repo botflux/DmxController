@@ -18,6 +18,7 @@
              d:DesignHeight="300" d:DesignWidth="533">
     <UserControl.Resources>
         <converters:ColorBrushToColorConverter x:Key="colorBrushToColorConverter" />
+        <converters:VisibilityToBoolConverter x:Key="visibilityToBoolConverter" />
     </UserControl.Resources>
     <Grid>
 
@@ -27,8 +28,12 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Label Content="{Binding DisplayName}" Grid.Row="0" />
-
+        <Label Content="{Binding DisplayName}" />
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Label Content="{Binding DisplayName}" />
+            <Label Content="Pas sauvegardée" Visibility="{Binding HasChanges, Converter={StaticResource visibilityToBoolConverter}, Mode=OneWay}" />
+        </StackPanel>
+        
         <!-- Timeline --> 
         <ListBox Margin="8" Grid.Row="1" x:Name="timeline" ItemsSource="{Binding Story}" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto">
             <ie:Interaction.Triggers>

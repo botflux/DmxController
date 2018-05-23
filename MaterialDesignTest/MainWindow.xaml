@@ -49,6 +49,11 @@
             <moduleViews:StoryBoardElementActionView />
         </DataTemplate>
 
+
+        <DataTemplate DataType="{x:Type moduleViewModels:StoryBoardInformationModuleViewModel}">
+            <moduleViews:StoryBoardInformationModuleView />
+        </DataTemplate>
+
         <Storyboard x:Key="ShowLeftPanel">
             <local:GridLengthAnimation Storyboard.TargetName="col_left"
                                        Storyboard.TargetProperty="Width"

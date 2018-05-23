@@ -113,6 +113,7 @@
     <Compile Include="Common\Files\FilesHandler.cs" />
     <Compile Include="Common\Network\NetworkHandler.cs" />
     <Compile Include="Common\Json\JsonHandler.cs" />
+    <Compile Include="Converters\VisibilityToBoolConverter.cs" />
     <Compile Include="StoryBoards\StoryBoardElement.cs" />
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
     <Compile Include="Converters\ColorBrushToColorConverter.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="ViewModels\Modules\ColorBalanceModuleViewModel.cs" />
     <Compile Include="ViewModels\Modules\StoryBoardElementActionModuleViewModel.cs" />
     <Compile Include="ViewModels\Modules\StoryBoardElementModuleViewModel.cs" />
+    <Compile Include="ViewModels\Modules\StoryBoardInformationModuleViewModel.cs" />
     <Compile Include="ViewModels\NewStoryBoardViewModel.cs" />
     <Compile Include="ViewModels\StoryBoardViewModel.cs" />
     <Compile Include="ViewModels\TargetTypeEnum.cs" />
@@ -149,6 +151,9 @@
     </Compile>
     <Compile Include="Views\Modules\StoryBoardElementModuleView.xaml.cs">
       <DependentUpon>StoryBoardElementModuleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modules\StoryBoardInformationModuleView.xaml.cs">
+      <DependentUpon>StoryBoardInformationModuleView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NewStoryBoardView.xaml.cs">
       <DependentUpon>NewStoryBoardView.xaml</DependentUpon>
@@ -190,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Modules\StoryBoardElementModuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Modules\StoryBoardInformationModuleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

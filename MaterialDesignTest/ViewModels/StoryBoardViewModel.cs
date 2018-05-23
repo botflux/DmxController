@@ -68,6 +68,10 @@ namespace DmxController.ViewModels
         /// Le chemin sous lequel la story board est sauvegarder
         /// </summary>
         private string storyBoardPath;
+        /// <summary>
+        /// Renseigne si l'utilisateur a fait des changements sur la storyboard qui n'ont pas été sauvegarder
+        /// </summary>
+        private bool hasChanges;
         #endregion
 
         #region Properties
@@ -267,6 +271,23 @@ namespace DmxController.ViewModels
             }
         }
 
+        public bool HasChanges
+        {
+            get
+            {
+                return hasChanges;
+            }
+
+            set
+            {
+                if (hasChanges != value)
+                {
+                    hasChanges = value;
+                    NotifyProperty();
+                }
+            }
+        }
+
         #endregion
 
         #region Constructors
@@ -274,6 +295,7 @@ namespace DmxController.ViewModels
         {
             RightModules.Add(new StoryBoardElementModuleViewModel() { Parent = this });
             RightModules.Add(new StoryBoardElementActionModuleViewModel() { Parent = this });
+            LeftModules.Add(new StoryBoardInformationModuleViewModel() { Parent = this });
 
             Story = new ObservableCollection<StoryBoardElement>();
 
@@ -327,14 +349,21 @@ namespace DmxController.ViewModels
                         StoryBoardPath = dialog.FileName;
                         StoryBoardName = Path.GetFileName(StoryBoardPath);
                         FilesHandler.Current.SaveStoryBoard(dialog.FileName, story.ToArray());
+                        HasChanges = false;
                     }
                     
                 }
                 else
                 {
                     FilesHandler.Current.SaveStoryBoard(StoryBoardPath, story.ToArray());
+                    HasChanges = false;
                 }
             });
+
+            Story.CollectionChanged += (sender, e) =>
+            {
+                HasChanges = true;
+            };
         }
 
         #endregion
