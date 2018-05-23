@@ -30,6 +30,7 @@ namespace DmxController
 
             //NetworkHandler.Current.Initialize(configuration.Hostname, configuration.SendPort, configuration.ReceivePort);
             NetworkHandler.Current.Initialize("10.129.22.26", 5000, 15000);
+            NetworkHandler.Current.Manager.Mtu = 10;
             NetworkHandler.Current.Manager.OnMessageReceived += (message) =>
             {
                 try

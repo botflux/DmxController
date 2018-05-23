@@ -207,7 +207,7 @@ namespace DmxController.ViewModels
                     MessageBox.Show(string.Format("{0}: {1}", frame.Length, frame));
 
                     //UtilityProvider.Current.NetManager.Send(frame);
-                    NetworkHandler.Current.Manager.Send(frame);
+                    NetworkHandler.Current.Manager.SendFragmented(frame);
                 });
 
                 return sendColor;
