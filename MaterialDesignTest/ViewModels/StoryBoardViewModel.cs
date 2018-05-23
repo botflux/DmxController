@@ -173,14 +173,6 @@ namespace DmxController.ViewModels
             }
         }
 
-        public string Name
-        {
-            get
-            {
-                return "StoryBoard";
-            }
-        }
-
         public List<IModuleViewModel> RightModules
         {
             get
@@ -199,7 +191,13 @@ namespace DmxController.ViewModels
 
             set
             {
-                storyBoardName = value;
+                if (storyBoardName != value)
+                {
+                    storyBoardName = value;
+                    NotifyProperty();
+
+                    NotifyProperty("DisplayName");
+                }
             }
         }
 
@@ -252,10 +250,22 @@ namespace DmxController.ViewModels
 
             set
             {
-                storyBoardPath = value;
+                if (storyBoardPath != value)
+                {
+                    storyBoardPath = value;
+                    NotifyProperty();
+                    NotifyProperty("DisplayName");
+                }
             }
         }
 
+        public string DisplayName
+        {
+            get
+            {
+                return (string.IsNullOrEmpty(storyBoardPath)) ? storyBoardName : storyBoardPath;
+            }
+        }
 
         #endregion
 
@@ -340,6 +350,7 @@ namespace DmxController.ViewModels
             Story.Clear();
             StoryBoardName = string.Empty;
             CurrentElement = null;
+            StoryBoardPath = string.Empty;
         }
         #endregion
     }

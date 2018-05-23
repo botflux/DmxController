@@ -22,11 +22,15 @@
     <Grid>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height=".09*" />
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <!-- Timeline -->
-        <ListBox Margin="8" x:Name="timeline" ItemsSource="{Binding Story}" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+
+        <Label Content="{Binding DisplayName}" Grid.Row="0" />
+
+        <!-- Timeline --> 
+        <ListBox Margin="8" Grid.Row="1" x:Name="timeline" ItemsSource="{Binding Story}" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto">
             <ie:Interaction.Triggers>
                 <ie:EventTrigger EventName="SelectionChanged">
                     <ie:InvokeCommandAction Command="{Binding ChangeStoryBoardElementCommand}" CommandParameter="{Binding ElementName=timeline, Path=SelectedItem}" />
@@ -48,14 +52,14 @@
         </ListBox>
         <!-- Changement couleurs -->
 
-        <Grid Grid.Row="1" Margin="16" 
+        <Grid Grid.Row="2" Margin="16" 
               HorizontalAlignment="Center"
               VerticalAlignment="Center"
               Visibility="{Binding CurrentElementIsNull}">
             <TextBlock Text="Choisissez un élément"/>
         </Grid>
 
-        <Grid Grid.Row="1" Margin="16" Visibility="{Binding CurrentElementIsNotNull}">
+        <Grid Grid.Row="2" Margin="16" Visibility="{Binding CurrentElementIsNotNull}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />

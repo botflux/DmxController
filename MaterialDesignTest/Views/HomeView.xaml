@@ -29,8 +29,8 @@
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Ouvrir fichier" 
-                      Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-                      CommandParameter="{Binding DataContext.PageViewModels[2], RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                      Command="{Binding DataContext.OpenCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                      CommandParameter="{x:Null}">
                 <MenuItem.Icon>
                     <materialDesign:PackIcon Kind="FileFind" />
                 </MenuItem.Icon>
