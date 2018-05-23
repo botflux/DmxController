@@ -72,6 +72,10 @@ namespace DmxController.ViewModels
         /// Renseigne si l'utilisateur a fait des changements sur la storyboard qui n'ont pas été sauvegarder
         /// </summary>
         private bool hasChanges;
+        /// <summary>
+        /// Nombre d'élément dans la storyboard
+        /// </summary>
+        private int elementCount;
         #endregion
 
         #region Properties
@@ -88,6 +92,8 @@ namespace DmxController.ViewModels
                 {
                     story = value;
                     NotifyProperty();
+                    ElementCount = story.Count;
+                    story.CollectionChanged += Story_CollectionChanged;
                 }
             }
         }
@@ -288,6 +294,23 @@ namespace DmxController.ViewModels
             }
         }
 
+        public int ElementCount
+        {
+            get
+            {
+                return elementCount;
+            }
+
+            set
+            {
+                if (elementCount != value)
+                {
+                    elementCount = value;
+                    NotifyProperty();
+                }
+            }
+        }
+
         #endregion
 
         #region Constructors
@@ -359,16 +382,13 @@ namespace DmxController.ViewModels
                     HasChanges = false;
                 }
             });
-
-            Story.CollectionChanged += (sender, e) =>
-            {
-                HasChanges = true;
-            };
         }
 
         #endregion
 
         #region Methods
+
+
         protected override void NotifyProperty([CallerMemberName] string str = "")
         {
             base.NotifyProperty(str);
@@ -380,6 +400,13 @@ namespace DmxController.ViewModels
             StoryBoardName = string.Empty;
             CurrentElement = null;
             StoryBoardPath = string.Empty;
+            ElementCount = 0;
+        }
+
+        private void Story_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            HasChanges = true;
+            ElementCount = story.Count;
         }
         #endregion
     }

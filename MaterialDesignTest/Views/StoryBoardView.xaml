@@ -31,7 +31,7 @@
         <Label Content="{Binding DisplayName}" />
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Label Content="{Binding DisplayName}" />
-            <Label Content="Pas sauvegardée" Visibility="{Binding HasChanges, Converter={StaticResource visibilityToBoolConverter}, Mode=OneWay}" />
+            <Label Content="[Pas sauvegardée]" FontStyle="Italic" Visibility="{Binding HasChanges, Converter={StaticResource visibilityToBoolConverter}, Mode=OneWay}" />
         </StackPanel>
         
         <!-- Timeline --> 

@@ -22,5 +22,8 @@
 
         <Label Content="Chemin de la storyboard" FontSize="9" />
         <TextBox Text="{Binding Parent.StoryBoardPath}" IsReadOnly="True" Margin="0 0 0 8" />
+        
+        <Label Content="Nombre d'éléments" FontSize="9" />
+        <TextBox Text="{Binding Parent.ElementCount, Mode=OneWay}" IsReadOnly="True" Margin="0 0 0 8" />
     </StackPanel>
 </UserControl>
