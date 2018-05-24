@@ -1,4 +1,5 @@
-﻿using DmxController.Common.Files;
+﻿using DmxController.Common.Configurations;
+using DmxController.Common.Files;
 using DmxController.Common.Json;
 using DmxController.Common.Network;
 using System;
@@ -26,10 +27,14 @@ namespace DmxController
             settingsPath = AppDomain.CurrentDomain.BaseDirectory + @"settings\settings.json";
 
             FilesHandler.Current.Initialize(storyBoardPath, settingsPath);
-            JsonHandler.ConfigurationPacket configuration = FilesHandler.Current.GetConfiguration();
-
+            FilesHandler.Current.ConfigurationChanged += () => 
+            {
+                MessageBox.Show("Redémarrez l'application pour que les changements de la configuration soient pris en compte.");
+            };
+            Configuration configuration = FilesHandler.Current.OpenConfiguration();
             //NetworkHandler.Current.Initialize(configuration.Hostname, configuration.SendPort, configuration.ReceivePort);
-            NetworkHandler.Current.Initialize("10.129.22.26", 5000, 15000);
+            //NetworkHandler.Current.Initialize("10.129.22.26", 5000, 15000);
+            NetworkHandler.Current.Initialize(configuration.Hostname, configuration.SendPort, configuration.ReceivePort);
             //NetworkHandler.Current.Manager.Mtu = 10;
             NetworkHandler.Current.Manager.OnMessageReceived += (message) =>
             {

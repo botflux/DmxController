@@ -1,4 +1,6 @@
 ﻿using DmxController.Common.Configurations;
+using DmxController.Common.Files;
+using DmxController.Common.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -114,6 +116,12 @@ namespace DmxController.ViewModels
 
         public ConfigurationViewModel ()
         {
+            Configuration configuration = JsonHandler.ParseConfigurationPacket(JsonHandler.ConstructConfigurationPacket(FilesHandler.Current.CurrentConfiguration));
+            Hostname = configuration.Hostname;
+            LightAddress = configuration.LightAddress;
+            ReceivePort = configuration.ReceivePort;
+            SendPort = configuration.SendPort;
+
             validateDialogCommand = new RelayCommand<Window>((o) => 
             {
                 DialogCloser.SetDialogResult(o, true);

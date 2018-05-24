@@ -306,7 +306,7 @@ namespace DmxController.ViewModels
                 if (res == true)
                 {
                     Configuration configuration = ConfigurationViewModel.GetConfiguration((ConfigurationViewModel)configurationView.DataContext);
-                    MessageBox.Show(configuration.Hostname);
+                    FilesHandler.Current.SaveConfiguration(configuration);
                 }
             });
         }
