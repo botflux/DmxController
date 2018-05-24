@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using DmxController.ViewModels;
 
 namespace DmxController.StoryBoards
 {
@@ -18,10 +19,11 @@ namespace DmxController.StoryBoards
         private double time;
 
         public event PropertyChangedEventHandler PropertyChanged;
-
+        
         public void NotifyProperty ([CallerMemberName] string str = "")
         {
             if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(str));
+            
         }
 
         public Color RedBalance

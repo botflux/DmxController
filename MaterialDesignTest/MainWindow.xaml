@@ -90,22 +90,22 @@
                 <DropShadowEffect ShadowDepth="1" Opacity="0.5" />
             </Menu.Effect>
 
-            <MenuItem Header="Fichier">
-                <MenuItem Header="Nouveau"
+            <MenuItem Header="_Fichier">
+                <MenuItem Header="_Nouveau"
                           Command="{Binding DataContext.NewStoryBoardCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                           CommandParameter="{x:Null}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="File" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Ouvrir"
+                <MenuItem Header="_Ouvrir"
                           Command="{Binding DataContext.OpenCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                           CommandParameter="{x:Null}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="FileFind" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Sauvegarder"
+                <MenuItem Header="_Sauvegarder"
                           Command="{Binding CurrentPageViewModel.SaveCommand}"
                           CommandParameter="{x:Null}">
                     <MenuItem.Icon>
@@ -127,7 +127,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator />
-                <MenuItem Header="Options">
+                <MenuItem Header="_Options">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Settings" />
                     </MenuItem.Icon>
@@ -140,8 +140,8 @@
                 </MenuItem>
             </MenuItem>
 
-            <MenuItem Header="Trasmission">
-                <MenuItem Header="Envoyer"
+            <MenuItem Header="_Trasmission">
+                <MenuItem Header="_Envoyer"
                           Command="{Binding CurrentPageViewModel.Send}"
                           CommandParameter="{x:Null}">
                     <MenuItem.Icon>
@@ -159,21 +159,21 @@
 
                 <Separator />
 
-                <MenuItem Header="Options">
+                <MenuItem Header="_Options">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Settings" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
 
-            <MenuItem Header="Affichage">
-                <MenuItem Header="Afficher panneau de gauche" Command="{Binding DataContext.HandleLeftPanel, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding DataContext.ApplicationViewState, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+            <MenuItem Header="_Affichage">
+                <MenuItem Header="Afficher panneau de _gauche" Command="{Binding DataContext.HandleLeftPanel, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding DataContext.ApplicationViewState, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="PageLayoutSidebarLeft" />
                     </MenuItem.Icon>
                 </MenuItem>
 
-                <MenuItem Header="Afficher panneau de droite" Command="{Binding DataContext.HandleRightPanel, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding DataContext.ApplicationViewState, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                <MenuItem Header="Afficher panneau de _droite" Command="{Binding DataContext.HandleRightPanel, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding DataContext.ApplicationViewState, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="PageLayoutSidebarRight" />
                     </MenuItem.Icon>
@@ -181,7 +181,7 @@
             </MenuItem>
 
             <MenuItem Header="Aide">
-                <MenuItem Header="A propos">
+                <MenuItem Header="_A propos">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Information" />
                     </MenuItem.Icon>
