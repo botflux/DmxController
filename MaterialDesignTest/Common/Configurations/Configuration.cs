@@ -1,17 +1,13 @@
-﻿using DmxController.Common.Configurations;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
 
-namespace DmxController.ViewModels
+namespace DmxController.Common.Configurations
 {
-    public class ConfigurationViewModel : ViewModel
+    public class Configuration
     {
-        #region Fields
         /// <summary>
         /// Port d'envoie
         /// </summary>
@@ -28,13 +24,7 @@ namespace DmxController.ViewModels
         /// Adresse de lumière à commander
         /// </summary>
         private int lightAddress;
-        /// <summary>
-        /// Valide le dialogue
-        /// </summary>
-        private ICommand validateDialogCommand;
-        #endregion
 
-        #region Properties / Commands
         public int SendPort
         {
             get
@@ -47,7 +37,6 @@ namespace DmxController.ViewModels
                 if (sendPort != value)
                 {
                     sendPort = value;
-                    NotifyProperty();
                 }
             }
         }
@@ -64,7 +53,6 @@ namespace DmxController.ViewModels
                 if (receivePort != value)
                 {
                     receivePort = value;
-                    NotifyProperty();
                 }
             }
         }
@@ -82,7 +70,6 @@ namespace DmxController.ViewModels
                 {
 
                     hostname = value;
-                    NotifyProperty();
                 }
             }
         }
@@ -100,39 +87,8 @@ namespace DmxController.ViewModels
                 {
 
                     lightAddress = value;
-                    NotifyProperty();
                 }
             }
         }
-
-        public ICommand ValidateDialogCommand {
-            get { return validateDialogCommand; }
-        }
-        #endregion
-
-        #region Constructors
-
-        public ConfigurationViewModel ()
-        {
-            validateDialogCommand = new RelayCommand<Window>((o) => 
-            {
-                DialogCloser.SetDialogResult(o, true);
-            });
-        }
-
-        #endregion
-
-        #region Methods
-        public static Configuration GetConfiguration (ConfigurationViewModel vm)
-        {
-            return new Configuration()
-            {
-                Hostname = vm.Hostname,
-                LightAddress = vm.LightAddress,
-                ReceivePort = vm.ReceivePort,
-                SendPort = vm.SendPort
-            };
-        }
-        #endregion
     }
 }

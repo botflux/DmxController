@@ -14,7 +14,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         mc:Ignorable="d"
-        Title="Configuration" Height="350" Width="300" ResizeMode="NoResize">
+        Title="Configuration" Height="400" Width="300" ResizeMode="NoResize">
     <Window.DataContext>
         <viewModel:ConfigurationViewModel />
     </Window.DataContext>
@@ -22,16 +22,22 @@
         <Label Content="Réseau" Margin="0 0 0 8" />
 
         <Label Content="Nom d'hôte" FontSize="9" />
-        <TextBox Margin="0 0 0 8" />
+        <TextBox Margin="0 0 0 8" Text="{Binding Hostname}" />
 
         <Label Content="Port envoie" FontSize="9" />
-        <TextBox Margin="0 0 0 8" />
+        <TextBox Margin="0 0 0 8" Text="{Binding SendPort}" />
 
         <Label Content="Port reception" FontSize="9" />
-        <TextBox Margin="0 0 0 16" />
+        <TextBox Margin="0 0 0 16" Text="{Binding ReceivePort}" />
 
         <Label Content="Source" Margin="0 0 0 8" />
         <Label Content="Adresse élément" FontSize="9" />
-        <TextBox Margin="0 0 0 8" />
+        <TextBox Margin="0 0 0 8" Text="{Binding LightAddress}" />
+
+        <Button Content="Valider"
+                Margin="8" 
+                Command="{Binding DataContext.ValidateDialogCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" 
+        />
     </StackPanel>
 </Window>

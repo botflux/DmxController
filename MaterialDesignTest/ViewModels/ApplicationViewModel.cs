@@ -1,4 +1,5 @@
 ﻿
+using DmxController.Common.Configurations;
 using DmxController.Common.Files;
 using DmxController.Common.Json;
 using DmxController.Views;
@@ -31,6 +32,7 @@ namespace DmxController.ViewModels
         private ICommand newStoryBoardCommand;
         private ICommand openCommand;
 
+        private ICommand changeConfigurationCommand;
 
         private ICommand changePageCommand;
         private IPageViewModel currentPageViewModel;
@@ -239,6 +241,14 @@ namespace DmxController.ViewModels
             }
         }
 
+        public ICommand ChangeConfigurationCommand
+        {
+            get
+            {
+                return changeConfigurationCommand;
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -286,6 +296,17 @@ namespace DmxController.ViewModels
                     ChangePageViewModel(PageViewModels[2]);
                     StoryBoardViewModel vm = (PageViewModels[2] as StoryBoardViewModel);
                     vm.StoryBoardName = (v.DataContext as NewStoryBoardViewModel).StoryBoardName;
+                }
+            });
+
+            changeConfigurationCommand = new RelayCommand<object>((o) =>
+            {
+                ConfigurationView configurationView = new ConfigurationView();
+                bool? res = configurationView.ShowDialog();
+                if (res == true)
+                {
+                    Configuration configuration = ConfigurationViewModel.GetConfiguration((ConfigurationViewModel)configurationView.DataContext);
+                    MessageBox.Show(configuration.Hostname);
                 }
             });
         }
