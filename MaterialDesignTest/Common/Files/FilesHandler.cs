@@ -10,6 +10,7 @@ using VPackage.Json;
 using System.Windows;
 using DmxController.Common.Json;
 using DmxController.StoryBoards;
+using DmxController.Common.Configurations;
 
 namespace DmxController.Common.Files
 {
@@ -18,15 +19,18 @@ namespace DmxController.Common.Files
         #region Singleton
         private static FilesHandler current;
         public static FilesHandler Current { get { if (current == null) current = new FilesHandler(); return current; } }
+
         #endregion
 
 
         #region Fields
         private string storyBoardPath;
         private string settingsPath;
+        private Configuration currentConfiguration;
+        public event Action ConfigurationChanged;
 
-        private JsonHandler.ConfigurationPacket currentConfiguration;
-        private event Action ConfigurationChanged;
+
+        public Configuration CurrentConfiguration { get => currentConfiguration; }
         #endregion
 
         private FilesHandler ()
@@ -35,7 +39,7 @@ namespace DmxController.Common.Files
 
         private void OnConfigurationChanged ()
         {
-            if (ConfigurationChanged != null) ConfigurationChanged();
+            ConfigurationChanged?.Invoke();
         }
 
         public void Initialize (string storyBoardPath, string settingsPath)
@@ -53,25 +57,30 @@ namespace DmxController.Common.Files
 
             if (!File.Exists(settingsPath))
             {
-                FileManager.Write(settingsPath, JsonHandler.ConstructConfigurationPacket(new JsonHandler.ConfigurationPacket()));
+                FileManager.Write(settingsPath, JsonHandler.ConstructConfigurationPacket(new Configuration()
+                {
+                    Hostname = "127.0.0.1",
+                    LightAddress = 1,
+                    ReceivePort = 5000,
+                    SendPort = 15000
+                }));
             }
         }
-
-        public JsonHandler.ConfigurationPacket GetConfiguration ()
+        
+        public void SaveConfiguration (Configuration configuration)
         {
-            if (currentConfiguration == null)
-            {
-                string s = FileManager.Read(settingsPath);
-                currentConfiguration = JSONSerializer.Deserialize<JsonHandler.ConfigurationPacket>(s);
-            }
-
-            return currentConfiguration;
+            string json = JsonHandler.ConstructConfigurationPacket(configuration);
+            FileManager.Write(settingsPath, json, FileManager.WriteOptions.CreateDirectory);
+            ConfigurationChanged?.Invoke();
         }
 
-        public void ChangeConfiguration (JsonHandler.ConfigurationPacket conf)
+        public Configuration OpenConfiguration ()
         {
-            FileManager.Write(settingsPath, JSONSerializer.Serialize<JsonHandler.ConfigurationPacket>(conf), FileManager.WriteOptions.CreateDirectory);
-            OnConfigurationChanged();
+            string json = FileManager.Read(settingsPath);
+
+            Configuration c = JsonHandler.ParseConfigurationPacket(json);
+            currentConfiguration = c;
+            return c;
         }
 
         public void SaveStoryBoard(string storyBoardPath, StoryBoardElement[] storyBoardElements)
