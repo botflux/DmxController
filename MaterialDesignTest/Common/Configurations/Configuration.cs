@@ -30,7 +30,7 @@ namespace DmxController.Common.Configurations
         /// </summary>
         [DataMember]
         private int lightAddress;
-
+        
         public int SendPort
         {
             get
