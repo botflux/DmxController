@@ -158,14 +158,6 @@
                         <materialDesign:PackIcon Kind="Send" />
                     </MenuItem.Icon>
                 </MenuItem>
-
-                <Separator />
-
-                <MenuItem Header="_Options">
-                    <MenuItem.Icon>
-                        <materialDesign:PackIcon Kind="Settings" />
-                    </MenuItem.Icon>
-                </MenuItem>
             </MenuItem>
 
             <MenuItem Header="_Affichage">
