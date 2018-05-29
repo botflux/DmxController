@@ -16,7 +16,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
         <StackPanel Margin="16">
-            <Label Content="{Binding ModuleName}" />
+            <Label Content="{Binding ModuleName}" FontSize="16" />
             <Button Content="ENVOYER" Command="{Binding Parent.Send}" CommandParameter="{Binding Parent.MainColor}" Margin="0 8 0 8" />
         </StackPanel>
         <Separator />

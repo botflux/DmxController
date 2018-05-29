@@ -18,7 +18,7 @@
     <StackPanel>
         <StackPanel Margin="16">
 
-            <Label Content="{Binding ModuleName}" />
+            <Label Content="{Binding ModuleName}" FontSize="16" />
             <Label FontSize="9" Content="Rouge" Margin="0 16 0 8" />
             <TextBox Text="{Binding Parent.CurrentElement.R}" />
 

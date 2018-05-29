@@ -17,7 +17,7 @@
     <StackPanel>
         <StackPanel Margin="16">
 
-            <Label Content="{Binding ModuleName}" Margin="0 0 0 16" />
+            <Label Content="{Binding ModuleName}" Margin="0 0 0 16" FontSize="16" />
 
             <Label Content="Nom de la storyboard" FontSize="9" />
             <TextBox Text="{Binding Parent.StoryBoardName}" IsReadOnly="True" Margin="0 0 0 8" />
@@ -25,7 +25,7 @@
             <Label Content="Chemin de la storyboard" FontSize="9" />
             <TextBox Text="{Binding Parent.StoryBoardPath}" IsReadOnly="True" Margin="0 0 0 8" />
 
-            <Label Content="Nombre d'éléments" FontSize="9" />
+            <Label Content="Nombre d'éléments" FontSize="9"  />
             <TextBox Text="{Binding Parent.ElementCount, Mode=OneWay}" IsReadOnly="True" Margin="0 0 0 8" />
         </StackPanel>
         <Separator />

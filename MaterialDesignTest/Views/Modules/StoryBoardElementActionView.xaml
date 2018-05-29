@@ -16,7 +16,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
         <StackPanel Margin="16">
-            <Label Content="{Binding ModuleName}" />
+            <Label Content="{Binding ModuleName}" FontSize="16" />
             <Button Content="AJOUTER" Command="{Binding Parent.AddStoryBoardElementCommand}" CommandParameter="{x:Null}" Margin="0 8 0 8" />
             <Button Content="SUPPRIMER" Command="{Binding Parent.DeleteStoryBoardElementCommand}" CommandParameter="{Binding Parent.CurrentElement}" Margin="0 8 0 8" />
             <Button Content="ENVOYER" Command="{Binding Parent.SendStoryBoardCommand}" CommandParameter="{Binding Parent.CurrentElement}" Margin="0 8 0 8" />
