@@ -41,21 +41,24 @@
         </StackPanel>
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal" Grid.Row="1">
 
-            <Button Content="Annuler"
+            <Button Content="ANNULER"
                 Command="{Binding DataContext.CancelDialogCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                 CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" 
                 HorizontalAlignment="Right"
                 Background="{x:Null}"
                 BorderBrush="{x:Null}"
+                
                 VerticalAlignment="Bottom"
         />
-            <Button Content="Valider"
+            <Button Content="VALIDER"
                 Command="{Binding DataContext.ValidateDialogCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                 CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" 
                 HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                FontSize="14"
+                FontFamily="CustomFonts/#Cousune"
                 Background="{x:Null}"
                 BorderBrush="{x:Null}"
-                VerticalAlignment="Bottom"
         />
         </StackPanel>
     </Grid>
