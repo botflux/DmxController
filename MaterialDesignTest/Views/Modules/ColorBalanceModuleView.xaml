@@ -14,15 +14,19 @@
              TextElement.FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel Margin="16">
-        <Label Content="Color balance" />
-        <Label FontSize="9" Content="Rouge" Margin="0 16 0 8" />
-        <TextBox Text="{Binding Parent.R}" />
+    <StackPanel>
+        <StackPanel Margin="16">
 
-        <Label FontSize="9" Content="Vert" Margin="0 16 0 8" />
-        <TextBox Text="{Binding Parent.G}" />
+            <Label Content="{Binding ModuleName}" />
+            <Label FontSize="9" Content="Rouge" Margin="0 16 0 8" />
+            <TextBox Text="{Binding Parent.R}" />
 
-        <Label FontSize="9" Content="Bleu" Margin="0 16 0 8" />
-        <TextBox Text="{Binding Parent.B}" />
+            <Label FontSize="9" Content="Vert" Margin="0 16 0 8" />
+            <TextBox Text="{Binding Parent.G}" />
+
+            <Label FontSize="9" Content="Bleu" Margin="0 16 0 8" />
+            <TextBox Text="{Binding Parent.B}" />
+        </StackPanel>
+        <Separator />
     </StackPanel>
 </UserControl>

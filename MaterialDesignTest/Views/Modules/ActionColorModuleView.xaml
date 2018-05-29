@@ -14,8 +14,11 @@
             Background="{DynamicResource MaterialDesignCardBackground}"
             TextElement.FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
              d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel Margin="16">
-        <Label Content="{Binding ModuleName}" />
-        <Button Content="Envoyer" Command="{Binding Parent.Send}" CommandParameter="{Binding Parent.MainColor}" Margin="0 8 0 8" />
+    <StackPanel>
+        <StackPanel Margin="16">
+            <Label Content="{Binding ModuleName}" />
+            <Button Content="ENVOYER" Command="{Binding Parent.Send}" CommandParameter="{Binding Parent.MainColor}" Margin="0 8 0 8" />
+        </StackPanel>
+        <Separator />
     </StackPanel>
 </UserControl>

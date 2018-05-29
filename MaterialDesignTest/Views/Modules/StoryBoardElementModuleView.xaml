@@ -15,18 +15,22 @@
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="300">
 
-    <StackPanel Margin="16">
-        <Label Content="Color balance" />
-        <Label FontSize="9" Content="Rouge" Margin="0 16 0 8" />
-        <TextBox Text="{Binding Parent.CurrentElement.R}" />
+    <StackPanel>
+        <StackPanel Margin="16">
 
-        <Label FontSize="9" Content="Vert" Margin="0 16 0 8" />
-        <TextBox Text="{Binding Parent.CurrentElement.G}" />
+            <Label Content="{Binding ModuleName}" />
+            <Label FontSize="9" Content="Rouge" Margin="0 16 0 8" />
+            <TextBox Text="{Binding Parent.CurrentElement.R}" />
 
-        <Label FontSize="9" Content="Bleu" Margin="0 16 0 8" />
-        <TextBox Text="{Binding Parent.CurrentElement.B}" />
+            <Label FontSize="9" Content="Vert" Margin="0 16 0 8" />
+            <TextBox Text="{Binding Parent.CurrentElement.G}" />
 
-        <Label FontSize="9" Content="Time" Margin="0 16 0 8" />
-        <TextBox Text="{Binding Parent.CurrentElement.Time}" />
+            <Label FontSize="9" Content="Bleu" Margin="0 16 0 8" />
+            <TextBox Text="{Binding Parent.CurrentElement.B}" />
+
+            <Label FontSize="9" Content="Time" Margin="0 16 0 8" />
+            <TextBox Text="{Binding Parent.CurrentElement.Time}" />
+        </StackPanel>
+        <Separator />
     </StackPanel>
 </UserControl>
