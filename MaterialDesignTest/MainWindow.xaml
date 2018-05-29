@@ -17,7 +17,7 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-        Title="MainWindow" MinHeight="432" MinWidth="768">
+        Title="Dmx Controller" MinHeight="432" MinWidth="768">
     <Window.DataContext>
         <viewModels:ApplicationViewModel />
     </Window.DataContext>
@@ -145,14 +145,6 @@
             <MenuItem Header="_Trasmission">
                 <MenuItem Header="_Envoyer"
                           Command="{Binding CurrentPageViewModel.Send}"
-                          CommandParameter="{x:Null}">
-                    <MenuItem.Icon>
-                        <materialDesign:PackIcon Kind="Send" />
-                    </MenuItem.Icon>
-                </MenuItem>
-
-                <MenuItem Header="Envoyer vers..."
-                          Command="{Binding CurrentPageViewModel.SendTo}"
                           CommandParameter="{x:Null}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Send" />

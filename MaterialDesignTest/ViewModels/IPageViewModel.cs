@@ -24,7 +24,6 @@ namespace DmxController.ViewModels
         ICommand SaveCommand { get; }
         ICommand SaveUnderCommand { get; }
         ICommand Send { get; }
-        ICommand SendTo { get; }
 
         ICommand OpenCommand { get; }
 

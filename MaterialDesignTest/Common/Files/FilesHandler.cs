@@ -30,7 +30,13 @@ namespace DmxController.Common.Files
         public event Action ConfigurationChanged;
 
 
-        public Configuration CurrentConfiguration { get => currentConfiguration; }
+        public Configuration CurrentConfiguration
+        {
+            get
+            {
+                return currentConfiguration;
+            }
+        }
         #endregion
 
         private FilesHandler ()

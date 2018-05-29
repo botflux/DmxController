@@ -203,17 +203,6 @@ namespace DmxController.ViewModels
             }
         }
 
-        public ICommand SendTo
-        {
-            get
-            {
-                return new RelayCommand<object>((o) =>
-                {
-                    throw new NotImplementedException();
-                });
-            }
-        }
-
         public ICommand OpenCommand
         {
             get

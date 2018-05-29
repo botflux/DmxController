@@ -12,6 +12,8 @@ using DmxController.ViewModels.Modules;
 using System.Windows;
 using DmxController.Common.Json;
 using DmxController.Common.Network;
+using DmxController.Common.Configurations;
+using DmxController.Common.Files;
 
 namespace DmxController.ViewModels
 {
@@ -202,7 +204,7 @@ namespace DmxController.ViewModels
             {
                 if (sendColor == null) sendColor = new RelayCommand<object>((o) =>
                 {
-                    string frame = JsonHandler.ConstructColorPacket(R, G, B, 255, "PROJO", 1);
+                    string frame = JsonHandler.ConstructColorPacket(R, G, B, 255, "PROJO", FilesHandler.Current.CurrentConfiguration.LightAddress);
 
                     MessageBox.Show(string.Format("{0}: {1}", frame.Length, frame));
 
@@ -227,14 +229,6 @@ namespace DmxController.ViewModels
             get
             {
                 return new RelayCommand<object>((o) => { MessageBox.Show("Rien à sauvegarder"); });
-            }
-        }
-
-        public ICommand SendTo
-        {
-            get
-            {
-                return Send;
             }
         }
 

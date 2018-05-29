@@ -34,6 +34,10 @@ namespace DmxController.ViewModels
         /// Valide le dialogue
         /// </summary>
         private ICommand validateDialogCommand;
+        /// <summary>
+        /// Annule le dialogue
+        /// </summary>
+        private ICommand cancelDialogCommand;
         #endregion
 
         #region Properties / Commands
@@ -110,6 +114,14 @@ namespace DmxController.ViewModels
         public ICommand ValidateDialogCommand {
             get { return validateDialogCommand; }
         }
+
+        public ICommand CancelDialogCommand
+        {
+            get
+            {
+                return cancelDialogCommand;
+            }
+        }
         #endregion
 
         #region Constructors
@@ -126,6 +138,11 @@ namespace DmxController.ViewModels
             {
                 DialogCloser.SetDialogResult(o, true);
             });
+
+            cancelDialogCommand = new RelayCommand<Window>((o) =>
+           {
+               DialogCloser.SetDialogResult(o, false);
+           });
         }
 
         #endregion

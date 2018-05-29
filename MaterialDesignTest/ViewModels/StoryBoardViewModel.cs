@@ -235,14 +235,6 @@ namespace DmxController.ViewModels
             }
         }
 
-        public ICommand SendTo
-        {
-            get
-            {
-                return sendStoryBoardCommand;
-            }
-        }
-
         public ICommand OpenCommand
         {
             get
@@ -355,7 +347,7 @@ namespace DmxController.ViewModels
             sendStoryBoardCommand = new RelayCommand<object>((o) => 
             {
                 //UtilityProvider.Current.NetManager.Send(PacketHandler.ConstructStoryBoardPacket(story.ToArray(), "PROJO", 1, "Story board 1"));
-                NetworkHandler.Current.Manager.Send(JsonHandler.ConstructStoryBoardPacket(story.ToArray(), "PROJO", 1, "Story board 1"));
+                NetworkHandler.Current.Manager.SendFragmented(JsonHandler.ConstructStoryBoardPacket(story.ToArray(), "PROJO", 1, "Story board 1"));
             });
 
             saveStoryBoardCommand = new RelayCommand<object>((o) => 
