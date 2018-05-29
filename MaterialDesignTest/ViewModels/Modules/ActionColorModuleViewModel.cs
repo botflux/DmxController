@@ -14,7 +14,7 @@ namespace DmxController.ViewModels.Modules
         {
             get
             {
-                return "ActionColorModule";
+                return "Actions";
             }
         }
 
