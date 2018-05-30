@@ -31,6 +31,22 @@ namespace DmxController.Common.Configurations
         [DataMember]
         private int lightAddress;
         
+        public Configuration ()
+        {
+            Hostname = "127.0.0.1";
+            SendPort = 5000;
+            ReceivePort = 15000;
+            LightAddress = 1;
+        }
+
+        public Configuration (Configuration configuration)
+        {
+            Hostname = configuration.Hostname;
+            LightAddress = configuration.LightAddress;
+            ReceivePort = configuration.ReceivePort;
+            SendPort = configuration.SendPort;
+        }
+
         public int SendPort
         {
             get
@@ -96,5 +112,7 @@ namespace DmxController.Common.Configurations
                 }
             }
         }
+
+       
     }
 }

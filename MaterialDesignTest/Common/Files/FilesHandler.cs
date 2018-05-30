@@ -77,7 +77,9 @@ namespace DmxController.Common.Files
         {
             string json = JsonHandler.ConstructConfigurationPacket(configuration);
             FileManager.Write(settingsPath, json, FileManager.WriteOptions.CreateDirectory);
-            ConfigurationChanged?.Invoke();
+            if (configuration.Hostname != CurrentConfiguration.Hostname || configuration.ReceivePort != CurrentConfiguration.ReceivePort || configuration.SendPort != CurrentConfiguration.SendPort)
+                OnConfigurationChanged();
+            currentConfiguration = new Configuration(configuration);
         }
 
         public Configuration OpenConfiguration ()
