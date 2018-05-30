@@ -114,6 +114,8 @@
     <Compile Include="Common\Files\FilesHandler.cs" />
     <Compile Include="Common\Network\NetworkHandler.cs" />
     <Compile Include="Common\Json\JsonHandler.cs" />
+    <Compile Include="Common\ServerException\ServerExceptionHandler.cs" />
+    <Compile Include="Common\ServerException\ServerExceptionWrapper.cs" />
     <Compile Include="Converters\VisibilityToBoolConverter.cs" />
     <Compile Include="StoryBoards\StoryBoardElement.cs" />
     <Compile Include="ViewModels\ApplicationViewModel.cs" />

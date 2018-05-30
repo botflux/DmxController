@@ -2,6 +2,7 @@
 using DmxController.Common.Files;
 using DmxController.Common.Json;
 using DmxController.Common.Network;
+using DmxController.Common.ServerException;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -32,21 +33,27 @@ namespace DmxController
                 MessageBox.Show("Redémarrez l'application pour que les changements de la configuration soient pris en compte.");
             };
             Configuration configuration = FilesHandler.Current.OpenConfiguration();
-            //NetworkHandler.Current.Initialize(configuration.Hostname, configuration.SendPort, configuration.ReceivePort);
-            //NetworkHandler.Current.Initialize("10.129.22.26", 5000, 15000);
             NetworkHandler.Current.Initialize(configuration.Hostname, configuration.SendPort, configuration.ReceivePort);
             NetworkHandler.Current.Manager.UseFragmentation = false;
             NetworkHandler.Current.Manager.Mtu = 1000;
-            //NetworkHandler.Current.Manager.Mtu = 10;
             NetworkHandler.Current.Manager.OnMessageReceived += (message) =>
             {
-                try
+                int code;
+                if (int.TryParse(message, out code))
                 {
-                    MessageBox.Show(string.Format("Message reçu: {0}", message));
+                    if (code != 0)
+                    {
+                        ServerExceptionWrapper w = ServerExceptionHandler.GetExceptionFromCode(code);
+                        MessageBox.Show(w.ToString());
+                    } 
+                    else
+                    {
+                        MessageBox.Show("Le message a correctement été reçu");
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(message);
                 }
             };
             NetworkHandler.Current.Manager.StartListening();

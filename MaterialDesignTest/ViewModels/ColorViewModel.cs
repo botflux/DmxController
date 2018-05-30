@@ -206,7 +206,7 @@ namespace DmxController.ViewModels
                 {
                     string frame = JsonHandler.ConstructColorPacket(R, G, B, 255, (FilesHandler.Current.CurrentConfiguration.TargetType == TargetTypeEnum.Projecteur)? "PROJO": "LYRE", FilesHandler.Current.CurrentConfiguration.LightAddress);
 
-                    MessageBox.Show(string.Format("{0}: {1}", frame.Length, frame));
+                    //MessageBox.Show(string.Format("{0}: {1}", frame.Length, frame));
 
                     //UtilityProvider.Current.NetManager.Send(frame);
                     NetworkHandler.Current.Manager.SendFragmented(frame);
