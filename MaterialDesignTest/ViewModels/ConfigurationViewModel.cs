@@ -31,6 +31,10 @@ namespace DmxController.ViewModels
         /// </summary>
         private int lightAddress;
         /// <summary>
+        /// Type de cible
+        /// </summary>
+        private TargetTypeEnum targetType;
+        /// <summary>
         /// Valide le dialogue
         /// </summary>
         private ICommand validateDialogCommand;
@@ -122,6 +126,23 @@ namespace DmxController.ViewModels
                 return cancelDialogCommand;
             }
         }
+
+        public TargetTypeEnum TargetType
+        {
+            get
+            {
+                return targetType;
+            }
+
+            set
+            {
+                if (targetType != value)
+                {
+                    targetType = value;
+                    NotifyProperty();
+                }
+            }
+        }
         #endregion
 
         #region Constructors
@@ -133,6 +154,7 @@ namespace DmxController.ViewModels
             LightAddress = configuration.LightAddress;
             ReceivePort = configuration.ReceivePort;
             SendPort = configuration.SendPort;
+            TargetType = configuration.TargetType;
 
             validateDialogCommand = new RelayCommand<Window>((o) => 
             {
@@ -150,13 +172,7 @@ namespace DmxController.ViewModels
         #region Methods
         public static Configuration GetConfiguration (ConfigurationViewModel vm)
         {
-            return new Configuration()
-            {
-                Hostname = vm.Hostname,
-                LightAddress = vm.LightAddress,
-                ReceivePort = vm.ReceivePort,
-                SendPort = vm.SendPort
-            };
+            return new Configuration(vm);
         }
         #endregion
     }

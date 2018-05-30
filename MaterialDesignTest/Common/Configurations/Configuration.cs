@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DmxController.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -30,13 +31,19 @@ namespace DmxController.Common.Configurations
         /// </summary>
         [DataMember]
         private int lightAddress;
-        
+        /// <summary>
+        /// Le type de cible
+        /// </summary>
+        [DataMember]
+        private TargetTypeEnum targetType;
+
         public Configuration ()
         {
             Hostname = "127.0.0.1";
             SendPort = 5000;
             ReceivePort = 15000;
             LightAddress = 1;
+            TargetType = TargetTypeEnum.Lyre;
         }
 
         public Configuration (Configuration configuration)
@@ -45,6 +52,16 @@ namespace DmxController.Common.Configurations
             LightAddress = configuration.LightAddress;
             ReceivePort = configuration.ReceivePort;
             SendPort = configuration.SendPort;
+            TargetType = configuration.TargetType;
+        }
+
+        public Configuration (ConfigurationViewModel configurationViewModel)
+        {
+            Hostname = configurationViewModel.Hostname;
+            ReceivePort = configurationViewModel.ReceivePort;
+            SendPort = configurationViewModel.SendPort;
+            TargetType = configurationViewModel.TargetType;
+            LightAddress = configurationViewModel.LightAddress;
         }
 
         public int SendPort
@@ -113,6 +130,17 @@ namespace DmxController.Common.Configurations
             }
         }
 
-       
+        public TargetTypeEnum TargetType
+        {
+            get
+            {
+                return targetType;
+            }
+
+            set
+            {
+                targetType = value;
+            }
+        }
     }
 }

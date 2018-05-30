@@ -325,7 +325,6 @@ namespace DmxController.ViewModels
                     }
                     else
                     {
-                        //CurrentElement = new StoryBoardElement() { R = 100, G = 100, B = 100, Time = 1 };
                         CurrentElement = null;
                     }
                 }
@@ -346,8 +345,7 @@ namespace DmxController.ViewModels
 
             sendStoryBoardCommand = new RelayCommand<object>((o) => 
             {
-                //UtilityProvider.Current.NetManager.Send(PacketHandler.ConstructStoryBoardPacket(story.ToArray(), "PROJO", 1, "Story board 1"));
-                NetworkHandler.Current.Manager.SendFragmented(JsonHandler.ConstructStoryBoardPacket(story.ToArray(), "PROJO", 1, "Story board 1"));
+                NetworkHandler.Current.Manager.SendFragmented(JsonHandler.ConstructStoryBoardPacket(story.ToArray(), (FilesHandler.Current.CurrentConfiguration.TargetType == TargetTypeEnum.Projecteur)? "PROJO": "LYRE", FilesHandler.Current.CurrentConfiguration.LightAddress, StoryBoardName));
             });
 
             saveStoryBoardCommand = new RelayCommand<object>((o) => 

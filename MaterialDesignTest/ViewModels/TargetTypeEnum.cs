@@ -10,12 +10,12 @@ namespace DmxController.ViewModels
     /// <summary>
     /// Représente les differents types de sources lumineuses.
     /// </summary>
-    [DataContract]
+    [DataContract(Name = "TargetType")]
     public enum TargetTypeEnum
     {
-        [EnumMember]
+        [EnumMember(Value = "Lyre")]
         Lyre,
-        [EnumMember]
+        [EnumMember(Value = "Projecteur")]
         Projecteur
     }
 }

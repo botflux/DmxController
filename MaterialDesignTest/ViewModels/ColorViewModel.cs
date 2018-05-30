@@ -204,7 +204,7 @@ namespace DmxController.ViewModels
             {
                 if (sendColor == null) sendColor = new RelayCommand<object>((o) =>
                 {
-                    string frame = JsonHandler.ConstructColorPacket(R, G, B, 255, "PROJO", FilesHandler.Current.CurrentConfiguration.LightAddress);
+                    string frame = JsonHandler.ConstructColorPacket(R, G, B, 255, (FilesHandler.Current.CurrentConfiguration.TargetType == TargetTypeEnum.Projecteur)? "PROJO": "LYRE", FilesHandler.Current.CurrentConfiguration.LightAddress);
 
                     MessageBox.Show(string.Format("{0}: {1}", frame.Length, frame));
 

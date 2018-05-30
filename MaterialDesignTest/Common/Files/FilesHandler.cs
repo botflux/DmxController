@@ -68,7 +68,8 @@ namespace DmxController.Common.Files
                     Hostname = "127.0.0.1",
                     LightAddress = 1,
                     ReceivePort = 5000,
-                    SendPort = 15000
+                    SendPort = 15000,
+                    TargetType = ViewModels.TargetTypeEnum.Projecteur
                 }));
             }
         }

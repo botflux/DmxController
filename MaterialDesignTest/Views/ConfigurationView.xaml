@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:DmxController.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:viewModel="clr-namespace:DmxController.ViewModels"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -14,10 +15,18 @@
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         mc:Ignorable="d"
-        Title="Configuration" Height="400" Width="300" ResizeMode="NoResize">
+        Title="Configuration" Height="470" Width="300" ResizeMode="NoResize">
     <Window.DataContext>
         <viewModel:ConfigurationViewModel />
     </Window.DataContext>
+    <Window.Resources>
+        <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
+                            ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="viewModel:TargetTypeEnum" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
     <Grid Margin="8 8 8 8">
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -38,6 +47,10 @@
             <Label Content="Source" Margin="0 0 0 8" />
             <Label Content="Adresse élément" FontSize="9" />
             <TextBox Margin="0 0 0 8" Text="{Binding LightAddress}" />
+
+            <Label Content="Type de cible" FontSize="9" />
+            <ComboBox ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
+                      SelectedItem="{Binding Path=TargetType}"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal" Grid.Row="1">
 
