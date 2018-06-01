@@ -14,6 +14,7 @@ using DmxController.Common.Json;
 using DmxController.Common.Network;
 using DmxController.Common.Configurations;
 using DmxController.Common.Files;
+using System.Configuration;
 
 namespace DmxController.ViewModels
 {
@@ -111,7 +112,8 @@ namespace DmxController.ViewModels
         /// <summary>
         /// Renvoie ou renseigne la composante rouge de la couleur.
         /// </summary>
-        public byte R
+        [IntegerValidator(MinValue = 0, MaxValue = 255)]
+        public int R
         {
             get
             {
@@ -122,7 +124,7 @@ namespace DmxController.ViewModels
             {
                 if (r != value)
                 {
-                    r = value;
+                    r = (byte)value;
                     NotifyProperty();
                     NotifyProperty("RedBalance");
                 }
@@ -132,7 +134,8 @@ namespace DmxController.ViewModels
         /// <summary>
         /// Renvoie ou renseigne la composante verte de la couleur.
         /// </summary>
-        public byte G
+        [IntegerValidator(MinValue = 0, MaxValue = 255)]
+        public int G
         {
             get
             {
@@ -143,7 +146,7 @@ namespace DmxController.ViewModels
             {
                 if (g != value)
                 {
-                    g = value;
+                    g = (byte)value;
                     NotifyProperty();
                     NotifyProperty("GreenBalance");
                 }
@@ -153,7 +156,8 @@ namespace DmxController.ViewModels
         /// <summary>
         /// Renvoie ou renseigne la composante bleu de la couleur.
         /// </summary>
-        public byte B
+        [IntegerValidator(MinValue = 0, MaxValue = 255)]
+        public int B
         {
             get
             {
@@ -164,7 +168,7 @@ namespace DmxController.ViewModels
             {
                 if (b != value)
                 {
-                    b = value;
+                    b = (byte)value;
                     NotifyProperty();
                     NotifyProperty("BlueBalance");
                 }
@@ -204,7 +208,7 @@ namespace DmxController.ViewModels
             {
                 if (sendColor == null) sendColor = new RelayCommand<object>((o) =>
                 {
-                    string frame = JsonHandler.ConstructColorPacket(R, G, B, 255, (FilesHandler.Current.CurrentConfiguration.TargetType == TargetTypeEnum.Projecteur)? "PROJO": "LYRE", FilesHandler.Current.CurrentConfiguration.LightAddress);
+                    string frame = JsonHandler.ConstructColorPacket(r, g, b, 255, (FilesHandler.Current.CurrentConfiguration.TargetType == TargetTypeEnum.Projecteur)? "PROJO": "LYRE", FilesHandler.Current.CurrentConfiguration.LightAddress);
 
                     //MessageBox.Show(string.Format("{0}: {1}", frame.Length, frame));
 
@@ -249,7 +253,7 @@ namespace DmxController.ViewModels
         protected override void NotifyProperty([CallerMemberName] string str = "")
         {
             base.NotifyProperty(str);
-            MainColor = Color.FromRgb(R, G, B);
+            MainColor = Color.FromRgb(r, g, b);
         }
 
         public void Clear()

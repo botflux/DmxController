@@ -2,6 +2,7 @@
 using DmxController.Common.Configurations;
 using DmxController.Common.Files;
 using DmxController.Common.Json;
+using DmxController.Common.Network;
 using DmxController.Views;
 using Microsoft.Win32;
 using System;
@@ -33,6 +34,8 @@ namespace DmxController.ViewModels
         private ICommand openCommand;
 
         private ICommand changeConfigurationCommand;
+        private ICommand askStoryboardCommand;
+        
 
         private ICommand changePageCommand;
         private IPageViewModel currentPageViewModel;
@@ -238,6 +241,21 @@ namespace DmxController.ViewModels
             }
         }
 
+        public ICommand AskStoryboardCommand
+        {
+            get
+            {
+                if (askStoryboardCommand == null) askStoryboardCommand = new RelayCommand<object>((o) => 
+                {
+                    string command = JsonHandler.ConstructStoryboardNameRequest();
+                    NetworkHandler.Current.Manager.SendFragmented(command);
+                });
+
+                return askStoryboardCommand;
+            }
+            
+        }
+
         #endregion
 
         #region Methods
@@ -294,7 +312,7 @@ namespace DmxController.ViewModels
                 bool? res = configurationView.ShowDialog();
                 if (res == true)
                 {
-                    Configuration configuration = ConfigurationViewModel.GetConfiguration((ConfigurationViewModel)configurationView.DataContext);
+                    AppConfiguration configuration = ConfigurationViewModel.GetConfiguration((ConfigurationViewModel)configurationView.DataContext);
                     FilesHandler.Current.SaveConfiguration(configuration);
                 }
             });

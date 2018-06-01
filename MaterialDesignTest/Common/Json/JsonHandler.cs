@@ -13,14 +13,14 @@ namespace DmxController.Common.Json
 {
     public static class JsonHandler
     {
-        public static string ConstructConfigurationPacket (Configuration c)
+        public static string ConstructConfigurationPacket (AppConfiguration c)
         {
-            return JSONSerializer.Serialize<Configuration>(c);
+            return JSONSerializer.Serialize<AppConfiguration>(c);
         }
 
-        public static Configuration ParseConfigurationPacket (string json)
+        public static AppConfiguration ParseConfigurationPacket (string json)
         {
-            return JSONSerializer.Deserialize<Configuration>(json);
+            return JSONSerializer.Deserialize<AppConfiguration>(json);
         }
 
         public static string ConstructColorPacket(byte r, byte g, byte b, byte intensity, string target, int targetAddress)
@@ -36,6 +36,14 @@ namespace DmxController.Common.Json
                     Target = target,
                     TargetAddress = targetAddress
                 }
+            });
+        }
+
+        public static string ConstructStoryboardNameRequest ()
+        {
+            return JSONSerializer.Serialize<ServerCommand>(new ServerCommand()
+            {
+                CommandName = "askStoryboardName"
             });
         }
 
@@ -170,11 +178,11 @@ namespace DmxController.Common.Json
                     [DataMember(Name = "targetAddress", Order = 2)]
                     private int targetAddress;
                     [DataMember(Name = "red", Order = 3)]
-                    private byte r;
+                    private int r;
                     [DataMember(Name = "green", Order = 4)]
-                    private byte g;
+                    private int g;
                     [DataMember(Name = "blue", Order = 5)]
-                    private byte b;
+                    private int b;
                     [DataMember(Name = "intensity", Order = 6)]
                     private byte intensity;
                     [DataMember(Name = "time", Order = 7)]
@@ -219,7 +227,7 @@ namespace DmxController.Common.Json
                         }
                     }
 
-                    public byte B
+                    public int B
                     {
                         get
                         {
@@ -232,7 +240,7 @@ namespace DmxController.Common.Json
                         }
                     }
 
-                    public byte G
+                    public int G
                     {
                         get
                         {
@@ -245,7 +253,7 @@ namespace DmxController.Common.Json
                         }
                     }
 
-                    public byte R
+                    public int R
                     {
                         get
                         {
@@ -273,6 +281,26 @@ namespace DmxController.Common.Json
                 }
             }
 
+        }
+
+        [DataContract]
+        private class ServerCommand
+        {
+            [DataMember(Name = "command")]
+            private string commandName;
+
+            public string CommandName
+            {
+                get
+                {
+                    return commandName;
+                }
+
+                set
+                {
+                    commandName = value;
+                }
+            }
         }
 
         [DataContract]

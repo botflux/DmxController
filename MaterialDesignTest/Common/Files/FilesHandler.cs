@@ -26,11 +26,11 @@ namespace DmxController.Common.Files
         #region Fields
         private string storyBoardPath;
         private string settingsPath;
-        private Configuration currentConfiguration;
+        private AppConfiguration currentConfiguration;
         public event Action ConfigurationChanged;
 
 
-        public Configuration CurrentConfiguration
+        public AppConfiguration CurrentConfiguration
         {
             get
             {
@@ -63,7 +63,7 @@ namespace DmxController.Common.Files
 
             if (!File.Exists(settingsPath))
             {
-                FileManager.Write(settingsPath, JsonHandler.ConstructConfigurationPacket(new Configuration()
+                FileManager.Write(settingsPath, JsonHandler.ConstructConfigurationPacket(new AppConfiguration()
                 {
                     Hostname = "127.0.0.1",
                     LightAddress = 1,
@@ -74,20 +74,20 @@ namespace DmxController.Common.Files
             }
         }
         
-        public void SaveConfiguration (Configuration configuration)
+        public void SaveConfiguration (AppConfiguration configuration)
         {
             string json = JsonHandler.ConstructConfigurationPacket(configuration);
             FileManager.Write(settingsPath, json, FileManager.WriteOptions.CreateDirectory);
             if (configuration.Hostname != CurrentConfiguration.Hostname || configuration.ReceivePort != CurrentConfiguration.ReceivePort || configuration.SendPort != CurrentConfiguration.SendPort)
                 OnConfigurationChanged();
-            currentConfiguration = new Configuration(configuration);
+            currentConfiguration = new AppConfiguration(configuration);
         }
 
-        public Configuration OpenConfiguration ()
+        public AppConfiguration OpenConfiguration ()
         {
             string json = FileManager.Read(settingsPath);
 
-            Configuration c = JsonHandler.ParseConfigurationPacket(json);
+            AppConfiguration c = JsonHandler.ParseConfigurationPacket(json);
             currentConfiguration = c;
             return c;
         }

@@ -32,10 +32,10 @@ namespace DmxController
             {
                 MessageBox.Show("Redémarrez l'application pour que les changements de la configuration soient pris en compte.");
             };
-            Configuration configuration = FilesHandler.Current.OpenConfiguration();
+            AppConfiguration configuration = FilesHandler.Current.OpenConfiguration();
             NetworkHandler.Current.Initialize(configuration.Hostname, configuration.SendPort, configuration.ReceivePort);
             NetworkHandler.Current.Manager.UseFragmentation = false;
-            NetworkHandler.Current.Manager.Mtu = 1000;
+            NetworkHandler.Current.Manager.Mtu = 380;
             NetworkHandler.Current.Manager.OnMessageReceived += (message) =>
             {
                 int code;

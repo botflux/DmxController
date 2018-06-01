@@ -149,7 +149,7 @@ namespace DmxController.ViewModels
 
         public ConfigurationViewModel ()
         {
-            Configuration configuration = JsonHandler.ParseConfigurationPacket(JsonHandler.ConstructConfigurationPacket(FilesHandler.Current.CurrentConfiguration));
+            AppConfiguration configuration = JsonHandler.ParseConfigurationPacket(JsonHandler.ConstructConfigurationPacket(FilesHandler.Current.CurrentConfiguration));
             Hostname = configuration.Hostname;
             LightAddress = configuration.LightAddress;
             ReceivePort = configuration.ReceivePort;
@@ -170,9 +170,9 @@ namespace DmxController.ViewModels
         #endregion
 
         #region Methods
-        public static Configuration GetConfiguration (ConfigurationViewModel vm)
+        public static AppConfiguration GetConfiguration (ConfigurationViewModel vm)
         {
-            return new Configuration(vm);
+            return new AppConfiguration(vm);
         }
         #endregion
     }

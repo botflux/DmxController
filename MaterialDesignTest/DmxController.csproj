@@ -75,6 +75,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -110,7 +112,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Common\Configurations\Configuration.cs" />
+    <Compile Include="Common\Configurations\AppConfiguration.cs" />
     <Compile Include="Common\Files\FilesHandler.cs" />
     <Compile Include="Common\Network\NetworkHandler.cs" />
     <Compile Include="Common\Json\JsonHandler.cs" />

@@ -8,11 +8,16 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using DmxController.ViewModels;
+using System.Configuration;
+using System.ComponentModel.DataAnnotations;
 
 namespace DmxController.StoryBoards
 {
     public class StoryBoardElement : INotifyPropertyChanged
     {
+        private const double MIN_TIME_VALUE = 0.1;
+        private const double MAX_TIME_VALUE = 3600;
+
         private byte r;
         private byte g;
         private byte b;
@@ -57,7 +62,7 @@ namespace DmxController.StoryBoards
                 return Color.FromRgb(r, g, b);
             }
         }
-
+        
         public double Time
         {
             get
@@ -69,15 +74,16 @@ namespace DmxController.StoryBoards
             {
                 if (time != value)
                 {
-
-
-                    time = value;
+                    if (value < MIN_TIME_VALUE) time = MIN_TIME_VALUE;
+                    else if (value > MAX_TIME_VALUE) time = MAX_TIME_VALUE;
+                    else time = value;
                     NotifyProperty();
                 }
             }
         }
 
-        public byte B
+        [IntegerValidator(MinValue = 0, MaxValue = 255)]
+        public int B
         {
             get
             {
@@ -90,7 +96,7 @@ namespace DmxController.StoryBoards
                 {
 
 
-                    b = value;
+                    b = (byte)value;
                     NotifyProperty();
                     NotifyProperty("BlueBalance");
                     NotifyProperty("ElementColor");
@@ -98,7 +104,8 @@ namespace DmxController.StoryBoards
             }
         }
 
-        public byte G
+        [IntegerValidator(MinValue = 0, MaxValue = 255)]
+        public int G
         {
             get
             {
@@ -110,7 +117,7 @@ namespace DmxController.StoryBoards
                 if (g != value)
                 {
 
-                    g = value;
+                    g = (byte)value;
                     NotifyProperty();
                     NotifyProperty("GreenBalance");
                     NotifyProperty("ElementColor");
@@ -119,7 +126,8 @@ namespace DmxController.StoryBoards
             }
         }
 
-        public byte R
+        [IntegerValidator(MinValue = 0, MaxValue = 255)]
+        public int R
         {
             get
             {
@@ -129,7 +137,7 @@ namespace DmxController.StoryBoards
             set
             {   if (value != r)
                 {
-                    r = value;
+                    r = (byte)value;
                     NotifyProperty();
                     NotifyProperty("RedBalance");
                     NotifyProperty("ElementColor");

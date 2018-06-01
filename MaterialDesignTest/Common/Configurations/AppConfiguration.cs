@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DmxController.Common.Configurations
 {
     [DataContract]
-    public class Configuration
+    public class AppConfiguration
     {
         /// <summary>
         /// Port d'envoie
@@ -37,7 +37,7 @@ namespace DmxController.Common.Configurations
         [DataMember]
         private TargetTypeEnum targetType;
 
-        public Configuration ()
+        public AppConfiguration ()
         {
             Hostname = "127.0.0.1";
             SendPort = 5000;
@@ -46,7 +46,7 @@ namespace DmxController.Common.Configurations
             TargetType = TargetTypeEnum.Lyre;
         }
 
-        public Configuration (Configuration configuration)
+        public AppConfiguration (AppConfiguration configuration)
         {
             Hostname = configuration.Hostname;
             LightAddress = configuration.LightAddress;
@@ -55,7 +55,7 @@ namespace DmxController.Common.Configurations
             TargetType = configuration.TargetType;
         }
 
-        public Configuration (ConfigurationViewModel configurationViewModel)
+        public AppConfiguration (ConfigurationViewModel configurationViewModel)
         {
             Hostname = configurationViewModel.Hostname;
             ReceivePort = configurationViewModel.ReceivePort;
