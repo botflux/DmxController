@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -33,7 +34,7 @@ namespace DmxController
                 MessageBox.Show("Redémarrez l'application pour que les changements de la configuration soient pris en compte.");
             };
             AppConfiguration configuration = FilesHandler.Current.OpenConfiguration();
-            NetworkHandler.Current.Initialize(configuration.Hostname, configuration.SendPort, configuration.ReceivePort);
+            NetworkHandler.Current.Initialize(configuration.Hostname, configuration.SendPort, 0);
             NetworkHandler.Current.Manager.UseFragmentation = false;
             NetworkHandler.Current.Manager.Mtu = 380;
             NetworkHandler.Current.Manager.OnMessageReceived += (message) =>
@@ -56,7 +57,7 @@ namespace DmxController
                     MessageBox.Show(message);
                 }
             };
-            NetworkHandler.Current.Manager.StartListening();
+            //NetworkHandler.Current.Manager.StartListening();
         }
 
         protected override void OnExit(ExitEventArgs e)

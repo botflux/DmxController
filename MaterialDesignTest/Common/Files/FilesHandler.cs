@@ -69,7 +69,7 @@ namespace DmxController.Common.Files
                     LightAddress = 1,
                     ReceivePort = 5000,
                     SendPort = 15000,
-                    TargetType = ViewModels.TargetTypeEnum.Projecteur
+                    TargetType = ViewModels.TargetTypeEnum.Barre
                 }));
             }
         }

@@ -14,8 +14,8 @@ namespace DmxController.ViewModels
     public enum TargetTypeEnum
     {
         [EnumMember(Value = "Lyre")]
-        Lyre,
+        Spot, 
         [EnumMember(Value = "Projecteur")]
-        Projecteur
+        Barre
     }
 }

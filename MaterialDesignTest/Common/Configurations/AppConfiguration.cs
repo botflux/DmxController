@@ -43,7 +43,7 @@ namespace DmxController.Common.Configurations
             SendPort = 5000;
             ReceivePort = 15000;
             LightAddress = 1;
-            TargetType = TargetTypeEnum.Lyre;
+            TargetType = TargetTypeEnum.Spot;
         }
 
         public AppConfiguration (AppConfiguration configuration)
