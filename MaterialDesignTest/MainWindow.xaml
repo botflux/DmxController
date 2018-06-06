@@ -173,14 +173,6 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-
-            <MenuItem Header="Aide">
-                <MenuItem Header="_A propos">
-                    <MenuItem.Icon>
-                        <materialDesign:PackIcon Kind="Information" />
-                    </MenuItem.Icon>
-                </MenuItem>
-            </MenuItem>
         </Menu>
         <Grid>
             <Grid.ColumnDefinitions>

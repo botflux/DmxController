@@ -9,8 +9,10 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Net;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
+using VPackage.Json;
 
 namespace DmxController
 {
@@ -31,6 +33,10 @@ namespace DmxController
             FilesHandler.Current.Initialize(storyBoardPath, settingsPath);
             FilesHandler.Current.ConfigurationChanged += () => 
             {
+                //NetworkHandler.Current.Manager.SendEndPoint.Address = IPAddress.Parse(FilesHandler.Current.CurrentConfiguration.Hostname);
+                //NetworkHandler.Current.Manager.SendEndPoint.Port = FilesHandler.Current.CurrentConfiguration.SendPort;
+                //NetworkHandler.Current.Manager.SendEndPoint = new IPEndPoint(IPAddress.Parse(FilesHandler.Current.CurrentConfiguration.Hostname), FilesHandler.Current.CurrentConfiguration.SendPort);
+
                 MessageBox.Show("Redémarrez l'application pour que les changements de la configuration soient pris en compte.");
             };
             AppConfiguration configuration = FilesHandler.Current.OpenConfiguration();
@@ -54,10 +60,38 @@ namespace DmxController
                 }
                 else
                 {
-                    MessageBox.Show(message);
+                    try
+                    {
+                        message = message.Trim('\0');
+                        StoryboardNameWrapper w = JSONSerializer.Deserialize<StoryboardNameWrapper>(message);
+                        MessageBox.Show("La storyboard nommé " + w.Name + " est en cours.");
+                    }
+                    catch (Exception ex){
+                        MessageBox.Show(message);
+                    }
                 }
             };
-            //NetworkHandler.Current.Manager.StartListening();
+            NetworkHandler.Current.Manager.StartListening();
+        }
+
+        [DataContract]
+        class StoryboardNameWrapper
+        {
+            [DataMember (Name = "nomStory")]
+            private string name;
+
+            public string Name
+            {
+                get
+                {
+                    return name;
+                }
+
+                set
+                {
+                    name = value;
+                }
+            }
         }
 
         protected override void OnExit(ExitEventArgs e)

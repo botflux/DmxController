@@ -346,7 +346,7 @@ namespace DmxController.ViewModels
             sendStoryBoardCommand = new RelayCommand<object>((o) => 
             {
                 string j = JsonHandler.ConstructStoryBoardPacket(story.ToArray(), (FilesHandler.Current.CurrentConfiguration.TargetType == TargetTypeEnum.Barre) ? "BARRELED" : "SPOTLED", FilesHandler.Current.CurrentConfiguration.LightAddress, StoryBoardName);
-                MessageBox.Show(j);
+                //MessageBox.Show(j);
                 NetworkHandler.Current.Manager.SendFragmented(j);
             });
 

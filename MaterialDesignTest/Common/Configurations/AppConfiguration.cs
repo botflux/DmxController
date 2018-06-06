@@ -17,11 +17,6 @@ namespace DmxController.Common.Configurations
         [DataMember]
         private int sendPort;
         /// <summary>
-        /// Port de reception
-        /// </summary>
-        [DataMember]
-        private int receivePort;
-        /// <summary>
         /// Nom d'hôte distant
         /// </summary>
         [DataMember]
@@ -41,7 +36,6 @@ namespace DmxController.Common.Configurations
         {
             Hostname = "127.0.0.1";
             SendPort = 5000;
-            ReceivePort = 15000;
             LightAddress = 1;
             TargetType = TargetTypeEnum.Spot;
         }
@@ -50,7 +44,6 @@ namespace DmxController.Common.Configurations
         {
             Hostname = configuration.Hostname;
             LightAddress = configuration.LightAddress;
-            ReceivePort = configuration.ReceivePort;
             SendPort = configuration.SendPort;
             TargetType = configuration.TargetType;
         }
@@ -58,7 +51,6 @@ namespace DmxController.Common.Configurations
         public AppConfiguration (ConfigurationViewModel configurationViewModel)
         {
             Hostname = configurationViewModel.Hostname;
-            ReceivePort = configurationViewModel.ReceivePort;
             SendPort = configurationViewModel.SendPort;
             TargetType = configurationViewModel.TargetType;
             LightAddress = configurationViewModel.LightAddress;
@@ -76,22 +68,6 @@ namespace DmxController.Common.Configurations
                 if (sendPort != value)
                 {
                     sendPort = value;
-                }
-            }
-        }
-
-        public int ReceivePort
-        {
-            get
-            {
-                return receivePort;
-            }
-
-            set
-            {
-                if (receivePort != value)
-                {
-                    receivePort = value;
                 }
             }
         }

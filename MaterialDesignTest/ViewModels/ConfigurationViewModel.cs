@@ -19,10 +19,6 @@ namespace DmxController.ViewModels
         /// </summary>
         private int sendPort;
         /// <summary>
-        /// Port de reception
-        /// </summary>
-        private int receivePort;
-        /// <summary>
         /// Nom d'hôte distant
         /// </summary>
         private string hostname;
@@ -57,23 +53,6 @@ namespace DmxController.ViewModels
                 if (sendPort != value)
                 {
                     sendPort = value;
-                    NotifyProperty();
-                }
-            }
-        }
-
-        public int ReceivePort
-        {
-            get
-            {
-                return receivePort;
-            }
-
-            set
-            {
-                if (receivePort != value)
-                {
-                    receivePort = value;
                     NotifyProperty();
                 }
             }
@@ -152,7 +131,6 @@ namespace DmxController.ViewModels
             AppConfiguration configuration = JsonHandler.ParseConfigurationPacket(JsonHandler.ConstructConfigurationPacket(FilesHandler.Current.CurrentConfiguration));
             Hostname = configuration.Hostname;
             LightAddress = configuration.LightAddress;
-            ReceivePort = configuration.ReceivePort;
             SendPort = configuration.SendPort;
             TargetType = configuration.TargetType;
 

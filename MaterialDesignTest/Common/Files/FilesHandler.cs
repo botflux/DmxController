@@ -22,7 +22,6 @@ namespace DmxController.Common.Files
 
         #endregion
 
-
         #region Fields
         private string storyBoardPath;
         private string settingsPath;
@@ -67,8 +66,7 @@ namespace DmxController.Common.Files
                 {
                     Hostname = "127.0.0.1",
                     LightAddress = 1,
-                    ReceivePort = 5000,
-                    SendPort = 15000,
+                    SendPort = 5000,
                     TargetType = ViewModels.TargetTypeEnum.Barre
                 }));
             }
@@ -78,7 +76,7 @@ namespace DmxController.Common.Files
         {
             string json = JsonHandler.ConstructConfigurationPacket(configuration);
             FileManager.Write(settingsPath, json, FileManager.WriteOptions.CreateDirectory);
-            if (configuration.Hostname != CurrentConfiguration.Hostname || configuration.ReceivePort != CurrentConfiguration.ReceivePort || configuration.SendPort != CurrentConfiguration.SendPort)
+            if (configuration.Hostname != CurrentConfiguration.Hostname || configuration.SendPort != CurrentConfiguration.SendPort)
                 OnConfigurationChanged();
             currentConfiguration = new AppConfiguration(configuration);
         }
