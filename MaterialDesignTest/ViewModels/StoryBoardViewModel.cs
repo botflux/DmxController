@@ -53,6 +53,10 @@ namespace DmxController.ViewModels
         /// </summary>
         private ICommand sendStoryBoardCommand;
         /// <summary>
+        /// Représente la commande servant à sauvegarder sous
+        /// </summary>
+        private ICommand saveUnderCommand;
+        /// <summary>
         /// Réprésente la commande servant à sauvegarder la story board en cours
         /// </summary>
         private ICommand saveStoryBoardCommand;
@@ -166,14 +170,6 @@ namespace DmxController.ViewModels
             }
         }
 
-        public ICommand SaveStoryBoardCommand
-        {
-            get
-            {
-                return saveStoryBoardCommand;
-            }
-        }
-
         public List<IModuleViewModel> LeftModules
         {
             get
@@ -223,7 +219,8 @@ namespace DmxController.ViewModels
         {
             get
             {
-                return saveStoryBoardCommand;
+
+                return saveUnderCommand;
             }
         }
 
@@ -350,7 +347,7 @@ namespace DmxController.ViewModels
                 NetworkHandler.Current.Manager.SendFragmented(j);
             });
 
-            saveStoryBoardCommand = new RelayCommand<object>((o) => 
+            saveStoryBoardCommand = new RelayCommand<object>((o) =>
             {
                 if (string.IsNullOrEmpty(storyBoardPath))
                 {
@@ -374,7 +371,25 @@ namespace DmxController.ViewModels
                     HasChanges = false;
                 }
             });
+
+            saveUnderCommand = new RelayCommand<object>((o) => 
+            {
+                SaveFileDialog dialog = new SaveFileDialog();
+                dialog.FileName = storyBoardName;
+                dialog.DefaultExt = ".sb";
+                dialog.Filter = "Story board file (.sb)|*.sb";
+
+                if (dialog.ShowDialog() == true)
+                {
+                    StoryBoardPath = dialog.FileName;
+                    StoryBoardName = Path.GetFileName(StoryBoardPath);
+                    FilesHandler.Current.SaveStoryBoard(dialog.FileName, story.ToArray());
+                    HasChanges = false;
+                }
+            });
         }
+
+       
 
         #endregion
 
